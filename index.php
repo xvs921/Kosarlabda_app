@@ -1,115 +1,81 @@
-   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <?php
-session_start();
-if(!isset($_SESSION["bejelentkezi_allapot"])) { 
-	$_SESSION["bejelentkezi_allapot"]=FALSE;
-}
-?>
+  include("classes.php");
+  $session = new Session();
+  $session->signinSessionStart(); ?>
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-	<title>Login Page</title>
-   <!--Made with love by Mutiullah Samim -->
-	<!--Bootsrap 4 CDN-->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    
-    <!--Fontawesome CDN-->
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-	<!--Custom styles-->
-	<link rel="stylesheet" type="text/css" href="indexdesign.css">
-</head>
-<body>
-
-<?php if ($_SESSION["bejelentkezi_allapot"]==FALSE) { ?>
-<form method="POST">
-<div class="container>
-	<div class="d-flex justify-content-center h-100">
-		<div class="card">
-			<div class="card-header">
-				<h2>Bejelentkezés</h2>
-			</div>
-			<div class="card-body">
-				<form>
-					<div class="input-group form-group">
-						<div class="input-group-prepend">
-							<span class="input-group-text"><i class="fas fa-user"></i></span>
-						</div>
-						<input type="text" name="input_felhasznalonev" class="form-control" placeholder="felhaslónév">						
-					</div>
-					<div class="input-group form-group">
-						<div class="input-group-prepend">
-							<span class="input-group-text"><i class="fas fa-key"></i></span>
-						</div>
-						<input type="password" name="input_jelszo" class="form-control" placeholder="jelszó">
-					</div>
-					<div class="form-group">
-                        <input type="hidden" name="action" value="cmd_bejelentkezes">
-						<input type="submit" value="Bejelentkezés" class="btn float-right login_btn">
-					</div>
-				</form>
-			</div>
-			<div class="card-footer">
-				<div class="d-flex justify-content-center links">
-					Don't have an account?<a href="#">Sign Up</a>
-				</div>
-				<div class="d-flex justify-content-center">
-					<a href="#">Forgot your password?</a>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-</form>
-    
-<?php } ?>
-    
-<?php if ($_SESSION["bejelentkezi_allapot"]==TRUE) { ?>
-<form method="POST">
-	<input type="hidden" name="action" value="cmd_kijelentkezes">
-	<input type="submit" value="Kijelentkezés">
-</form>
-<?php } ?>
-
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kosárlabda játék</title>
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/awesome-bootstrap-checkbox.min.css" rel="stylesheet">
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+  </head>
+  <body>
+<section>
+  <span class="header-ribbon"/>
+  <div class="container-fluid">
+    <form method="POST">
+	  <div class="row">
+        <div class="col-md-4 col-md-offset-4 col-centered">
+            <div class="login-panel">
+				<center><h4 class="login-panel-title">Kosárlabda játék</h4></center>
+                <div class="login-panel-section">
+                    <div class="form-group">
+                        <div class="input-group margin-bottom-sm">
+                            <span class="input-group-addon"><i class="fa fa-user fa-fw" aria-hidden="true"></i></span>
+                            <input class="form-control" type="text" placeholder="Felhasználónév" name="input_felhasznalonev">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-key fa-fw" aria-hidden="true"></i></span>
+                            <input class="form-control" type="password" placeholder="Jelszó" name="input_jelszo">
+                        </div>
+                    </div>
+                        <a href="#" class="pull-right">Elfelejtett jelszó</a>
+                    </div>
+                <div class="login-panel-section">
+					<input type="hidden" name="action" value="cmd_signin">
+                    <input type="submit" class="btn btn-default" value="Bejelentkezés" id="loginbtn"> | <a href="#">Regisztráció</a>
+                </div>
+            </div>
+        </div>
+      </div>
+	  </form>
+	  </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
 <?php
-if (isset($_POST["action"]) and $_POST["action"]=="cmd_kijelentkezes"){ 
-	$_SESSION["bejelentkezi_allapot"]=FALSE;
-	header("Location: index.php");
-}
-if (isset($_POST["action"]) and $_POST["action"]=="cmd_bejelentkezes"){
-	if (isset($_POST["input_felhasznalonev"]) and 
-		!empty($_POST["input_felhasznalonev"]) and
-		isset($_POST["input_jelszo"]) and 
-		!empty($_POST["input_jelszo"])
-		){
-			$servername = "localhost";
-			$username = "root";
-			$password = "";
-			$dbname = "kosarlabda_app";
-			$conn = mysqli_connect($servername, $username, $password, $dbname);
-			if (!$conn) {
-				die("Connection failed: " . mysqli_connect_error());
-			}
-			$sql = "SELECT felhasznalonev, jelszo FROM felhasznalok 
-					WHERE felhasznalonev = '".$_POST["input_felhasznalonev"]."' and 
-						  jelszo='".$_POST["input_jelszo"]."'";
-			$result = mysqli_query($conn, $sql);
-
-			if (mysqli_num_rows($result) == 1) {
-				echo "Van ilyen felhasználó!";
-				$_SESSION["bejelentkezi_allapot"]=TRUE;
-				//header("Location: termekek/index.php");
-			} else {
-				echo "Nincs ilyen felhasználó!";
-				$_SESSION["bejelentkezi_allapot"]=FALSE;
-				header("Location: index.php");
-			}
-			mysqli_close($conn);		
-	}
-}
-?> 
-
-</body>
+        if(isset($_POST["action"]) && $_POST["action"] == "cmd_signin")
+        {
+          if(empty($_POST["input_felhasznalonev"]) || empty($_POST["input_jelszo"]))
+          { ?>
+            <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content error-modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="errorModalLabel">Error</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">You have to fill all the blank!</div>
+                </div>
+              </div>
+            </div> <?php
+          }
+          else
+          {     
+            $data = new Session();
+            $data->connect();
+            $data->signin($_POST["input_felhasznalonev"], $_POST["input_jelszo"]);
+            $data->disconnect();
+          }
+        }?>
+</section>
+  </body>
 </html>
