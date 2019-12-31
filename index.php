@@ -37,7 +37,7 @@
                     </div>
                 <div class="login-panel-section">
 					<input type="hidden" name="action" value="cmd_signin">
-					<input type="submit" class="btn btn-default" value="Bejelentkezés" id="loginbtn"> | <a href="#">Regisztráció</a>
+					<input type="submit" class="btn btn-default" value="Bejelentkezés" id="loginbtn"> | <a href="regisztracio.php">Regisztráció</a>
                 </div>
             </div>
         </div>
