@@ -1,7 +1,6 @@
 <?php
-  include("indexclasses.php");
-  $session = new Session();
-  $session->signinSessionStart(); ?>
+  include("regisztracioclasses.php");
+?>
 <!DOCTYPE html>
 <html lang="hu">
   <head>
