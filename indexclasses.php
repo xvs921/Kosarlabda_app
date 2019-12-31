@@ -67,7 +67,7 @@ class Session
     if ($this->result->num_rows == 1)
     {
       $this->row = $this->result->fetch_assoc();
-      if ($jelszo==$this->row["jelszo"])
+      if (password_verify($jelszo, $this->row["jelszo"]))
       {
         $_SESSION["login_state"] = $this->row["id"];
         //header("location: idenyit.html");

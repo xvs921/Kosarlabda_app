@@ -34,16 +34,17 @@ public function registration($felhasznalonev, $email, $jelszo, $jelszoujra)
     $this->uppercase = preg_match('@[A-Z]@', $jelszo);
     $this->lowercase = preg_match('@[a-z]@', $jelszo);
     $this->number = preg_match('@[0-9]@', $jelszo);
-    if ($this->felhasznalonevekLekeres->num_rows == 0 && $this->emailekLekeres->num_rows == 0 && $jelszo == $jelszoujra && $this->uppercase && $this->lowercase && $this->number)
+	if ($this->felhasznalonevekLekeres->num_rows == 0 && $this->emailekLekeres->num_rows == 0 && $jelszo == $jelszoujra && $this->uppercase && $this->lowercase && $this->number)
     {
-      $this->sql = "INSERT INTO felhasznalok(felhasznalonev, email, jelszo,csapatok.id, penz, aktiv) VALUES ('".$felhasznalonev."', '".$email."', '".password_hash($jelszo, PASSWORD_DEFAULT)."','0','0','1')";
+      $this->sql = "INSERT INTO felhasznalok(felhasznalonev, jelszo, email, `csapatok.id`, penz, aktiv) VALUES ('".$felhasznalonev."', '".password_hash($jelszo, PASSWORD_DEFAULT)."', '".$email."', 1,5000,1)";
       if ($this->conn->query($this->sql))
       { ?>
 		<script>alert("Sikeres regisztráció!")</script>
         <meta http-equiv="refresh" content="1; url = index.php"> <?php
       }
       else
-      { ?>
+      { 
+		?>
         <script>alert("Hiba lépett fel, kérem végezze el újra!")</script>
 		<?php
       }
