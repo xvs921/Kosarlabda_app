@@ -55,9 +55,8 @@ class Session
     }
     if($_SESSION["login_state"] != "")
     {
-      //header("location: idenyit.html");
-      //die();
-	  echo "ok";
+      header("location:menu.php");
+      die();
     }
   }
   public function signin($felhasznalonev, $jelszo)
@@ -70,9 +69,8 @@ class Session
       if (password_verify($jelszo, $this->row["jelszo"]))
       {
         $_SESSION["login_state"] = $this->row["id"];
-        //header("location: idenyit.html");
-        //die();
-		echo "belepett";  
+        header("location:menu.php");
+        die();
       }
       else
       {
