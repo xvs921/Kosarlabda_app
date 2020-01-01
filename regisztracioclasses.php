@@ -38,7 +38,10 @@ public function registration($felhasznalonev, $email, $jelszo, $jelszoujra)
     {
       $this->sql = "INSERT INTO felhasznalok(felhasznalonev, jelszo, email, `csapatok.id`, penz, aktiv) VALUES ('".$felhasznalonev."', '".password_hash($jelszo, PASSWORD_DEFAULT)."', '".$email."', 1,5000,1)";
       if ($this->conn->query($this->sql))
-      { ?>
+      { 
+		 $this->sql = "INSERT INTO jogok(`felhasznalok.id`, `jogosultsagok.id`) VALUES ((SELECT MAX(id) FROM felhasznalok),3)";
+		 $this->conn->query($this->sql)
+		?>
 		<script>alert("Sikeres regisztráció!")</script>
         <meta http-equiv="refresh" content="1; url = index.php"> <?php
       }

@@ -28,7 +28,7 @@
                     </div>
                     <div class="form-group">
                         <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-key fa-fw" aria-hidden="true"></i></span>
+                            <span class="input-group-addon"><i class="fa fa-envelope fa-fw" aria-hidden="true"></i></span>
                             <input class="form-control" type="text" placeholder="Email cím" name="input_email">
                         </div>
                     </div>
