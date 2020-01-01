@@ -1,5 +1,6 @@
 # Kosarlabdaapp
 Kosárlabda kártyajáték PHP nyelven.
 Szakdolgozat 2020
-Aktuális folyamat:
-A bejelentkezési felület reszponzívan megvalósítva. Emellett a bejelentkezés backendje is kész adatbázishoz való kapcsolódással és kiírással.
+A bejelentkezési felület reszponzívan megvalósítva.
+Jelenlegi állapot: 
+Regisztráció és bejelentkezés megvalósítva, jelszó titkosítottan tárolva.
