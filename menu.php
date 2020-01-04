@@ -16,8 +16,10 @@ if(isset($_GET["action"]) && $_GET["action"] == "cmd_logout")
 	<title>Testimonials Card</title>
 	<link rel="stylesheet" href="menust.css">
 </head>
-<body>
-<span class="as"><button><a href="menu.php?action=cmd_logout">Logout</a></button></span>
+<table class="navbar">
+	<tr><td></td><td></td><td><button><a href="menu.php?action=cmd_logout">Logout</a></button></td></tr>
+</table>
+<body>	
 	<div class="testimonials">
 		<div class="card">
 			<div class="content">
@@ -44,26 +46,38 @@ if(isset($_GET["action"]) && $_GET["action"] == "cmd_logout")
 				<div class="details">
 					<h2>Mérkőzés<br><span></span></h2>
 				</div>
-			</div>
-		</div>
-		<div class="card">
-			<div class="content">
-				<div class="details">
-					<h2>Csapatom<br><span></span></h2>
+				<div class="image">
+					<img src="img3.jpg">
 				</div>
 			</div>
 		</div>
 		<div class="card">
 			<div class="content">
 				<div class="details">
-					<h2>Csomagok<br><span></span></h2>
+					<h2>Fiókom beállítása<br><span></span></h2>
+				</div>
+				<div class="image">
+					<img src="img4.png">
 				</div>
 			</div>
 		</div>
 		<div class="card">
 			<div class="content">
 				<div class="details">
-					<h2>Mérkőzés<br><span></span></h2>
+					<h2>Játékosok szerkesztése<br><span></span></h2>
+				</div>
+				<div class="image">
+					<img src="img5.jpg">
+				</div>
+			</div>
+		</div>
+		<div class="card">
+			<div class="content">
+				<div class="details">
+					<h2>Felhasználók szerkesztése<br><span></span></h2>
+				</div>
+				<div class="image">
+					<img src="img6.png">
 				</div>
 			</div>
 		</div>
