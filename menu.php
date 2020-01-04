@@ -16,15 +16,16 @@ if(isset($_GET["action"]) && $_GET["action"] == "cmd_logout")
 	<title>Testimonials Card</title>
 	<link rel="stylesheet" href="menustyle.css">
 </head>
-<span>
-	<button><a href="menu.php?action=cmd_logout">Logout</a></button>
-</span>
-<body>	
+<body>
+<span class="as"><button><a href="menu.php?action=cmd_logout">Logout</a></button></span>
 	<div class="testimonials">
 		<div class="card">
 			<div class="content">
 				<div class="details">
 					<h2>Csapatom<br><span></span></h2>
+				</div>
+				<div class="image">
+					<img src="img.jpg">
 				</div>
 			</div>
 		</div>
@@ -32,6 +33,9 @@ if(isset($_GET["action"]) && $_GET["action"] == "cmd_logout")
 			<div class="content">
 				<div class="details">
 					<h2>Csomagok<br><span></span></h2>
+				</div>
+				<div class="image">
+					<img src="img2.png">
 				</div>
 			</div>
 		</div>
