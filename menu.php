@@ -14,7 +14,7 @@ if(isset($_GET["action"]) && $_GET["action"] == "cmd_logout")
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Testimonials Card</title>
-	<link rel="stylesheet" href="menustyle.css">
+	<link rel="stylesheet" href="menust.css">
 </head>
 <body>
 <span class="as"><button><a href="menu.php?action=cmd_logout">Logout</a></button></span>
