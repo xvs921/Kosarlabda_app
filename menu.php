@@ -21,6 +21,7 @@ if(isset($_GET["action"]) && $_GET["action"] == "cmd_logout")
 </table>
 <body>	
 	<div class="testimonials">
+		<a href="xd.html">
 		<div class="card">
 			<div class="content">
 				<div class="details">
@@ -31,6 +32,8 @@ if(isset($_GET["action"]) && $_GET["action"] == "cmd_logout")
 				</div>
 			</div>
 		</div>
+		</a>
+		<a href="xd.html">
 		<div class="card">
 			<div class="content">
 				<div class="details">
@@ -41,6 +44,8 @@ if(isset($_GET["action"]) && $_GET["action"] == "cmd_logout")
 				</div>
 			</div>
 		</div>
+		</a>
+		<a href="xd.html">
 		<div class="card">
 			<div class="content">
 				<div class="details">
@@ -51,6 +56,8 @@ if(isset($_GET["action"]) && $_GET["action"] == "cmd_logout")
 				</div>
 			</div>
 		</div>
+		</a>
+		<a href="xd.html">
 		<div class="card">
 			<div class="content">
 				<div class="details">
@@ -61,6 +68,8 @@ if(isset($_GET["action"]) && $_GET["action"] == "cmd_logout")
 				</div>
 			</div>
 		</div>
+		</a>
+		<a href="xd.html" class="hidden">
 		<div class="card">
 			<div class="content">
 				<div class="details">
@@ -71,6 +80,8 @@ if(isset($_GET["action"]) && $_GET["action"] == "cmd_logout")
 				</div>
 			</div>
 		</div>
+		</a>
+		<a href="xd.html" class="hidden">
 		<div class="card">
 			<div class="content">
 				<div class="details">
@@ -81,6 +92,7 @@ if(isset($_GET["action"]) && $_GET["action"] == "cmd_logout")
 				</div>
 			</div>
 		</div>
+		</a>
 	</div>
 </body>
 </html>
