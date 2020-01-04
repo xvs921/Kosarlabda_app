@@ -17,7 +17,7 @@ if(isset($_GET["action"]) && $_GET["action"] == "cmd_logout")
 	<link rel="stylesheet" href="menust.css">
 </head>
 <table class="navbar">
-	<tr><td></td><td></td><td><button><a href="menu.php?action=cmd_logout">Logout</a></button></td></tr>
+	<tr><td></td><td><button><a href="menu.php?action=cmd_logout">Kijelentkezés</a></button></td></tr>
 </table>
 <body>	
 	<div class="testimonials">
