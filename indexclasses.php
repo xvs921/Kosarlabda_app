@@ -82,7 +82,7 @@ class Session
 		echo "Érvénytelen felhasználónév";
     }
   }
-  public function jogosultsagMegnevez()
+  public function jogosultsagAzonositas()
   {  
 	$this->sql = "SELECT * FROM jogok WHERE `felhasznalok.id` = '".$_SESSION["login_state"]."'";
     $this->result = $this->conn->query($this->sql);

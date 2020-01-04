@@ -13,7 +13,7 @@ if(isset($_GET["action"]) && $_GET["action"] == "cmd_logout")
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Testimonials Card</title>
+	<title>Menü</title>
 	<link rel="stylesheet" href="menust.css">
 </head>
 <table class="navbar">
@@ -69,30 +69,56 @@ if(isset($_GET["action"]) && $_GET["action"] == "cmd_logout")
 			</div>
 		</div>
 		</a>
-		<a href="xd.html" class="hidden">
-		<div class="card">
-			<div class="content">
-				<div class="details">
-					<h2>Játékosok szerkesztése<br><span></span></h2>
+		<?php
+		$data = new Session();
+		$data->connect();
+		if($data->jogosultsagAzonositas()==3)
+		{?>
+			<a href="xd.html">
+				<div class="card">
+					<div class="content">
+						<div class="details">
+							<h2>Játékosok szerkesztése<br><span></span></h2>
+						</div>
+						<div class="image">
+							<img src="img5.jpg">
+						</div>
+					</div>
 				</div>
-				<div class="image">
-					<img src="img5.jpg">
+			</a>
+			<a href="xd.html">
+				<div class="card">
+					<div class="content">
+						<div class="details">
+							<h2>Felhasználók szerkesztése<br><span></span></h2>
+						</div>
+						<div class="image">
+							<img src="img6.png">
+						</div>
+					</div>
 				</div>
-			</div>
-		</div>
-		</a>
-		<a href="xd.html" class="hidden">
-		<div class="card">
-			<div class="content">
-				<div class="details">
-					<h2>Felhasználók szerkesztése<br><span></span></h2>
+			</a>
+		<?php
+		}
+		else if($data->jogosultsagAzonositas()==2)
+		{?>
+			<a href="xd.html">
+				<div class="card">
+					<div class="content">
+						<div class="details">
+							<h2>Játékosok szerkesztése<br><span></span></h2>
+						</div>
+						<div class="image">
+							<img src="img5.jpg">
+						</div>
+					</div>
 				</div>
-				<div class="image">
-					<img src="img6.png">
-				</div>
-			</div>
-		</div>
-		</a>
+			</a>
+		<?php
+		}
+		$data->disconnect();
+		?>
+		
 	</div>
 </body>
 </html>
