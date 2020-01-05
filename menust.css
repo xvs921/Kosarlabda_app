@@ -7,12 +7,21 @@ body
 	font-family: sans-serif;
 	background: #262626;
 }
-.hidden {
-  visibility: hidden;
-}
 .navbar
 {
 	width:100%;
+}
+.trNev
+{
+	text-align: center;
+	font-size: 30px;
+	color:white;
+}
+.tdPenz
+{
+	text-align: left;
+	font-size: 30px;
+	color:white;
 }
 td
 {

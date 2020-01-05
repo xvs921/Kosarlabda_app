@@ -17,7 +17,21 @@ if(isset($_GET["action"]) && $_GET["action"] == "cmd_logout")
 	<link rel="stylesheet" href="menust.css">
 </head>
 <table class="navbar">
-	<tr><td></td><td><button><a href="menu.php?action=cmd_logout">Kijelentkezés</a></button></td></tr>
+	<tr>
+		<?php 
+		$felhAdat = new Session();
+		$felhAdat->connect();?>
+		<td class=tdPenz><?php $felhAdat->felhasznalopenz(); ?> coin</td><?php
+		$felhAdat->disconnect();?>
+		<td><button><a href="menu.php?action=cmd_logout">Kijelentkezés</a></button></td>
+	</tr>
+	<tr>
+		<?php 
+		$felhAdat = new Session();
+		$felhAdat->connect();?>
+		<td colspan="2" class=trNev><?php $felhAdat->csapatnev(); ?></td><?php
+		$felhAdat->disconnect();?>
+	</tr>
 </table>
 <body>	
 	<div class="testimonials">

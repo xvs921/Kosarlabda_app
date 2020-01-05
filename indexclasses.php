@@ -88,4 +88,20 @@ class Session
     $this->result = $this->conn->query($this->sql);
 	return $this->result->num_rows;
   }
+  public function felhasznalopenz()
+  {
+	$this->sql = "SELECT penz FROM felhasznalok WHERE id = '".$_SESSION["login_state"]."'";
+	$this->result = $this->conn->query($this->sql);
+	$this->row = $this->result->fetch_assoc();
+	echo $this->row["penz"];  
+  }
+  public function csapatnev()
+  {
+	$this->sql = "SELECT nev FROM csapatok cs
+	LEFT JOIN felhasznalok f ON cs.id=f.`csapatok.id`
+	WHERE cs.id=(Select `csapatok.id` FROM felhasznalok f WHERE f.id='".$_SESSION["login_state"]."')";
+	$this->result = $this->conn->query($this->sql);
+	$this->row = $this->result->fetch_assoc();
+	echo $this->row["nev"];
+  }
 } ?>
