@@ -97,9 +97,9 @@ class Session
   }
   public function csapatnev()
   {
-	$this->sql = "SELECT nev FROM csapatok cs
-	LEFT JOIN felhasznalok f ON cs.id=f.`csapatok.id`
-	WHERE cs.id=(Select `csapatok.id` FROM felhasznalok f WHERE f.id='".$_SESSION["login_state"]."')";
+	$this->sql = "select * from felhasznalok f 
+	left join csapatok cs on cs.id=f.`csapatok.id`
+	where f.id='".$_SESSION["login_state"]."'";
 	$this->result = $this->conn->query($this->sql);
 	$this->row = $this->result->fetch_assoc();
 	echo $this->row["nev"];
