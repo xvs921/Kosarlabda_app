@@ -1,5 +1,5 @@
 <?php
-  include("classes/regisztracioclasses.php");
+  include("regisztracioclasses.php");
 ?>
 <!DOCTYPE html>
 <html lang="hu">

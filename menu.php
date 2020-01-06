@@ -1,5 +1,5 @@
 <?php
-include("menuclasses.php");
+include("classes/menuclasses.php");
 $session = new Session();
 $session->sessionStart();
 if(isset($_GET["action"]) && $_GET["action"] == "cmd_logout")
