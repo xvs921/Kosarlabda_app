@@ -1,0 +1,13 @@
+body
+{
+	margin:auto;
+}
+.row
+{
+	width: 100%;
+}
+.col-lg-2
+{
+	text-align: center;
+	border-style: solid;
+}
