@@ -22,7 +22,10 @@ $session->sessionStart();
 		{
 			if($jatekosokListazas->getCsapata($i)==$csapatAzon)
 			{
-				echo $jatekosokListazas->getJatekosok($i);
+				$kosaras=$jatekosokListazas->getJatekosok($i);
+				echo $jatekosokListazas->getOsszpontszam($kosaras)."<br />";
+				echo $jatekosokListazas->get3pontos($kosaras)."<br />";
+				echo $jatekosokListazas->getZsakolas($kosaras)."<br />";
 			}
 		}
 		$jatekosokListazas->disconnect();

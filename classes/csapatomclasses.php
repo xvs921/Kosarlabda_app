@@ -54,23 +54,31 @@ class Session
 	$this->row = $this->result->fetch_assoc();
 	return $this->row["jatekosok.id"];
   }
-  /*public function getSorszam($csapatId)
-  {
-	$this->sql = "SELECT sorszam FROM csapattagok WHERE `csapatok.id` = '".$csapatId."'";
-	$this->result = $this->conn->query($this->sql);
-	$this->row = $this->result->fetch_assoc();
-	return $this->row["sorszam"];
-  }
-  public function csapatLetszam($csapatId)
-  {
-	$this->sql = "SELECT id FROM csapattagok WHERE `csapatok.id` = '".$csapatId."'";
-	$this->result = $this->conn->query($this->sql);
-    return $this->result->num_rows;
-  }*/
   public function osszesCsapattag()
   {
 	$this->sql = "SELECT id FROM csapattagok";
 	$this->result = $this->conn->query($this->sql);
     return $this->result->num_rows;
+  }
+public function getOsszpontszam($kosaras)
+  {
+	$this->sql = "SELECT osszPontszam FROM jatekosok WHERE id='".$kosaras."'";
+	$this->result = $this->conn->query($this->sql);
+	$this->row = $this->result->fetch_assoc();
+	return $this->row["osszPontszam"];
+  }
+	public function get3pontos($kosaras)
+  {
+	$this->sql = "SELECT 3pontos FROM jatekosok WHERE id='".$kosaras."'";
+	$this->result = $this->conn->query($this->sql);
+	$this->row = $this->result->fetch_assoc();
+	return $this->row["3pontos"];
+  }
+		public function getZsakolas($kosaras)
+  {
+	$this->sql = "SELECT zsakolas FROM jatekosok WHERE id='".$kosaras."'";
+	$this->result = $this->conn->query($this->sql);
+	$this->row = $this->result->fetch_assoc();
+	return $this->row["zsakolas"];
   }
 } ?>
