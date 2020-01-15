@@ -9,7 +9,7 @@ $session->sessionStart();
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Menü</title>
-	<link rel="stylesheet" href="menust.css">
+	<link rel="stylesheet" href="design/styl.css">
 </head>
 <body>	
 
@@ -22,10 +22,27 @@ $session->sessionStart();
 		{
 			if($jatekosokListazas->getCsapata($i)==$csapatAzon)
 			{
-				$kosaras=$jatekosokListazas->getJatekosok($i);
-				echo $jatekosokListazas->getOsszpontszam($kosaras)."<br />";
-				echo $jatekosokListazas->get3pontos($kosaras)."<br />";
-				echo $jatekosokListazas->getZsakolas($kosaras)."<br />";
+				$kosaras=$jatekosokListazas->getJatekosok($i);?>
+				<div class="card">
+					<div class="content">
+						<button>elad</button>
+						<div class="image">
+							<img src="kepek/jatekosok/<?php echo $jatekosokListazas->getKep($kosaras);?>">
+						</div>
+						<div class="details">
+							<h2><?php echo $jatekosokListazas->getNev($kosaras);?></h2>
+						<table>
+							<tr>
+								<td><?php echo $jatekosokListazas->get3pontos($kosaras);?></td>
+								<td><?php echo $jatekosokListazas->getOsszpontszam($kosaras);?></td>
+								<td><?php echo $jatekosokListazas->getZsakolas($kosaras);?></td>
+							</tr>
+						</table>
+						</div>
+						<button>kezdo</button>
+					</div>
+				</div>
+		<?php
 			}
 		}
 		$jatekosokListazas->disconnect();

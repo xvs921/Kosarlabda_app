@@ -14,7 +14,7 @@ if(isset($_GET["action"]) && $_GET["action"] == "cmd_logout")
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Menü</title>
-	<link rel="stylesheet" href="menust.css">
+	<link rel="stylesheet" href="design/menust.css">
 </head>
 <table class="navbar">
 	<tr>
@@ -42,7 +42,7 @@ if(isset($_GET["action"]) && $_GET["action"] == "cmd_logout")
 					<h2>Csapatom<br><span></span></h2>
 				</div>
 				<div class="image">
-					<img src="img.jpg">
+					<img src="kepek/img.jpg">
 				</div>
 			</div>
 		</div>
@@ -54,7 +54,7 @@ if(isset($_GET["action"]) && $_GET["action"] == "cmd_logout")
 					<h2>Csomagok<br><span></span></h2>
 				</div>
 				<div class="image">
-					<img src="img2.png">
+					<img src="kepek/img2.png">
 				</div>
 			</div>
 		</div>
@@ -66,7 +66,7 @@ if(isset($_GET["action"]) && $_GET["action"] == "cmd_logout")
 					<h2>Mérkőzés<br><span></span></h2>
 				</div>
 				<div class="image">
-					<img src="img3.jpg">
+					<img src="kepek/img3.jpg">
 				</div>
 			</div>
 		</div>
@@ -78,7 +78,7 @@ if(isset($_GET["action"]) && $_GET["action"] == "cmd_logout")
 					<h2>Fiókom beállítása<br><span></span></h2>
 				</div>
 				<div class="image">
-					<img src="img4.png">
+					<img src="kepek/img4.png">
 				</div>
 			</div>
 		</div>
@@ -95,7 +95,7 @@ if(isset($_GET["action"]) && $_GET["action"] == "cmd_logout")
 							<h2>Játékosok szerkesztése<br><span></span></h2>
 						</div>
 						<div class="image">
-							<img src="img5.jpg">
+							<img src="kepek/img5.jpg">
 						</div>
 					</div>
 				</div>
@@ -107,7 +107,7 @@ if(isset($_GET["action"]) && $_GET["action"] == "cmd_logout")
 							<h2>Felhasználók szerkesztése<br><span></span></h2>
 						</div>
 						<div class="image">
-							<img src="img6.png">
+							<img src="kepek/img6.png">
 						</div>
 					</div>
 				</div>
@@ -123,7 +123,7 @@ if(isset($_GET["action"]) && $_GET["action"] == "cmd_logout")
 							<h2>Játékosok szerkesztése<br><span></span></h2>
 						</div>
 						<div class="image">
-							<img src="img5.jpg">
+							<img src="kepek/img5.jpg">
 						</div>
 					</div>
 				</div>

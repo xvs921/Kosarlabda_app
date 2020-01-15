@@ -60,7 +60,14 @@ class Session
 	$this->result = $this->conn->query($this->sql);
     return $this->result->num_rows;
   }
-public function getOsszpontszam($kosaras)
+public function getNev($kosaras)
+  {
+	$this->sql = "SELECT nev FROM jatekosok WHERE id='".$kosaras."'";
+	$this->result = $this->conn->query($this->sql);
+	$this->row = $this->result->fetch_assoc();
+	return $this->row["nev"];
+  }
+	public function getOsszpontszam($kosaras)
   {
 	$this->sql = "SELECT osszPontszam FROM jatekosok WHERE id='".$kosaras."'";
 	$this->result = $this->conn->query($this->sql);
@@ -80,5 +87,12 @@ public function getOsszpontszam($kosaras)
 	$this->result = $this->conn->query($this->sql);
 	$this->row = $this->result->fetch_assoc();
 	return $this->row["zsakolas"];
+  }
+	public function getKep($kosaras)
+  {
+	$this->sql = "SELECT kep FROM jatekosok WHERE id='".$kosaras."'";
+	$this->result = $this->conn->query($this->sql);
+	$this->row = $this->result->fetch_assoc();
+	return $this->row["kep"];
   }
 } ?>
