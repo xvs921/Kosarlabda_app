@@ -95,4 +95,11 @@ public function getNev($kosaras)
 	$this->row = $this->result->fetch_assoc();
 	return $this->row["kep"];
   }
+	public function getKezdo($kosaras,$csapatAzon)
+  {
+	$this->sql = "SELECT kezdo FROM csapattagok WHERE `jatekosok.id`='".$kosaras."' AND `csapatok.id`='".$csapatAzon."'";
+	$this->result = $this->conn->query($this->sql);
+	$this->row = $this->result->fetch_assoc();
+	return $this->row["kezdo"];
+  }
 } ?>

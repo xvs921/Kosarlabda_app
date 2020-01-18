@@ -84,8 +84,41 @@ table
 	font-size: 20px;
 	color: #fff;
 }
-td
+#modositoTable
 {
-	border: 1px solid #ddd;
-	background: red;
+	width: 100%;
+	text-align: right;
+	margin: auto;
+	font-size: 20px;
+	color: #fff;
+}
+#eladGomb
+{
+  background-color: red;
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 20px;
+}
+#hpontTD
+{
+	 background: red;
+}
+#osszpontTD
+{
+	 background: lightblue;
+}
+#zsakolasTD
+{
+	background: green;
+}
+#pozicioGomb
+{
+  background-color: mediumpurple;
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 20px; 
 }
