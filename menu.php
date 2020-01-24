@@ -71,7 +71,7 @@ if(isset($_GET["action"]) && $_GET["action"] == "cmd_logout")
 			</div>
 		</div>
 		</a>
-		<a href="xd.html">
+		<a href="fiokom.php">
 		<div class="card">
 			<div class="content">
 				<div class="details">

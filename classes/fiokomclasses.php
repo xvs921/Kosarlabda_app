@@ -66,6 +66,7 @@ class SajatFiok
 	$this->sql = "UPDATE felhasznalok SET aktiv=0 WHERE id = '".$_SESSION["login_state"]."'";
 	$this->conn->query($this->sql);
 	$_SESSION["login_state"] = "";
+	?><meta http-equiv="refresh" content="0; url = index.php"><?php
   }
   public function setJelszo()
   {

@@ -95,6 +95,7 @@
 							<span class="input-group-addon"><i class="fa fa-key fa-fw" aria-hidden="true"></i></span>
                             <input class="form-control" type="password" placeholder="Új jelszó" name="input_ujJelszo">
                         </div>
+						<br />
 						<table>
 							<tr>
 								<td>

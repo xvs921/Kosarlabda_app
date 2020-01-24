@@ -1,13 +1,26 @@
 body
 {
-	margin:auto;
+	margin:0 auto;
+  width: 90%;
+	background: #2B3D6B;
 }
 .row
 {
 	width: 100%;
+	padding: 2px;
 }
 .col-lg-2
 {
 	text-align: center;
 	border-style: solid;
+}
+.form-control
+{
+	width: 90%;
+	text-align: center;
+}
+.felirat
+{
+    font-size: 17px;
+	color: darkkhaki;
 }

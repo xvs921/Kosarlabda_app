@@ -21,17 +21,89 @@
 		if(!$felhszerk->getFelhasznalonev($i)==""){
 		?>
 		<div class="row">
-		  <div class="col-lg-2 col-md-6">Felhasználónév módosítása<br /><?php echo $felhszerk->getFelhasznalonev($i); ?></div>
-		  <div class="col-lg-2  col-md-6">Email módosítása<br /><?php $felhszerk->getEmail($i); ?></div>
-		  <div class="col-lg-2 col-md-6">Csapatnév módosítása<br /><?php $felhszerk->getCsapatnev($i); ?></div>
-		  <div class="col-lg-2 col-md-6">Pénz módosítása<br /><?php $felhszerk->getPenz($i); ?></div>
-		  <div class="col-lg-2 col-md-6">Aktivitás módosítása<br /><?php $felhszerk->getAktiv($i); ?></div>
-		  <div class="col-lg-2 col-md-6">Jelszó módosítása<br />Jelszo</div>
+			<form method="post">
+			  <div class="col-lg-2 col-md-6">
+				  <input class="form-control" type="text" name="input_felhasznalonev" value="<?php echo $felhszerk->getFelhasznalonev($i);?>">
+				  <input type="hidden" name="input_id" value="<?php echo $i; ?>">
+				  <input type="hidden" name="action" value="btnFelhnev">
+				  <input type="submit" class="btn btn-default" value="Módosítás" id="loginbtn">
+				</div>
+			</form>
+			<form method="post">
+			  <div class="col-lg-2 col-md-6">
+				  <input class="form-control" type="text" name="input_email" value="<?php echo $felhszerk->getEmail($i);?>">
+				  <input type="hidden" name="input_id" value="<?php echo $i; ?>">
+				  <input type="hidden" name="action" value="btnEmail">
+				  <input type="submit" class="btn btn-default" value="Módosítás" id="loginbtn">
+				</div>
+			</form>
+			<form method="post">
+			  <div class="col-lg-2 col-md-6">
+				  <input class="form-control" type="text" name="input_csapatnev" value="<?php echo $felhszerk->getCsapatnev($i);?>">
+				  <input type="hidden" name="input_id" value="<?php echo $i; ?>">
+				  <input type="hidden" name="action" value="btnCsapatnev">
+				  <input type="submit" class="btn btn-default" value="Módosítás" id="loginbtn">
+				</div>
+			</form>
+			<form method="post">
+			  <div class="col-lg-2 col-md-6">
+				  <input class="form-control" type="text" name="input_penz" value="<?php echo $felhszerk->getPenz($i);?>">
+				  <input type="hidden" name="input_id" value="<?php echo $i; ?>">
+				  <input type="hidden" name="action" value="btnPenz">
+				  <input type="submit" class="btn btn-default" value="Módosítás" id="loginbtn">
+				</div>
+			</form>
+			<form method="post">
+			  <div class="col-lg-2 col-md-6">
+				  <p class="felirat">Jelszó beállítása</p>
+				  <input type="hidden" name="input_id" value="<?php echo $i; ?>">
+				  <input type="hidden" name="action" value="btnAtivitas">
+				  <input type="submit" class="btn btn-default" value="Módosítás" id="loginbtn">
+				</div>
+			</form>
+			<form method="post">
+			  <div class="col-lg-2 col-md-6">
+				  <?php
+					if($felhszerk->getAktiv($i)==1)
+					{
+						?><p class="felirat">Aktív</p><?php
+					}
+					else
+					{
+						?><p class="felirat">Inaktív</p><?php
+					}
+					?>
+				  <input type="hidden" name="input_id" value="<?php echo $i; ?>">
+				  <input type="hidden" name="action" value="btnAtivitas">
+				  <input type="submit" class="btn btn-default" value="Módosítás" id="loginbtn">
+				</div>
+			</form>
 		</div>
 	  	<br />
 		<?php
 		}
 	}
+	  	if(isset($_POST["action"]) && $_POST["action"] == "btnFelhnev")
+		{
+  			$adatok = new Session();
+			$adatok->connect();
+			$adatok->setFelhnev();
+			$adatok->disconnect();
+		}
+	  	  	if(isset($_POST["action"]) && $_POST["action"] == "btnEmail")
+		{
+  			$adatok = new Session();
+			$adatok->connect();
+			$adatok->setEmail();
+			$adatok->disconnect();
+		}
+	  	  	  	if(isset($_POST["action"]) && $_POST["action"] == "btnCsapatnev")
+		{
+  			$adatok = new Session();
+			$adatok->connect();
+			$adatok->setCsapatnev();
+			$adatok->disconnect();
+		}
 	?>
   </body>
 </html>
