@@ -2,9 +2,9 @@
 class Session
 {
 	public $servername = "localhost:3306";
-	public $username = "root";
-	public $password = "";
-	public $dbname = "kosarlabdaapp";
+  	public $username = "root";
+  	public $password = "";
+  	public $dbname = "kosarlabdaapp";
 	public $conn = NULL;
 	public $sql = NULL;
 	public $result = NULL;

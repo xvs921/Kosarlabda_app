@@ -3,9 +3,9 @@
 class Session
 {
 	public $servername = "localhost:3306";
-	public $username = "root";
-	public $password = "";
-	public $dbname = "kosarlabdaapp";
+  	public $username = "root";
+  	public $password = "";
+  	public $dbname = "kosarlabdaapp";
 	public $conn = NULL;
 	public $sql = NULL;
 	public $result = NULL;
@@ -66,7 +66,13 @@ class Session
 		$this->sql = "SELECT * FROM felhasznalok WHERE id='".$azon."'";
 		$this->result = $this->conn->query($this->sql);
 		$this->row = $this->result->fetch_assoc();
-		$this->row["aktiv"];
+		return $this->row["aktiv"];
+	}
+	public function getJogosultsag($azon)
+	{
+		$this->sql = "SELECT * FROM jogok WHERE `felhasznalok.id`='".$azon."'";
+		$this->result = $this->conn->query($this->sql);
+		return $this->result->num_rows;
 	}
 	public function setFelhnev()
 	{
@@ -154,6 +160,30 @@ class Session
 		<script>alert("Nem változtak az adatai!")</script>
 	  <?php	
 	  } 
+	}
+	public function setJogosultsag()
+	{
+		$this->sql = "DELETE FROM jogok WHERE `felhasznalok.id`='".$_POST["input_id"]."'";
+		$this->result = $this->conn->query($this->sql);
+		
+		if($_POST["input_jogosultsag"]==1)
+		{
+			$this->sql = "INSERT INTO jogok(`felhasznalok.id`, `jogosultsagok.id`) VALUES ('".$_POST["input_id"]."',1),('".$_POST["input_id"]."',2),('".$_POST["input_id"]."',3)";
+			$this->result = $this->conn->query($this->sql);
+		}
+		else if($_POST["input_jogosultsag"]==2)
+		{
+			$this->sql = "INSERT INTO jogok(`felhasznalok.id`, `jogosultsagok.id`) VALUES ('".$_POST["input_id"]."',2),('".$_POST["input_id"]."',3)";
+			$this->result = $this->conn->query($this->sql);
+		}
+		else if($_POST["input_jogosultsag"]==3)
+		{
+			$this->sql = "INSERT INTO jogok(`felhasznalok.id`, `jogosultsagok.id`) VALUES ('".$_POST["input_id"]."',3)";
+			$this->result = $this->conn->query($this->sql);
+		}
+		?>
+			<meta http-equiv="refresh" content="0; url = felhasznalokszerk.php">
+		<?php
 	}
 }
 ?>

@@ -13,6 +13,12 @@
 	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	  <link rel="stylesheet" type="text/css" href="design/felhasznalokszerkstyle.css">
   </head>
+	  <table class="navbar">
+	<tr>
+		<td></td>
+		<td class="visszaGomb"><button><a href="menu.php">Vissza</a></button></td>
+	</tr>
+  </table>
   <body>
 	<?php $felhszerk = new Session();
 	$felhszerk->connect();
@@ -55,9 +61,29 @@
 			</form>
 			<form method="post">
 			  <div class="col-lg-2 col-md-6">
-				  <p class="felirat">Jelszó beállítása</p>
+				  <select name="input_jogosultsag" class="form-control">
+					 <?php
+					 if($felhszerk->getJogosultsag($i)==3)
+					 {?>
+					 	<option value="1" selected>admin</option>
+                  	 	<option value="2">moderátor</option>
+                  	 	<option value="3">felhasználó</option><?php 
+					 } 
+					 else if($felhszerk->getJogosultsag($i)==2)
+					 {?>
+					 	<option value="1">admin</option>
+                  	 	<option value="2" selected>moderátor</option>
+                  	 	<option value="3">felhasználó</option><?php 
+					 }
+					 else
+					 {?>
+					 	<option value="1">admin</option>
+                  	 	<option value="2">moderátor</option>
+                  	 	<option value="3" selected>felhasználó</option><?php 
+					 }?>
+                  </select>
 				  <input type="hidden" name="input_id" value="<?php echo $i; ?>">
-				  <input type="hidden" name="action" value="btnAtivitas">
+				  <input type="hidden" name="action" value="btnJogosultsag">
 				  <input type="submit" class="btn btn-default" value="Módosítás" id="loginbtn">
 				</div>
 			</form>
@@ -66,11 +92,11 @@
 				  <?php
 					if($felhszerk->getAktiv($i)==1)
 					{
-						?><p class="felirat">Aktív</p><?php
+						?><p class="form-control">Aktív</p><?php
 					}
 					else
 					{
-						?><p class="felirat">Inaktív</p><?php
+						?><p class="form-control">Inaktív</p><?php
 					}
 					?>
 				  <input type="hidden" name="input_id" value="<?php echo $i; ?>">
@@ -102,6 +128,13 @@
   			$adatok = new Session();
 			$adatok->connect();
 			$adatok->setCsapatnev();
+			$adatok->disconnect();
+		}
+	    	  	if(isset($_POST["action"]) && $_POST["action"] == "btnJogosultsag")
+		{
+  			$adatok = new Session();
+			$adatok->connect();
+			$adatok->setJogosultsag();
 			$adatok->disconnect();
 		}
 	?>
