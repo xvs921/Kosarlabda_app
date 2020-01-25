@@ -185,5 +185,21 @@ class Session
 			<meta http-equiv="refresh" content="0; url = felhasznalokszerk.php">
 		<?php
 	}
+	public function setAktivitas($aktivitas)
+	{
+		$this->sql = "UPDATE felhasznalok SET aktiv='".$aktivitas."' WHERE id='".$_POST["input_id"]."'";
+		$this->result = $this->conn->query($this->sql);
+		?>
+					<meta http-equiv="refresh" content="0; url = felhasznalokszerk.php">
+				<?php
+	}
+	public function setPenz()
+	{
+		$this->sql = "UPDATE felhasznalok SET penz='".$_POST["input_penz"]."' WHERE id='".$_POST["input_id"]."'";
+		$this->result = $this->conn->query($this->sql);
+		?>
+					<meta http-equiv="refresh" content="0; url = felhasznalokszerk.php">
+				<?php
+	}
 }
 ?>

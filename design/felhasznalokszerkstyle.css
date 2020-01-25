@@ -12,9 +12,13 @@ body
 {
 	text-align: center;
 	border-style: solid;
+	padding: 5px;
 }
 .form-control
 {
+	margin:0 auto;
+	margin-top: 5px;
+	margin-bottom: 5px;
 	width: 90%;
 	text-align: center;
 }

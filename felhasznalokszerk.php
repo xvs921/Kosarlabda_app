@@ -100,8 +100,22 @@
 					}
 					?>
 				  <input type="hidden" name="input_id" value="<?php echo $i; ?>">
-				  <input type="hidden" name="action" value="btnAtivitas">
-				  <input type="submit" class="btn btn-default" value="Módosítás" id="loginbtn">
+				  <?php
+				  if($felhszerk->getAktiv($i)==0)
+				  {
+				  ?>
+				  	 <input type="hidden" name="action" value="btnAktiv">
+					 <input type="submit" class="btn btn-default" value="Aktív" id="loginbtn">
+				  <?php
+				  }
+				  else
+				  {
+				  ?>
+				  	 <input type="hidden" name="action" value="btnInaktiv">
+					 <input type="submit" class="btn btn-default" value="Inaktív" id="loginbtn">
+				  <?php
+				  }
+				  ?>
 				</div>
 			</form>
 		</div>
@@ -135,6 +149,27 @@
   			$adatok = new Session();
 			$adatok->connect();
 			$adatok->setJogosultsag();
+			$adatok->disconnect();
+		}
+	  	    	  	if(isset($_POST["action"]) && $_POST["action"] == "btnAktiv")
+		{
+  			$adatok = new Session();
+			$adatok->connect();
+			$adatok->setAktivitas(1);
+			$adatok->disconnect();
+		}
+	  	  	    	  	if(isset($_POST["action"]) && $_POST["action"] == "btnInaktiv")
+		{
+  			$adatok = new Session();
+			$adatok->connect();
+			$adatok->setAktivitas(0);
+			$adatok->disconnect();
+		}
+	  	  	  	    	  	if(isset($_POST["action"]) && $_POST["action"] == "btnPenz")
+		{
+  			$adatok = new Session();
+			$adatok->connect();
+			$adatok->setPenz();
 			$adatok->disconnect();
 		}
 	?>
