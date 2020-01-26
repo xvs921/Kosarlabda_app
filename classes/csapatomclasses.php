@@ -102,4 +102,10 @@ public function getNev($kosaras)
 	$this->row = $this->result->fetch_assoc();
 	return $this->row["kezdo"];
   }
+		public function setElad()
+  {
+	$this->sql = "UPDATE csapattagok SET `csapatok.id`=0 WHERE `jatekosok.id`='".$_POST["kosarasId"]."' AND `csapatok.id`='".$_POST["csapatId"]."'";
+	$this->result = $this->conn->query($this->sql);
+	//delete where csapatok.id=0 
+  }
 } ?>

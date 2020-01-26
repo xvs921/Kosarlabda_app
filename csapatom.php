@@ -9,10 +9,15 @@ $session->sessionStart();
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Menü</title>
-	<link rel="stylesheet" href="design/styl.css">
+	<link rel="stylesheet" href="design/csapatomstyle.css">
 </head>
+		  <table class="navbar">
+	<tr>
+		<td></td>
+		<td class="visszaGomb"><button><a href="menu.php">Vissza</a></button></td>
+	</tr>
+  </table>
 <body>	
-
 	<h1><center>Kezdőjátékosok</center></h1>
 	<div class="testimonials">
 		<?php
@@ -29,7 +34,14 @@ $session->sessionStart();
 					<div class="content">
 						<table id="modositoTable">
 							<tr>
-								<td><button id="eladGomb">elad</button></td>
+								<td>
+								<form method="post">
+									<input type="hidden" name="kosarasId" value="<?php echo $kosaras; ?>">
+									<input type="hidden" name="csapatId" value="<?php echo $csapatAzon; ?>">
+				  					<input type="hidden" name="action" value="btnElad">
+				  					<input type="submit" class="btn btn-default" id="eladGomb" value="elad" id="loginbtn">
+								</form>
+								</td>
 							</tr>
 						</table>
 						<div class="image">
@@ -91,6 +103,13 @@ $session->sessionStart();
 			}
 		}
 		$jatekosokListazas->disconnect();
+			  	if(isset($_POST["action"]) && $_POST["action"] == "btnElad")
+		{
+  			$adatok = new Session();
+			$adatok->connect();
+			$adatok->setElad();
+			$adatok->disconnect();
+		}
 		?>
 	</div>
 </body>
