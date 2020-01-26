@@ -2,13 +2,14 @@ body
 {
 	margin:auto;
 	padding:0;
-	width: 80%;
+	width: 100%;
 	height: 100%;
 	font-family: sans-serif;
 	background: #2B3D6B;
 }
 .testimonials
 {
+	width: 80%;
 	margin: 50px auto 100px;
 	display: grid;
 	grid-template-columns: repeat( auto-fit, minmax(350px, 1fr));
@@ -19,7 +20,7 @@ body
 	position: relative;
 	width: 350px;
 	margin: 0 auto;
-	background: #FFEC00;
+	background: #FFFF4F;
 	padding: 20px;
 	box-sizing: border-box;
 	text-align: center;
@@ -64,7 +65,7 @@ body
 .testimonials .card .content .details h2
 {
 	font-size: 18px;
-	color: #fff;
+	color: #2B3D6B;
 }
 .testimonials .card .content .details h2 span
 {
@@ -82,7 +83,7 @@ table
 	text-align: center;
 	margin: auto;
 	font-size: 20px;
-	color: #fff;
+	color: black;
 }
 #modositoTable
 {
@@ -95,7 +96,7 @@ table
 #eladGomb
 {
   background-color: red;
-  color: white;
+  color: black;
   text-decoration: none;
   font-size: 20px;
   cursor: pointer;
@@ -119,7 +120,7 @@ table
 #pozicioGomb
 {
   background-color: mediumpurple;
-  color: white;
+  color: black;
   text-decoration: none;
   font-size: 20px;
   cursor: pointer;

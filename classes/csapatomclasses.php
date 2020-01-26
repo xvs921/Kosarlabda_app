@@ -108,4 +108,26 @@ public function getNev($kosaras)
 	$this->result = $this->conn->query($this->sql);
 	//delete where csapatok.id=0 
   }
+  public function getKezdokSzama($csapatAzon)
+  {
+	$this->sql = "SELECT * FROM csapattagok WHERE kezdo=1 AND `csapatok.id`='".$csapatAzon."'";
+	$this->result = $this->conn->query($this->sql);
+    return $this->result->num_rows;
+  }
+  public function setKezdo()
+  {
+	$this->sql = "UPDATE csapattagok SET kezdo=1 WHERE `jatekosok.id`='".$_POST["kosarasId"]."' AND `csapatok.id`='".$_POST["csapatId"]."'";
+	$this->result = $this->conn->query($this->sql);
+	  ?>
+					<meta http-equiv="refresh" content="0; url = csapatom.php">
+				<?php
+  }
+  public function setCsere()
+  {
+	$this->sql = "UPDATE csapattagok SET kezdo=0 WHERE `jatekosok.id`='".$_POST["kosarasId"]."' AND `csapatok.id`='".$_POST["csapatId"]."'";
+	$this->result = $this->conn->query($this->sql);
+	 ?>
+					<meta http-equiv="refresh" content="0; url = csapatom.php">
+				<?php
+  }
 } ?>

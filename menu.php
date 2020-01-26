@@ -88,7 +88,7 @@ if(isset($_GET["action"]) && $_GET["action"] == "cmd_logout")
 		$data->connect();
 		if($data->jogosultsagAzonositas()==3)
 		{?>
-			<a href="xd.html">
+			<a href="jatekosokszerk.php">
 				<div class="card">
 					<div class="content">
 						<div class="details">
@@ -116,7 +116,7 @@ if(isset($_GET["action"]) && $_GET["action"] == "cmd_logout")
 		}
 		else if($data->jogosultsagAzonositas()==2)
 		{?>
-			<a href="xd.html">
+			<a href="jatekosokszerk.php">
 				<div class="card">
 					<div class="content">
 						<div class="details">

@@ -57,7 +57,13 @@ $session->sessionStart();
 							</tr>
 						</table>
 						</div>
-							<td><button id="pozicioGomb">csere</button></td>
+							<td>
+								<form method="post">
+									<input type="hidden" name="kosarasId" value="<?php echo $kosaras; ?>">
+									<input type="hidden" name="csapatId" value="<?php echo $csapatAzon; ?>">
+									<button id="pozicioGomb" name="action" value="btnCsere">csere</button>
+								</form>
+							</td>
 					</div>
 				</div>
 		<?php
@@ -79,7 +85,14 @@ $session->sessionStart();
 					<div class="content">
 						<table id="modositoTable">
 							<tr>
-								<td><button id="eladGomb">elad</button></td>
+								<td>
+									<form method="post">
+										<input type="hidden" name="kosarasId" value="<?php echo $kosaras; ?>">
+										<input type="hidden" name="csapatId" value="<?php echo $csapatAzon; ?>">
+										<input type="hidden" name="action" value="btnElad">
+										<input type="submit" class="btn btn-default" id="eladGomb" value="elad" id="loginbtn">
+									</form>
+								</td>
 							</tr>
 						</table>
 						<div class="image">
@@ -95,7 +108,13 @@ $session->sessionStart();
 							</tr>
 						</table>
 						</div>
-								<td><button id="pozicioGomb">kezdő</button></td>
+								<td>
+							<form method="post">
+									<input type="hidden" name="kosarasId" value="<?php echo $kosaras; ?>">
+									<input type="hidden" name="csapatId" value="<?php echo $csapatAzon; ?>">
+									<button id="pozicioGomb" name="action" value="btnKezdo">kezdő</button>
+								</form>
+						</td>
 					</div>
 				</div>
 		<?php
@@ -108,6 +127,28 @@ $session->sessionStart();
   			$adatok = new Session();
 			$adatok->connect();
 			$adatok->setElad();
+			$adatok->disconnect();
+		}
+					  	if(isset($_POST["action"]) && $_POST["action"] == "btnCsere")
+		{
+  			$adatok = new Session();
+			$adatok->connect();
+			$adatok->setCsere();
+			$adatok->disconnect();
+		}
+							  	if(isset($_POST["action"]) && $_POST["action"] == "btnKezdo")
+		{
+  			$adatok = new Session();
+			$adatok->connect();
+			$csapatAzon=$adatok->getCsapat();
+			if($adatok->getKezdokSzama($csapatAzon)==5)
+			{?>
+				<script>alert("Előbb cserének kell beállítania egy játékost!")</script>
+			<?php
+			}
+									else{
+										$adatok->setKezdo();
+									}
 			$adatok->disconnect();
 		}
 		?>
