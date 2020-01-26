@@ -47,7 +47,7 @@ a:visited {
 }
 .testimonials
 {
-	width: 60%;
+	width: 80%;
 	margin: 50px auto 100px;
 	display: grid;
 	grid-template-columns: repeat( auto-fit, minmax(350px, 1fr));
@@ -56,7 +56,8 @@ a:visited {
 .testimonials .card
 {
 	position: relative;
-	width: 200px;
+	width: 270px;
+	height: 270px;
 	margin: 0 auto;
 	background: #2B3D6B;
 	padding: 20px;

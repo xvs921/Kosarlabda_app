@@ -39,40 +39,40 @@ class Session
 		$this->row = $this->result->fetch_assoc();
 		return $this->row["nev"];
 	}
-	public function getEmail($azon)
+	public function getOsszPontszam($azon)
 	{
-		$this->sql = "SELECT * FROM felhasznalok WHERE id='".$azon."'";
+		$this->sql = "SELECT * FROM jatekosok WHERE id='".$azon."'";
 		$this->result = $this->conn->query($this->sql);
 		$this->row = $this->result->fetch_assoc();
-		echo $this->row["email"];
+		echo $this->row["osszPontszam"];
 	}
-	public function getCsapatnev($azon)
+	public function get3pontos($azon)
 	{
-		$this->sql = "SELECT * FROM felhasznalok f 
-		LEFT JOIN csapatok cs ON cs.id=f.`csapatok.id` WHERE f.id='".$azon."'";
+		$this->sql = "SELECT * FROM jatekosok WHERE id='".$azon."'";
 		$this->result = $this->conn->query($this->sql);
 		$this->row = $this->result->fetch_assoc();
-		echo $this->row["nev"];
+		echo $this->row["3pontos"];
 	}
-	public function getPenz($azon)
+	public function getZsakolas($azon)
 	{
-		$this->sql = "SELECT * FROM felhasznalok WHERE id='".$azon."'";
+		$this->sql = "SELECT * FROM jatekosok WHERE id='".$azon."'";
 		$this->result = $this->conn->query($this->sql);
 		$this->row = $this->result->fetch_assoc();
-		echo $this->row["penz"];
+		echo $this->row["zsakolas"];
 	}
-	public function getAktiv($azon)
+	public function getAr($azon)
 	{
-		$this->sql = "SELECT * FROM felhasznalok WHERE id='".$azon."'";
+		$this->sql = "SELECT * FROM jatekosok WHERE id='".$azon."'";
 		$this->result = $this->conn->query($this->sql);
 		$this->row = $this->result->fetch_assoc();
-		return $this->row["aktiv"];
+		return $this->row["ar"];
 	}
-	public function getJogosultsag($azon)
+	public function getKep($azon)
 	{
-		$this->sql = "SELECT * FROM jogok WHERE `felhasznalok.id`='".$azon."'";
+		$this->sql = "SELECT * FROM jatekosok WHERE id='".$azon."'";
 		$this->result = $this->conn->query($this->sql);
-		return $this->result->num_rows;
+		$this->row = $this->result->fetch_assoc();
+		return $this->row["kep"];
 	}
 	public function setNev()
 	{
@@ -103,99 +103,88 @@ class Session
 	  <?php	
 	  } 
 	}
-	public function setEmail()
+	public function setOsszpontszam()
 	{
-		$this->sql = "SELECT * FROM felhasznalok WHERE id='".$_POST["input_id"]."'";
-		$this->result = $this->conn->query($this->sql);
-		$this->row = $this->result->fetch_assoc();
-		if($this->row["email"]!=$_POST["input_email"])
+		if($_POST["input_osszPontszam"]>0 && $_POST["input_osszPontszam"]<100)
 		{
-			$this->meglevoEmailek = "SELECT * FROM felhasznalok WHERE email = '".$_POST["input_email"]."'";
-			$this->emailekLekeres = $this->conn->query($this->meglevoEmailek);
-			if ($this->emailekLekeres->num_rows == 0)
-			{
-			$this->sql = "UPDATE felhasznalok SET email = '".$_POST["input_email"]."' WHERE id = '".$_POST["input_id"]."'";
+			$this->sql = "UPDATE jatekosok SET osszPontszam = '".$_POST["input_osszPontszam"]."' WHERE id = '".$_POST["input_id"]."'";
 			$this->result = $this->conn->query($this->sql);
 				?>
-					<meta http-equiv="refresh" content="0; url = felhasznalokszerk.php">
+					<meta http-equiv="refresh" content="0; url = jatekosokszerk.php">
 				<?php
 			}
-						else
-			{?>
-				<script>alert("Sikertelen adatmódosítás!")</script>
-			<?php	
-			}	  
-	  	}
-	  else
+	  else if($_POST["input_osszPontszam"]<=0)
 	  {?>
-		<script>alert("Nem változtak az adatai!")</script>
+		<script>alert("Nem lehet nulla, vagy annál kisebb!")</script>
+	  <?php	
+	  }
+	  else if($_POST["input_osszPontszam"]>=100)
+	  {?>
+		<script>alert("Nem lehet száz, vagy annál nagyobb!")</script>
 	  <?php	
 	  } 
 	}
-	public function setCsapatnev()
-	{		
-		$this->sql = "SELECT nev FROM felhasznalok f LEFT JOIN csapatok cs ON cs.id=f.`csapatok.id` WHERE f.id='".$_POST["input_id"]."'";
-		$this->result = $this->conn->query($this->sql);
-		$this->row = $this->result->fetch_assoc();
-		if($this->row["nev"]!=$_POST["input_csapatnev"])
+		public function set3pontos()
+	{
+		if($_POST["input_3pontos"]>0 && $_POST["input_3pontos"]<100)
 		{
-			$this->meglevoCsapatnevek = "SELECT * FROM csapatok WHERE nev = '".$_POST["input_csapatnev"]."'";
-			$this->csapatnevekLekeres = $this->conn->query($this->meglevoCsapatnevek);
-			if ($this->csapatnevekLekeres->num_rows == 0)
-			{
-			$this->sql = "UPDATE felhasznalok f LEFT JOIN csapatok cs ON cs.id=f.`csapatok.id` SET nev= '".$_POST["input_csapatnev"]."' WHERE f.id = '".$_POST["input_id"]."'";
+			$this->sql = "UPDATE jatekosok SET 3pontos = '".$_POST["input_3pontos"]."' WHERE id = '".$_POST["input_id"]."'";
 			$this->result = $this->conn->query($this->sql);
 				?>
-					<meta http-equiv="refresh" content="0; url = felhasznalokszerk.php">
+					<meta http-equiv="refresh" content="0; url = jatekosokszerk.php">
 				<?php
 			}
-						else
-			{?>
-				<script>alert("Sikertelen adatmódosítás!")</script>
-			<?php	
-			}	  
-	  	}
-	  else
+	  else if($_POST["input_3pontos"]<=0)
 	  {?>
-		<script>alert("Nem változtak az adatai!")</script>
+		<script>alert("Nem lehet nulla, vagy annál kisebb!")</script>
+	  <?php	
+	  }
+	  else if($_POST["input_3pontos"]>=100)
+	  {?>
+		<script>alert("Nem lehet száz, vagy annál nagyobb!")</script>
 	  <?php	
 	  } 
 	}
-	public function setJogosultsag()
+			public function setZsakolas()
 	{
-		$this->sql = "DELETE FROM jogok WHERE `felhasznalok.id`='".$_POST["input_id"]."'";
-		$this->result = $this->conn->query($this->sql);
-		
-		if($_POST["input_jogosultsag"]==1)
+		if($_POST["input_zsakolas"]>0 && $_POST["input_zsakolas"]<100)
 		{
-			$this->sql = "INSERT INTO jogok(`felhasznalok.id`, `jogosultsagok.id`) VALUES ('".$_POST["input_id"]."',1),('".$_POST["input_id"]."',2),('".$_POST["input_id"]."',3)";
+			$this->sql = "UPDATE jatekosok SET zsakolas = '".$_POST["input_zsakolas"]."' WHERE id = '".$_POST["input_id"]."'";
 			$this->result = $this->conn->query($this->sql);
-		}
-		else if($_POST["input_jogosultsag"]==2)
-		{
-			$this->sql = "INSERT INTO jogok(`felhasznalok.id`, `jogosultsagok.id`) VALUES ('".$_POST["input_id"]."',2),('".$_POST["input_id"]."',3)";
-			$this->result = $this->conn->query($this->sql);
-		}
-		else if($_POST["input_jogosultsag"]==3)
-		{
-			$this->sql = "INSERT INTO jogok(`felhasznalok.id`, `jogosultsagok.id`) VALUES ('".$_POST["input_id"]."',3)";
-			$this->result = $this->conn->query($this->sql);
-		}
-		?>
-			<meta http-equiv="refresh" content="0; url = felhasznalokszerk.php">
-		<?php
-	}
-	public function setAktivitas($aktivitas)
-	{
-		$this->sql = "UPDATE felhasznalok SET aktiv='".$aktivitas."' WHERE id='".$_POST["input_id"]."'";
-		$this->result = $this->conn->query($this->sql);
-		?>
-					<meta http-equiv="refresh" content="0; url = felhasznalokszerk.php">
+				?>
+					<meta http-equiv="refresh" content="0; url = jatekosokszerk.php">
 				<?php
+			}
+	  else if($_POST["input_zsakolas"]<=0)
+	  {?>
+		<script>alert("Nem lehet nulla, vagy annál kisebb!")</script>
+	  <?php	
+	  }
+	  else if($_POST["input_zsakolas"]>=100)
+	  {?>
+		<script>alert("Nem lehet száz, vagy annál nagyobb!")</script>
+	  <?php	
+	  } 
 	}
-	public function setPenz()
+				public function setAr()
 	{
-		$this->sql = "UPDATE felhasznalok SET penz='".$_POST["input_penz"]."' WHERE id='".$_POST["input_id"]."'";
+		if($_POST["input_ar"]>0)
+		{
+			$this->sql = "UPDATE jatekosok SET ar = '".$_POST["input_ar"]."' WHERE id = '".$_POST["input_id"]."'";
+			$this->result = $this->conn->query($this->sql);
+				?>
+					<meta http-equiv="refresh" content="0; url = jatekosokszerk.php">
+				<?php
+			}
+	  else if($_POST["input_zsakolas"]<=0)
+	  {?>
+		<script>alert("Nem lehet negatív!")</script>
+	  <?php	
+	  }
+	}
+	public function setKep()
+	{
+		$this->sql = "UPDATE felhasznalok SET kep='".$_POST["input_kep"]."' WHERE id='".$_POST["input_id"]."'";
 		$this->result = $this->conn->query($this->sql);
 		?>
 					<meta http-equiv="refresh" content="0; url = felhasznalokszerk.php">
