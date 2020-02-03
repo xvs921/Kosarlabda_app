@@ -2,6 +2,11 @@
 include("classes/menuclasses.php");
 $session = new Session();
 $session->sessionStart();
+if(isset($_GET["action"]) && $_GET["action"] == "cmd_logout")
+{
+	$logout = new Session();
+	$logout->logout();
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -50,7 +55,7 @@ $session->sessionStart();
 					<h2>Csomagok<br><span></span></h2>
 				</div>
 				<div class="image">
-					<img src="kepek/img2.png">
+					<i class="fa fa-shopping-basket fa-5x" aria-hidden="true"></i>
 				</div>
 			</div>
 		</div>
@@ -62,7 +67,7 @@ $session->sessionStart();
 					<h2>Mérkőzés<br><span></span></h2>
 				</div>
 				<div class="image">
-					<img src="kepek/img3.jpg">
+					<i class="fa fa-futbol-o fa-5x" aria-hidden="true"></i>
 				</div>
 			</div>
 		</div>
@@ -74,7 +79,7 @@ $session->sessionStart();
 					<h2>Fiókom beállítása<br><span></span></h2>
 				</div>
 				<div class="image">
-					<i class="fa fa-file-pdf-o fa-5x" aria-hidden="true"></i>
+					<i class="fa fa-cog fa-5x" aria-hidden="true"></i>
 				</div>
 			</div>
 		</div>
