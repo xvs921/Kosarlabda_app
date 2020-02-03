@@ -36,10 +36,10 @@ $session->sessionStart();
 		<div class="card">
 			<div class="content">
 				<div class="details">
-					<h2>haladó<br><span></span></h2>
+					<h2>Arany középút<br><span></span></h2>
 				</div>
 				<div class="image">
-					<img src="kepek/img2.png">
+					<i class="fa fa-lightbulb-o fa-5x" aria-hidden="true"></i>
 				</div>
 			</div>
 		</div>
@@ -51,7 +51,7 @@ $session->sessionStart();
 					<h2>Nagyok asztala<br><span></span></h2>
 				</div>
 				<div class="image">
-					<img src="kepek/img3.jpg">
+					<i class="fa fa-bolt fa-5x" aria-hidden="true"></i>
 				</div>
 			</div>
 		</div>
