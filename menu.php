@@ -2,11 +2,6 @@
 include("classes/menuclasses.php");
 $session = new Session();
 $session->sessionStart();
-if(isset($_GET["action"]) && $_GET["action"] == "cmd_logout")
-{
-	$logout = new Session();
-	$logout->logout();
-}
 ?>
 <!DOCTYPE html>
 <html>
@@ -14,6 +9,7 @@ if(isset($_GET["action"]) && $_GET["action"] == "cmd_logout")
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Menü</title>
+	<link href="assets/css/font-awesome.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="design/menust.css">
 </head>
 <table class="navbar">
@@ -42,12 +38,12 @@ if(isset($_GET["action"]) && $_GET["action"] == "cmd_logout")
 					<h2>Csapatom<br><span></span></h2>
 				</div>
 				<div class="image">
-					<img src="kepek/img.jpg">
+					<i class="fa fa-users fa-5x" aria-hidden="true"></i>
 				</div>
 			</div>
 		</div>
 		</a>
-		<a href="xd.html">
+		<a href="csomagok.php">
 		<div class="card">
 			<div class="content">
 				<div class="details">
@@ -78,7 +74,7 @@ if(isset($_GET["action"]) && $_GET["action"] == "cmd_logout")
 					<h2>Fiókom beállítása<br><span></span></h2>
 				</div>
 				<div class="image">
-					<img src="kepek/img4.png">
+					<i class="fa fa-file-pdf-o fa-5x" aria-hidden="true"></i>
 				</div>
 			</div>
 		</div>
@@ -95,7 +91,7 @@ if(isset($_GET["action"]) && $_GET["action"] == "cmd_logout")
 							<h2>Játékosok szerkesztése<br><span></span></h2>
 						</div>
 						<div class="image">
-							<img src="kepek/img5.jpg">
+							<i class="fa fa-pencil fa-5x" aria-hidden="true"></i>
 						</div>
 					</div>
 				</div>
@@ -107,7 +103,7 @@ if(isset($_GET["action"]) && $_GET["action"] == "cmd_logout")
 							<h2>Felhasználók szerkesztése<br><span></span></h2>
 						</div>
 						<div class="image">
-							<img src="kepek/img6.png">
+							<i class="fa fa-user fa-5x" aria-hidden="true"></i>
 						</div>
 					</div>
 				</div>
@@ -123,7 +119,7 @@ if(isset($_GET["action"]) && $_GET["action"] == "cmd_logout")
 							<h2>Játékosok szerkesztése<br><span></span></h2>
 						</div>
 						<div class="image">
-							<img src="kepek/img5.jpg">
+							<i class="fa fa-pencil fa-5x" aria-hidden="true"></i>
 						</div>
 					</div>
 				</div>
