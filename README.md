@@ -16,5 +16,9 @@ Menu ?
 
 
 További ötletek:
-  felhasználók szerkesztése oldal:
-    jelszo talan gomb? esetleg full update, jelszo esetén emailes értesítő a user-nek h mi az új jelszava
+  csomagnyit oldal
+  1másik gomb jobb sarokba -> elad, ha már megvan csak ere kattintva lép tovább, funkció megírva
+  2ha nincs az aktuális pontszámú játékos akkor tipus legyen 0->pénzt kap
+  
+  csomagok oldal
+  ellenőrizni pozitív marad e a pénze nyitás után, ha nem, akkor nem hagyjuk nyitni
