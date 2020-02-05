@@ -1,7 +1,14 @@
 <?php
-include("classes/csomagokclasses.php");
+include("classes/csnyitclasses.php");
 $session = new Session();
 $session->sessionStart();
+	  	    	  	if(isset($_POST["action"]) && $_POST["action"] == "csomag1")
+		{
+  			$adatok = new Session();
+			$adatok->connect();
+			$adatok->csomagNyit1();
+			$adatok->disconnect();
+		}
 ?>
 <!DOCTYPE html>
 <html>
@@ -10,7 +17,7 @@ $session->sessionStart();
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Csomagok</title>
 	<link href="assets/css/font-awesome.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="design/csomagokstyle.css">
+		<link rel="stylesheet" href="design/csomagokstyle.css">
 </head>
 <table class="navbar">
 	<tr>
@@ -18,9 +25,8 @@ $session->sessionStart();
 		<td><button><a href="menu.php">Vissza</a></button></td>
 	</tr>
 </table>
-<body>	
+<body>
 	<div class="testimonials">
-		<a href="csapatom.php">
 		<div class="card">
 			<div class="content">
 				<div class="details">
@@ -30,9 +36,12 @@ $session->sessionStart();
 					<i class="fa fa-eur fa-5x" aria-hidden="true"></i>
 				</div>
 			</div>
-		</div>
-		</a>
-		<a href="xd.html">
+			<form method="post">
+				<input type="hidden" name="csomag_id" value="1">
+				  <input type="hidden" name="action" value="csomag1">
+				  <input type="submit" class="btn btn-default" value="Nyitás" id="loginbtn">
+			</form>
+			</div>
 		<div class="card">
 			<div class="content">
 				<div class="details">
@@ -43,8 +52,6 @@ $session->sessionStart();
 				</div>
 			</div>
 		</div>
-		</a>
-		<a href="xd.html">
 		<div class="card">
 			<div class="content">
 				<div class="details">
@@ -55,7 +62,6 @@ $session->sessionStart();
 				</div>
 			</div>
 		</div>
-		</a>		
 	</div>
 </body>
 </html>

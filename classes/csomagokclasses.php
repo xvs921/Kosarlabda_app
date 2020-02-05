@@ -29,37 +29,45 @@ class Session
 		}
 		$this->conn->query("SET NAMES 'UTF8';");
   }
-  public function logout()
-	{
-	  $_SESSION["login_state"] = "";
-	  header("location: index.php");
-  }
-  
-	public function disconnect()
+		public function disconnect()
 	{
 		$this->conn->close();
   }
-  
-  public function jogosultsagAzonositas()
-  {  
-	$this->sql = "SELECT * FROM jogok WHERE `felhasznalok.id` = '".$_SESSION["login_state"]."'";
-    $this->result = $this->conn->query($this->sql);
-	return $this->result->num_rows;
-  }
-  public function felhasznalopenz()
+  public function csomag1()
   {
-	$this->sql = "SELECT penz FROM felhasznalok WHERE id = '".$_SESSION["login_state"]."'";
+	  $_SESSION["csomag"] = 1;
+	  echo $_SESSION["csomag"];
+	  header("location: csomagnyit.php");
+	  		//$this->sql = "UPDATE felhasznalok SET penz = penz-5000 WHERE id = 1";
+		//$this->result = $this->conn->query($this->sql);
+  }
+	  public function csomag2()
+  {
+	  $_SESSION["csomag"] = 2;
+	  echo $_SESSION["csomag"];
+	  header("location: csomagnyit.php");
+  }
+	  public function csomag3()
+  {
+	  $_SESSION["csomag"] = 2;
+	  header("location: csomagnyit.php");
+  }
+  public function csomagNyit()
+  {	
+	  if($_SESSION["csomag"]==1)
+	  {
+		//$this->sql = "UPDATE felhasznalok SET penz = penz-5000 WHERE id = 1";
+		//$this->result = $this->conn->query($this->sql);
+		  echo 1;
+	  }
+	  
+  }
+		public function get3pontos()
+  {
+	/*$this->sql = "SELECT 3pontos FROM jatekosok WHERE id=1";
 	$this->result = $this->conn->query($this->sql);
 	$this->row = $this->result->fetch_assoc();
-	echo $this->row["penz"];  
-  }
-  public function csapatnev()
-  {
-	$this->sql = "select * from felhasznalok f 
-	left join csapatok cs on cs.id=f.`csapatok.id`
-	where f.id='".$_SESSION["login_state"]."'";
-	$this->result = $this->conn->query($this->sql);
-	$this->row = $this->result->fetch_assoc();
-	echo $this->row["nev"];
+	return $this->row["3pontos"];*/
+			return 8;
   }
 } ?>
