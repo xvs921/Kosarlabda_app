@@ -56,9 +56,10 @@ class Session
   }
   public function osszesCsapattag()
   {
-	$this->sql = "SELECT id FROM csapattagok";
+	$this->sql = "SELECT Max(id) FROM csapattagok";
 	$this->result = $this->conn->query($this->sql);
-    return $this->result->num_rows;
+	$this->row = $this->result->fetch_assoc();
+	return $this->row["Max(id)"];
   }
 public function getNev($kosaras)
   {
