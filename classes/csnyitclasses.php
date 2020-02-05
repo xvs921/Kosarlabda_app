@@ -35,7 +35,20 @@ class Session
   }
     public function csomagNyit1() {
 		header("location: csomagnyit.php");
-        $this->sql = "UPDATE felhasznalok SET penz=penz-5000 WHERE id=1";
+        $this->sql = "UPDATE felhasznalok SET penz=penz-5000 WHERE id= '".$_SESSION["login_state"]."'";
         $this->conn->query($this->sql);
+		$_SESSION["csomagAzon"]=1;
+    }
+	    public function csomagNyit2() {
+		header("location: csomagnyit.php");
+        $this->sql = "UPDATE felhasznalok SET penz=penz-50000 WHERE id= '".$_SESSION["login_state"]."'";
+        $this->conn->query($this->sql);
+		$_SESSION["csomagAzon"]=2;
+    }
+	    public function csomagNyit3() {
+		header("location: csomagnyit.php");
+        $this->sql = "UPDATE felhasznalok SET penz=penz-150000 WHERE id= '".$_SESSION["login_state"]."'";
+        $this->conn->query($this->sql);
+			$_SESSION["csomagAzon"]=3;
     }
 } ?>

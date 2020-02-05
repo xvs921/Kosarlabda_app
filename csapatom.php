@@ -129,14 +129,14 @@ $session->sessionStart();
 			$adatok->setElad();
 			$adatok->disconnect();
 		}
-					  	if(isset($_POST["action"]) && $_POST["action"] == "btnCsere")
+		if(isset($_POST["action"]) && $_POST["action"] == "btnCsere")
 		{
   			$adatok = new Session();
 			$adatok->connect();
 			$adatok->setCsere();
 			$adatok->disconnect();
 		}
-							  	if(isset($_POST["action"]) && $_POST["action"] == "btnKezdo")
+		if(isset($_POST["action"]) && $_POST["action"] == "btnKezdo")
 		{
   			$adatok = new Session();
 			$adatok->connect();

@@ -1,7 +1,6 @@
 <?php
-include("classes/csomagnyitclasses.php");
 include("classes/probaclasses.php");
-$session = new Sess();
+$session = new Session();
 $session->sessionStart();
 $tipus=$session->csomagTipus();
 ?>
@@ -17,7 +16,7 @@ $tipus=$session->csomagTipus();
 <table class="navbar">
 	<tr>
 		<td></td>
-		<td><button><a href="menu.php">Tovább</a></button></td>
+		<td><button><a href="csomagok.php">Tovább</a></button></td>
 	</tr>
 </table>
 <body>
@@ -43,16 +42,33 @@ $tipus=$session->csomagTipus();
 		}
 		?>
 			<?php
-		if( $tipus == 1)
+		if($_SESSION["csomagAzon"]==1)
 		{
-			$adatok = new Session();
-			$adatok->connect();
-			$randPont=Rand($adatok->getMinOsszPontszam(),80);
+			$randPont=Rand($adatok->getMinOsszPontszam(),85);
 			$kosaras=$adatok->kosarasAzon($randPont);
 			$csapatAzon=$adatok->getCsapatAzon();
-			if($adatok->getCsapattagokSzama()<=20)
+		}
+		if($_SESSION["csomagAzon"]==2)
+		{
+			$randPont=Rand(75,90);
+			$kosaras=$adatok->kosarasAzon($randPont);
+			$csapatAzon=$adatok->getCsapatAzon();
+		}
+		if($_SESSION["csomagAzon"]==3)
+		{
+			$randPont=Rand(80,$adatok->getMaxOsszPontszam());
+			$kosaras=$adatok->kosarasAzon($randPont);
+			$csapatAzon=$adatok->getCsapatAzon();
+		}
+		if($tipus == 1)
+		{
+			if($adatok->csapattagE($kosaras,$csapatAzon)==0)
 			{
-				$adatok->jatekosHozzaad(6,$csapatAzon);
+				$adatok->jatekosHozzaad($kosaras,$csapatAzon);
+			}
+			else
+			{
+				$adatok->csomagElad($kosaras);
 			}
 	?>
 	<div class="testimonials">
@@ -62,7 +78,7 @@ $tipus=$session->csomagTipus();
 							<img src="kepek/jatekosok/<?php echo $adatok->getKep($kosaras);?>">
 						</div>
 						<div class="details">
-							<h2><?php echo $adatok->getNev($kosaras);?></h2>
+							<h2><?php echo $adatok->getNev($kosaras); echo $randPont;?></h2>
 						<table>
 							<tr>
 								<td id="hpontTD"><?php echo $adatok->get3pontos($kosaras);?></td>

@@ -33,20 +33,10 @@ class Session
   {
 		$this->conn->close();
   }
-  /*public function getCsapat()
-  {  
-	$this->sql = "SELECT `csapatok.id` FROM felhasznalok WHERE id='".$_SESSION["login_state"]."'";
-	$this->result = $this->conn->query($this->sql);
-	$this->row = $this->result->fetch_assoc();
-	return $this->row["csapatok.id"];
-  }
-  public function getCsapata($azon)
-  {
-	$this->sql = "SELECT `csapatok.id` FROM csapattagok WHERE id='".$azon."'";
-	$this->result = $this->conn->query($this->sql);
-	$this->row = $this->result->fetch_assoc();
-	return $this->row["csapatok.id"];
-  }*/
+		public function csomagTipus() {
+		$tipus=rand(0, 1);
+		return $tipus; 
+    }
   public function KosarasAzon($randPont)
   {
 	$this->sql = "SELECT id,nev FROM jatekosok WHERE osszPontszam='".$randPont."' ORDER BY RAND() LIMIT 1";
@@ -96,6 +86,13 @@ public function getNev($kosaras)
 	$this->row = $this->result->fetch_assoc();
 	return $this->row["MIN(osszpontszam)"];
   }
+		public function getMaxOsszPontszam()
+  {
+	$this->sql = "SELECT Max(osszpontszam) FROM jatekosok";
+	$this->result = $this->conn->query($this->sql);
+	$this->row = $this->result->fetch_assoc();
+	return $this->row["Max(osszpontszam)"];
+  }
 public function getCsapattagokSzama()
   {
 	$this->sql = "SELECT id FROM csapattagok WHERE `csapatok.id`=(SELECT `csapatok.id` FROM felhasznalok WHERE id= '".$_SESSION["login_state"]."')";
@@ -122,13 +119,16 @@ public function getCsapattagokSzama()
 		$this->result = $this->conn->query($this->sql);
 		return $penz;
 	}	
-	/*
-  public function setCsere()
-  {
-	$this->sql = "UPDATE csapattagok SET kezdo=0 WHERE `jatekosok.id`='".$_POST["kosarasId"]."' AND `csapatok.id`='".$_POST["csapatId"]."'";
-	$this->result = $this->conn->query($this->sql);
-	 ?>
-					<meta http-equiv="refresh" content="0; url = csapatom.php">
-				<?php
-  }*/
+	  	public function csapattagE($kosaras,$csapat)
+	{
+		$this->sql = "SELECT * FROM csapattagok WHERE `jatekosok.id`='".$kosaras."' AND `csapatok.id`='".$csapat."'";
+		$this->result = $this->conn->query($this->sql);
+		return $this->result->num_rows;
+	}	
+	public function csomagElad($kosaras)
+	{
+		$this->sql = "UPDATE felhasznalok SET penz=penz+(SELECT CAST(ar/4 AS int) FROM jatekosok WHERE id='".$kosaras."') WHERE id='".$_SESSION["login_state"]."'";
+		$this->result = $this->conn->query($this->sql);
+		echo "sikeres";
+	}	
 } ?>

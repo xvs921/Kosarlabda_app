@@ -9,6 +9,20 @@ $session->sessionStart();
 			$adatok->csomagNyit1();
 			$adatok->disconnect();
 		}
+	  	    	  	if(isset($_POST["action"]) && $_POST["action"] == "csomag2")
+		{
+  			$adatok = new Session();
+			$adatok->connect();
+			$adatok->csomagNyit2();
+			$adatok->disconnect();
+		}
+	  	    	  	if(isset($_POST["action"]) && $_POST["action"] == "csomag3")
+		{
+  			$adatok = new Session();
+			$adatok->connect();
+			$adatok->csomagNyit3();
+			$adatok->disconnect();
+		}
 ?>
 <!DOCTYPE html>
 <html>
@@ -51,6 +65,11 @@ $session->sessionStart();
 					<i class="fa fa-lightbulb-o fa-5x" aria-hidden="true"></i>
 				</div>
 			</div>
+			<form method="post">
+				<input type="hidden" name="csomag_id" value="2">
+				  <input type="hidden" name="action" value="csomag2">
+				  <input type="submit" class="btn btn-default" value="Nyitás" id="loginbtn">
+			</form>
 		</div>
 		<div class="card">
 			<div class="content">
@@ -61,6 +80,11 @@ $session->sessionStart();
 					<i class="fa fa-bolt fa-5x" aria-hidden="true"></i>
 				</div>
 			</div>
+			<form method="post">
+				<input type="hidden" name="csomag_id" value="3">
+				  <input type="hidden" name="action" value="csomag3">
+				  <input type="submit" class="btn btn-default" value="Nyitás" id="loginbtn">
+			</form>
 		</div>
 	</div>
 </body>
