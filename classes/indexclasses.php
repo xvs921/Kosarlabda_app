@@ -1,5 +1,5 @@
 <?php
-class Session
+class IndexClass
 {
 	public $servername = "localhost:3306";
   	public $username = "root";
@@ -19,8 +19,8 @@ class Session
 			header("location: index.php");
 			die();
 		}
-  }
-  public function connect()
+	}
+	public function connect()
 	{
 		$this->conn = new mysqli($this->servername, $this->username, $this->password, $this->dbname);
 		if ($this->conn->connect_error)
@@ -28,58 +28,59 @@ class Session
 			die ("Connection failed: " . $this->conn->connect_error);
 		}
 		$this->conn->query("SET NAMES 'UTF8';");
-  }
-  public function logout()
+	}
+	public function logout()
 	{
-	  $_SESSION["login_state"] = "";
-	  header("location: index.php");
-  }
+		$_SESSION["login_state"] = "";
+		header("location: index.php");
+	}
   
 	public function disconnect()
 	{
 		$this->conn->close();
-  }
+	}
   
   // INDEX
-  public function indexSessionStart()
+	public function indexSessionStart()
 	{
 		session_start();
-  }
-  // SIGN IN
-  public function signinSessionStart()
-  {
-    session_start();
-    if(!isset($_SESSION["login_state"]))
-    {
-      $_SESSION["login_state"] = "";
-    }
-    if($_SESSION["login_state"] != "")
-    {
-      header("location:menu.php");
-      die();
-    }
-  }
-  public function signin($felhasznalonev, $jelszo)
-  {
-    $this->sql = "SELECT * FROM felhasznalok WHERE felhasznalonev = '".$felhasznalonev."'";
-    $this->result = $this->conn->query($this->sql);
-    if ($this->result->num_rows == 1)
-    {
-      $this->row = $this->result->fetch_assoc();
-      if (password_verify($jelszo, $this->row["jelszo"]))
-      {
-        $_SESSION["login_state"] = $this->row["id"];
-        header("location:menu.php");
-        die();
-      }
-      else
-      {
-		  ?><script>alert("Hibás jelszót adott meg!")</script><?php
-      }
-    }
-    else
-    {
-		?><script>alert("Nem létező felhasználónév!")</script><?php
 	}
-  }
+  // SIGN IN
+	public function signinSessionStart()
+	{
+		session_start();
+		if(!isset($_SESSION["login_state"]))
+		{
+			$_SESSION["login_state"] = "";
+		}
+		if($_SESSION["login_state"] != "")
+		{
+			header("location:menu.php");
+			die();
+		}
+	}
+	
+	public function signin($felhasznalonev, $jelszo)
+	{
+		$this->sql = "SELECT * FROM felhasznalok WHERE felhasznalonev = '".$felhasznalonev."'";
+		$this->result = $this->conn->query($this->sql);
+		if ($this->result->num_rows == 1)
+		{
+			$this->row = $this->result->fetch_assoc();
+			if (password_verify($jelszo, $this->row["jelszo"]))
+			{
+				$_SESSION["login_state"] = $this->row["id"];
+				header("location:menu.php");
+				die();
+			}
+			else
+			{
+				?><script>alert("Hibás jelszót adott meg!")</script><?php
+			}
+		}
+		else
+		{
+			?><script>alert("Nem létező felhasználónév!")</script><?php
+		}
+	}
 } ?>

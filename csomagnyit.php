@@ -1,5 +1,5 @@
 <?php
-include("classes/probaclasses.php");
+include("classes/csomagnyitclasses.php");
 $session = new Session();
 $session->sessionStart();
 $tipus=$session->csomagTipus();
@@ -23,6 +23,21 @@ $tipus=$session->csomagTipus();
 		<?php
 			$adatok = new Session();
 			$adatok->connect();
+	if($_SESSION["csomagAzon"]==1)
+	{
+		$minPenz=500;
+		$maxPenz=25000;
+	}
+	if($_SESSION["csomagAzon"]==2)
+	{
+		$minPenz=1000;
+		$maxPenz=75000;
+	}
+	if($_SESSION["csomagAzon"]==3)
+	{
+		$minPenz=5000;
+		$maxPenz=200000;
+	}
 		if( $tipus == 0)
 		{?>
 	
@@ -33,7 +48,7 @@ $tipus=$session->csomagTipus();
 					<i class="fa fa-money fa-5x" aria-hidden="true"></i>
 				</div>
 				<div class="details">
-					<h2><?php echo $adatok->penzNyeremeny();?><br><span></span></h2>
+					<h2><?php echo 1;//$adatok->penzNyeremeny($minPenz,$maxPenz);?><br><span></span></h2>
 				</div>
 			</div>
 		</div>

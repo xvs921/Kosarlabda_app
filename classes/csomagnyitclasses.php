@@ -37,6 +37,7 @@ class Session
 		$tipus=rand(0, 1);
 		return $tipus; 
     }
+	
   public function KosarasAzon($randPont)
   {
 	$this->sql = "SELECT id,nev FROM jatekosok WHERE osszPontszam='".$randPont."' ORDER BY RAND() LIMIT 1";
@@ -44,7 +45,61 @@ class Session
 	$this->row = $this->result->fetch_assoc();
 	return $this->row["id"];
   }
-public function getNev($kosaras)
+
+	public function getMinOsszPontszam()
+  {
+	$this->sql = "SELECT MIN(osszpontszam) FROM jatekosok";
+	$this->result = $this->conn->query($this->sql);
+	$this->row = $this->result->fetch_assoc();
+	return $this->row["MIN(osszpontszam)"];
+  }
+		public function getMaxOsszPontszam()
+  {
+	$this->sql = "SELECT Max(osszpontszam) FROM jatekosok";
+	$this->result = $this->conn->query($this->sql);
+	$this->row = $this->result->fetch_assoc();
+	return $this->row["Max(osszpontszam)"];
+  }
+public function getCsapattagokSzama()
+  {
+	$this->sql = "SELECT id FROM csapattagok WHERE `csapatok.id`=(SELECT `csapatok.id` FROM felhasznalok WHERE id= '".$_SESSION["login_state"]."')";
+	$this->result = $this->conn->query($this->sql);
+    return $this->result->num_rows;
+  }
+  public function jatekosHozzaad($jatekosid,$csapatAzon)
+  {
+	$this->sql = "INSERT INTO csapattagok(`csapatok.id`, `jatekosok.id`, sorszam, kezdo) VALUES ('".$csapatAzon."','".$jatekosid."',(SELECT Max(sorszam)+1 FROM csapattagok cs1 WHERE `csapatok.id`='".$csapatAzon."'),0)";
+	$this->result = $this->conn->query($this->sql);
+	 echo $this->sql;
+  }
+  public function getCsapatAzon()
+  {
+	$this->sql = "SELECT `csapatok.id` FROM felhasznalok WHERE id= '".$_SESSION["login_state"]."'";
+	$this->result = $this->conn->query($this->sql);
+	$this->row = $this->result->fetch_assoc();
+	return $this->row["csapatok.id"];
+  }
+  	public function penzNyeremeny($minPenz,$maxPenz)
+	{
+		$penz=rand($minPenz,$maxPenz);
+		$this->sql = "UPDATE felhasznalok SET penz=penz+'".$penz."' WHERE id='".$_SESSION["login_state"]."'";
+		$this->result = $this->conn->query($this->sql);
+		return $penz;
+	}	
+	  	public function csapattagE($kosaras,$csapat)
+	{
+		$this->sql = "SELECT * FROM csapattagok WHERE `jatekosok.id`='".$kosaras."' AND `csapatok.id`='".$csapat."'";
+		$this->result = $this->conn->query($this->sql);
+		return $this->result->num_rows;
+	}	
+	public function csomagElad($kosaras)
+	{
+		$this->sql = "UPDATE felhasznalok SET penz=penz+(SELECT CAST(ar/4 AS int) FROM jatekosok WHERE id='".$kosaras."') WHERE id='".$_SESSION["login_state"]."'";
+		$this->result = $this->conn->query($this->sql);
+		echo "a csapatodban van, igy az árát kapod";
+	}
+	//játékos kártya adatai(getterek)
+	public function getNev($kosaras)
   {
 	$this->sql = "SELECT nev FROM jatekosok WHERE id='".$kosaras."'";
 	$this->result = $this->conn->query($this->sql);
@@ -79,56 +134,4 @@ public function getNev($kosaras)
 	$this->row = $this->result->fetch_assoc();
 	return $this->row["kep"];
   }
-	public function getMinOsszPontszam()
-  {
-	$this->sql = "SELECT MIN(osszpontszam) FROM jatekosok";
-	$this->result = $this->conn->query($this->sql);
-	$this->row = $this->result->fetch_assoc();
-	return $this->row["MIN(osszpontszam)"];
-  }
-		public function getMaxOsszPontszam()
-  {
-	$this->sql = "SELECT Max(osszpontszam) FROM jatekosok";
-	$this->result = $this->conn->query($this->sql);
-	$this->row = $this->result->fetch_assoc();
-	return $this->row["Max(osszpontszam)"];
-  }
-public function getCsapattagokSzama()
-  {
-	$this->sql = "SELECT id FROM csapattagok WHERE `csapatok.id`=(SELECT `csapatok.id` FROM felhasznalok WHERE id= '".$_SESSION["login_state"]."')";
-	$this->result = $this->conn->query($this->sql);
-    return $this->result->num_rows;
-  }
-  public function jatekosHozzaad($jatekosid,$csapatAzon)
-  {
-	$this->sql = "INSERT INTO csapattagok(`csapatok.id`, `jatekosok.id`, sorszam, kezdo) VALUES ('".$csapatAzon."','".$jatekosid."',(SELECT Max(sorszam)+1 FROM csapattagok cs1 WHERE `csapatok.id`='".$csapatAzon."'),0)";
-	$this->result = $this->conn->query($this->sql);
-	 echo $this->sql;
-  }
-  public function getCsapatAzon()
-  {
-	$this->sql = "SELECT `csapatok.id` FROM felhasznalok WHERE id= '".$_SESSION["login_state"]."'";
-	$this->result = $this->conn->query($this->sql);
-	$this->row = $this->result->fetch_assoc();
-	return $this->row["csapatok.id"];
-  }
-  	public function penzNyeremeny()
-	{
-		$penz=rand(500, 8000);
-		$this->sql = "UPDATE felhasznalok SET penz=penz+'".$penz."' WHERE id='".$_SESSION["login_state"]."'";
-		$this->result = $this->conn->query($this->sql);
-		return $penz;
-	}	
-	  	public function csapattagE($kosaras,$csapat)
-	{
-		$this->sql = "SELECT * FROM csapattagok WHERE `jatekosok.id`='".$kosaras."' AND `csapatok.id`='".$csapat."'";
-		$this->result = $this->conn->query($this->sql);
-		return $this->result->num_rows;
-	}	
-	public function csomagElad($kosaras)
-	{
-		$this->sql = "UPDATE felhasznalok SET penz=penz+(SELECT CAST(ar/4 AS int) FROM jatekosok WHERE id='".$kosaras."') WHERE id='".$_SESSION["login_state"]."'";
-		$this->result = $this->conn->query($this->sql);
-		echo "sikeres";
-	}	
 } ?>

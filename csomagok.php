@@ -1,5 +1,5 @@
 <?php
-include("classes/csnyitclasses.php");
+include("classes/csomagokclasses.php");
 $session = new Session();
 $session->sessionStart();
 	  	    	  	if(isset($_POST["action"]) && $_POST["action"] == "csomag1")

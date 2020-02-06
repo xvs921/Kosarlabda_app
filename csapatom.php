@@ -117,41 +117,41 @@ $session->sessionStart();
 						</td>
 					</div>
 				</div>
-		<?php
-			}
-			}
-		}
-		$jatekosokListazas->disconnect();
-			  	if(isset($_POST["action"]) && $_POST["action"] == "btnElad")
-		{
-  			$adatok = new Session();
-			$adatok->connect();
-			$adatok->setElad();
-			$adatok->disconnect();
-		}
-		if(isset($_POST["action"]) && $_POST["action"] == "btnCsere")
-		{
-  			$adatok = new Session();
-			$adatok->connect();
-			$adatok->setCsere();
-			$adatok->disconnect();
-		}
-		if(isset($_POST["action"]) && $_POST["action"] == "btnKezdo")
-		{
-  			$adatok = new Session();
-			$adatok->connect();
-			$csapatAzon=$adatok->getCsapat();
-			if($adatok->getKezdokSzama($csapatAzon)==5)
-			{?>
-				<script>alert("Előbb cserének kell beállítania egy játékost!")</script>
-			<?php
-			}
-									else{
-										$adatok->setKezdo();
-									}
-			$adatok->disconnect();
-		}
-		?>
+<?php
+}
+}
+}
+$jatekosokListazas->disconnect();
+if(isset($_POST["action"]) && $_POST["action"] == "btnElad")
+{
+	$adatok = new Session();
+	$adatok->connect();
+	$adatok->setElad();
+	$adatok->disconnect();
+}
+if(isset($_POST["action"]) && $_POST["action"] == "btnCsere")
+{
+	$adatok = new Session();
+	$adatok->connect();
+	$adatok->setCsere();
+	$adatok->disconnect();
+}
+if(isset($_POST["action"]) && $_POST["action"] == "btnKezdo")
+{
+	$adatok = new Session();
+	$adatok->connect();
+	$csapatAzon=$adatok->getCsapat();
+	if($adatok->getKezdokSzama($csapatAzon)==5)
+	{?>
+		<script>alert("Előbb cserének kell beállítania egy játékost!")</script>
+	<?php
+	}
+	else{
+		$adatok->setKezdo();
+	}
+	$adatok->disconnect();
+}
+?>
 	</div>
 </body>
 </html>

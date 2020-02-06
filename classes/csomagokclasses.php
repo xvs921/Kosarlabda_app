@@ -35,11 +35,20 @@ class Session
   }
   public function csomag1()
   {
-	  $_SESSION["csomag"] = 1;
-	  echo $_SESSION["csomag"];
-	  header("location: csomagnyit.php");
-	  		//$this->sql = "UPDATE felhasznalok SET penz = penz-5000 WHERE id = 1";
-		//$this->result = $this->conn->query($this->sql);
+	  	/*$ar=5000;
+	  	$this->sql = "SELECT penz FROM felhasznalok WHERE id='".$_SESSION["login_state"]."'";
+		$this->result = $this->conn->query($this->sql);
+		$this->row = $this->result->fetch_assoc();
+		$penz=$this->row["penz"];*/
+	  echo 5000;
+	  	/*if($penz-$ar>=0)
+		{
+			$_SESSION["csomag"] = 1;
+	  		header("location: csomagnyit.php");
+			echo $_SESSION["csomag"];
+	  		$this->sql = "UPDATE felhasznalok SET penz = penz-5000 WHERE id = 1";
+			$this->result = $this->conn->query($this->sql);
+		}*/
   }
 	  public function csomag2()
   {
@@ -49,25 +58,7 @@ class Session
   }
 	  public function csomag3()
   {
-	  $_SESSION["csomag"] = 2;
+	  $_SESSION["csomag"] = 3;
 	  header("location: csomagnyit.php");
-  }
-  public function csomagNyit()
-  {	
-	  if($_SESSION["csomag"]==1)
-	  {
-		//$this->sql = "UPDATE felhasznalok SET penz = penz-5000 WHERE id = 1";
-		//$this->result = $this->conn->query($this->sql);
-		  echo 1;
-	  }
-	  
-  }
-		public function get3pontos()
-  {
-	/*$this->sql = "SELECT 3pontos FROM jatekosok WHERE id=1";
-	$this->result = $this->conn->query($this->sql);
-	$this->row = $this->result->fetch_assoc();
-	return $this->row["3pontos"];*/
-			return 8;
   }
 } ?>
