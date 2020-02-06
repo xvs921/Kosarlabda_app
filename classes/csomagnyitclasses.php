@@ -33,9 +33,9 @@ class Session
   {
 		$this->conn->close();
   }
-		public function csomagTipus() {
+public function csomagTipus() {
 		$tipus=rand(0, 1);
-		return $tipus; 
+		return $tipus;
     }
 	
   public function KosarasAzon($randPont)
@@ -71,6 +71,27 @@ public function getCsapattagokSzama()
 	$this->sql = "INSERT INTO csapattagok(`csapatok.id`, `jatekosok.id`, sorszam, kezdo) VALUES ('".$csapatAzon."','".$jatekosid."',(SELECT Max(sorszam)+1 FROM csapattagok cs1 WHERE `csapatok.id`='".$csapatAzon."'),0)";
 	$this->result = $this->conn->query($this->sql);
 	 echo $this->sql;
+  }
+public function fizetesLehetE($osszeg)
+  {
+	  	$this->sql = "SELECT penz FROM felhasznalok WHERE id='".$_SESSION["login_state"]."'";
+		$this->result = $this->conn->query($this->sql);
+		$this->row = $this->result->fetch_assoc();
+		$penz=$this->row["penz"];
+	  	if($penz-$osszeg>=0)
+		{
+			return 1;
+		}
+	else
+	{
+		return -1;
+	}
+
+  }
+	public function fizetes($osszeg)
+  {
+			$this->sql = "UPDATE felhasznalok SET penz = penz-'".$osszeg."' WHERE id = '".$_SESSION["login_state"]."'";
+			$this->result = $this->conn->query($this->sql);
   }
   public function getCsapatAzon()
   {

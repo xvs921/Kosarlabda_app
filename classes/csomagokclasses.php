@@ -33,32 +33,43 @@ class Session
 	{
 		$this->conn->close();
   }
-  public function csomag1()
+  public function csomagNyit1()
   {
-	  	/*$ar=5000;
+	  	$ar=5000;
 	  	$this->sql = "SELECT penz FROM felhasznalok WHERE id='".$_SESSION["login_state"]."'";
 		$this->result = $this->conn->query($this->sql);
 		$this->row = $this->result->fetch_assoc();
-		$penz=$this->row["penz"];*/
-	  echo 5000;
-	  	/*if($penz-$ar>=0)
+		$penz=$this->row["penz"];
+	  	if($penz-$ar>=0)
 		{
-			$_SESSION["csomag"] = 1;
+			$_SESSION["csomagAzon"] = 1;
 	  		header("location: csomagnyit.php");
-			echo $_SESSION["csomag"];
-	  		$this->sql = "UPDATE felhasznalok SET penz = penz-5000 WHERE id = 1";
-			$this->result = $this->conn->query($this->sql);
-		}*/
+		}
   }
-	  public function csomag2()
+	  public function csomagNyit2()
   {
-	  $_SESSION["csomag"] = 2;
-	  echo $_SESSION["csomag"];
-	  header("location: csomagnyit.php");
+	  	  $ar=50000;
+	  	$this->sql = "SELECT penz FROM felhasznalok WHERE id='".$_SESSION["login_state"]."'";
+		$this->result = $this->conn->query($this->sql);
+		$this->row = $this->result->fetch_assoc();
+		$penz=$this->row["penz"];
+	  	if($penz-$ar>=0)
+		{
+			$_SESSION["csomagAzon"] = 2;
+	  		header("location: csomagnyit.php");
+		}
   }
-	  public function csomag3()
+	  public function csomagNyit3()
   {
-	  $_SESSION["csomag"] = 3;
-	  header("location: csomagnyit.php");
+	  	  	$ar=150000;
+	  	$this->sql = "SELECT penz FROM felhasznalok WHERE id='".$_SESSION["login_state"]."'";
+		$this->result = $this->conn->query($this->sql);
+		$this->row = $this->result->fetch_assoc();
+		$penz=$this->row["penz"];
+	  	if($penz-$ar>=0)
+		{
+			$_SESSION["csomagAzon"] = 3;
+	  		header("location: csomagnyit.php");
+		}
   }
 } ?>
