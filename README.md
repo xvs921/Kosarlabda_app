@@ -16,9 +16,5 @@ Menu ?
 
 
 További ötletek:
-  csomagnyit oldal
-  1másik gomb jobb sarokba -> elad, ha már megvan csak ere kattintva lép tovább, funkció megírva
-  2ha nincs az aktuális pontszámú játékos akkor tipus legyen 0->pénzt kap
+  játékos eladása csak ha van legalább 5, amugy nem lehet
   
-  csomagok oldal
-  ellenőrizni pozitív marad e a pénze nyitás után, ha nem, akkor nem hagyjuk nyitni
