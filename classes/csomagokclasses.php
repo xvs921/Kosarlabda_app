@@ -35,7 +35,7 @@ class Session
   }
   public function csomagNyit1()
   {
-	  	$ar=5000;
+	    $ar=5000;
 	  	$this->sql = "SELECT penz FROM felhasznalok WHERE id='".$_SESSION["login_state"]."'";
 		$this->result = $this->conn->query($this->sql);
 		$this->row = $this->result->fetch_assoc();
@@ -45,6 +45,11 @@ class Session
 			$_SESSION["csomagAzon"] = 1;
 	  		header("location: csomagnyit.php");
 		}
+	  	else
+	  	{
+			?> <script>alert("Nincs elég pénzed!")</script> 
+			<meta http-equiv="refresh" content="1; url = csomagok.php"> <?php
+	  	}
   }
 	  public function csomagNyit2()
   {
@@ -58,6 +63,11 @@ class Session
 			$_SESSION["csomagAzon"] = 2;
 	  		header("location: csomagnyit.php");
 		}
+		  	  	else
+	  	{
+			?> <script>alert("Nincs elég pénzed!")</script> 
+			<meta http-equiv="refresh" content="1; url = csomagok.php"> <?php
+	  	}
   }
 	  public function csomagNyit3()
   {
@@ -71,5 +81,10 @@ class Session
 			$_SESSION["csomagAzon"] = 3;
 	  		header("location: csomagnyit.php");
 		}
+		  	  	else
+	  	{
+			?> <script>alert("Nincs elég pénzed!")</script> 
+			<meta http-equiv="refresh" content="1; url = csomagok.php"> <?php
+	  	}
   }
 } ?>

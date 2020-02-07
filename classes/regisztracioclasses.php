@@ -36,14 +36,58 @@ public function registration($felhasznalonev, $email, $jelszo, $jelszoujra)
     $this->number = preg_match('@[0-9]@', $jelszo);
 	if ($this->felhasznalonevekLekeres->num_rows == 0 && $this->emailekLekeres->num_rows == 0 && $jelszo == $jelszoujra && $this->uppercase && $this->lowercase && $this->number)
     {
-      $this->sql = "INSERT INTO felhasznalok(felhasznalonev, jelszo, email, `csapatok.id`, penz, aktiv) VALUES ('".$felhasznalonev."', '".password_hash($jelszo, PASSWORD_DEFAULT)."', '".$email."', 1,5000,1)";
+		$this->sql = "SELECT MAX(id)+1 FROM csapatok";
+			 $this->result = $this->conn->query($this->sql);
+			$this->row = $this->result->fetch_assoc();
+			$ujCsapatId=$this->row["MAX(id)+1"];
+			
+		$this->sql = "INSERT INTO csapatok(nev, lejatszott, nyert, vesztett) VALUES ('".$felhasznalonev."',0,0,0)";
+		$this->conn->query($this->sql);
+		
+      	$this->sql = "INSERT INTO felhasznalok(felhasznalonev, jelszo, email, `csapatok.id`, penz, aktiv) VALUES ('".$felhasznalonev."', '".password_hash($jelszo, PASSWORD_DEFAULT)."', '".$email."','".$ujCsapatId."',15000,1)";
+		
       if ($this->conn->query($this->sql))
       { 
 		 $this->sql = "INSERT INTO jogok(`felhasznalok.id`, `jogosultsagok.id`) VALUES ((SELECT MAX(id) FROM felhasznalok),3)";
-		 $this->conn->query($this->sql)
+		 $this->conn->query($this->sql);
+		 $jatekosSzam = 0;
+		 $nemCsapattag=0;
+		  do {
+    		$this->sql = "SELECT id FROM jatekosok ORDER BY RAND() LIMIT 1";
+			$this->result = $this->conn->query($this->sql);
+			$this->row = $this->result->fetch_assoc();
+			$ujJatekosAzon=$this->row["id"];
+			 
+			$this->sql = "SELECT id FROM csapattagok WHERE `csapatok.id`='".$ujCsapatId."' AND `jatekosok.id`='".$ujJatekosAzon."'";			 
+			$this->result = $this->conn->query($this->sql);
+			if($this->result->num_rows == 0)
+			{
+				$nemCsapattag=1;
+			}
+
+			$this->sql = "SELECT MAX(sorszam)+1 FROM csapattagok WHERE `csapatok.id`='".$ujCsapatId."'";
+			$this->result = $this->conn->query($this->sql);
+			$this->row = $this->result->fetch_assoc();
+			if($this->row["MAX(sorszam)+1"]>0)
+			 {
+				$ujJatekosSorszam=$this->row["MAX(sorszam)+1"];
+			 }
+			 else
+			 {
+				 $ujJatekosSorszam=1;
+			 } 
+			  if($nemCsapattag==1)
+			  {
+				$this->sql = "INSERT INTO csapattagok(`csapatok.id`, `jatekosok.id`, `sorszam`, `kezdo`) VALUES ('".$ujCsapatId."', '".$ujJatekosAzon."','".$ujJatekosSorszam."',1)";
+		 		$this->conn->query($this->sql);	
+				$jatekosSzam++;
+				$nemCsapattag=0;  
+			  }				  
+		  } while ($jatekosSzam<5);
 		?>
-		<script>alert("Sikeres regisztráció!")</script>
-        <meta http-equiv="refresh" content="1; url = index.php"> <?php
+			<script>alert("Sikeres regisztráció!")</script>
+			<meta http-equiv="refresh" content="1; url = index.php">
+		<?php
       }
       else
       { 
@@ -82,5 +126,9 @@ public function registration($felhasznalonev, $email, $jelszo, $jelszoujra)
         }
     }
   }
-}
+}/*
+biztonsági mentés
+$this->sql = "SELECT MAX(id)+1 FROM csapatok"; $this->result = $this->conn->query($this->sql); $this->row = $this->result->fetch_assoc(); $ujCsapatId=$this->row["MAX(id)+1"]; $this->sql = "INSERT INTO csapatok(nev, lejatszott, nyert, vesztett) VALUES ('".$felhasznalonev."',0,0,0)"; $this->conn->query($this->sql); $this->sql = "INSERT INTO felhasznalok(felhasznalonev, jelszo, email, `csapatok.id`, penz, aktiv) VALUES ('".$felhasznalonev."', '".password_hash($jelszo, PASSWORD_DEFAULT)."', '".$email."','".$ujCsapatId."',15000,1)"; if ($this->conn->query($this->sql)) { $this->sql = "INSERT INTO jogok(`felhasznalok.id`, `jogosultsagok.id`) VALUES ((SELECT MAX(id) FROM felhasznalok),3)"; $this->conn->query($this->sql); for($i=0;$i<5;$i++) { $this->sql = "SELECT id FROM jatekosok ORDER BY RAND() LIMIT 1"; $this->result = $this->conn->query($this->sql); $this->row = $this->result->fetch_assoc(); $ujJatekosAzon=$this->row["id"]; $this->sql = "INSERT INTO csapattagok(`csapatok.id`, `jatekosok.id`, `sorszam`, `kezdo`) VALUES ('".$ujCsapatId."'.$ujJatekosAzon."',(SELECT MAX(sorszam) FROM csapattagok WHERE `csapatok.id`='".$ujCsapatId."'),0)"; $this->conn->query($this->sql); } ?> <?php
+
+*/
 ?>

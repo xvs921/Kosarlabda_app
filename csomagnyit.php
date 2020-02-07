@@ -30,6 +30,10 @@ $adatok->connect();
 		$minPenz=2;
 		$maxPenz=2;
 		$randPont=Rand($adatok->getMinOsszPontszam(),85);
+		if($adatok->randPontJatekosokSzama($randPont)==0)
+		{
+			$tipus=0;
+		}
 		$kosaras=$adatok->kosarasAzon($randPont);
 		$csapatAzon=$adatok->getCsapatAzon();
 	}
@@ -39,6 +43,10 @@ $adatok->connect();
 		$minPenz=1000;
 		$maxPenz=75000;
 		$randPont=Rand(75,90);
+		if($adatok->randPontJatekosokSzama($randPont)==0)
+		{
+			$tipus=0;
+		}
 		$kosaras=$adatok->kosarasAzon($randPont);
 		$csapatAzon=$adatok->getCsapatAzon();
 	}
@@ -48,15 +56,16 @@ $adatok->connect();
 		$minPenz=5000;
 		$maxPenz=200000;
 		$randPont=Rand(80,$adatok->getMaxOsszPontszam());
+		if($adatok->randPontJatekosokSzama($randPont)==0)
+		{
+			$tipus=0;
+		}
 		$kosaras=$adatok->kosarasAzon($randPont);
 		$csapatAzon=$adatok->getCsapatAzon();
 	}
 
 	if( $tipus == 0 && $adatok->fizetesLehetE($ar)==1)
 	{
-				echo $_SESSION["csomagAzon"];
-		echo ";";
-		echo $ar;
 		$adatok->fizetes($ar) ?>
 		<div class="testimonials">
 			<div class="card">
@@ -74,9 +83,6 @@ $adatok->connect();
 
 	else if($tipus == 1 && $adatok->fizetesLehetE($ar)==1)
 	{
-		echo $_SESSION["csomagAzon"];
-		echo ";";
-		echo $ar;
 		$adatok->fizetes($ar);
 		if($adatok->csapattagE($kosaras,$csapatAzon)==0)
 		{
@@ -106,9 +112,10 @@ $adatok->connect();
 			</div>
 		</div>
 	<?php }
-	else
+		else
 	{
-		?> <script>alert("Nincs elég pénzed!")</script> <?php
+		?> <script>alert("Nincs elég pénzed!")</script> 
+		<meta http-equiv="refresh" content="0; url = csomagok.php"> <?php
 	}
 	?>
 	</body>

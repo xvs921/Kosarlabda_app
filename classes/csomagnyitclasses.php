@@ -40,10 +40,16 @@ public function csomagTipus() {
 	
   public function KosarasAzon($randPont)
   {
-	$this->sql = "SELECT id,nev FROM jatekosok WHERE osszPontszam='".$randPont."' ORDER BY RAND() LIMIT 1";
+	$this->sql = "SELECT id FROM jatekosok WHERE osszPontszam='".$randPont."' ORDER BY RAND() LIMIT 1";
 	$this->result = $this->conn->query($this->sql);
 	$this->row = $this->result->fetch_assoc();
 	return $this->row["id"];
+  }
+	public function randPontJatekosokSzama($randPont)
+  {
+	$this->sql = "SELECT * FROM jatekosok WHERE osszPontszam='".$randPont."'";
+	$this->result = $this->conn->query($this->sql);
+	return $this->result->num_rows;
   }
 
 	public function getMinOsszPontszam()
@@ -70,7 +76,6 @@ public function getCsapattagokSzama()
   {
 	$this->sql = "INSERT INTO csapattagok(`csapatok.id`, `jatekosok.id`, sorszam, kezdo) VALUES ('".$csapatAzon."','".$jatekosid."',(SELECT Max(sorszam)+1 FROM csapattagok cs1 WHERE `csapatok.id`='".$csapatAzon."'),0)";
 	$this->result = $this->conn->query($this->sql);
-	 echo $this->sql;
   }
 public function fizetesLehetE($osszeg)
   {
@@ -115,9 +120,9 @@ public function fizetesLehetE($osszeg)
 	}	
 	public function csomagElad($kosaras)
 	{
-		$this->sql = "UPDATE felhasznalok SET penz=penz+(SELECT CAST(ar/4 AS int) FROM jatekosok WHERE id='".$kosaras."') WHERE id='".$_SESSION["login_state"]."'";
+		$this->sql = "UPDATE felhasznalok SET penz=penz+(SELECT ar FROM jatekosok WHERE id='".$kosaras."') WHERE id='".$_SESSION["login_state"]."'";
 		$this->result = $this->conn->query($this->sql);
-		echo "a csapatodban van, igy az árát kapod";
+		?><script>alert("A csapatodban van, így az árát kapod!")</script> <?php
 	}
 	//játékos kártya adatai(getterek)
 	public function getNev($kosaras)
