@@ -27,8 +27,8 @@ $adatok->connect();
 	if($_SESSION["csomagAzon"]==1)
 	{
 		$ar=5000;
-		$minPenz=2;
-		$maxPenz=2;
+		$minPenz=1;
+		$maxPenz=20000;
 		$randPont=Rand($adatok->getMinOsszPontszam(),85);
 		if($adatok->randPontJatekosokSzama($randPont)==0)
 		{
