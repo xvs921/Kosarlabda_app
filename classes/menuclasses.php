@@ -62,4 +62,20 @@ class Session
 	$this->row = $this->result->fetch_assoc();
 	echo $this->row["nev"];
   }
+		public function sajatAzon()
+	{
+		$this->sql = "SELECT * FROM felhasznalok f 
+	LEFT JOIN csapatok cs on cs.id=f.`csapatok.id`
+	where f.id='".$_SESSION["login_state"]."'";
+	$this->result = $this->conn->query($this->sql);
+	$this->row = $this->result->fetch_assoc();
+	return $this->row["id"];
+	}
+	public function ellenfelAzon()
+  {
+	$this->sql = "SELECT id FROM csapatok ORDER BY RAND() LIMIT 1";
+	$this->result = $this->conn->query($this->sql);
+	$this->row = $this->result->fetch_assoc();
+	return $this->row["id"];
+  }
 } ?>

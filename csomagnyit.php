@@ -34,8 +34,11 @@ $adatok->connect();
 		{
 			$tipus=0;
 		}
-		$kosaras=$adatok->kosarasAzon($randPont);
-		$csapatAzon=$adatok->getCsapatAzon();
+		else
+		{
+			$kosaras=$adatok->kosarasAzon($randPont);
+			$csapatAzon=$adatok->getCsapatAzon();	
+		}
 	}
 	if($_SESSION["csomagAzon"]==2)
 	{
@@ -47,8 +50,11 @@ $adatok->connect();
 		{
 			$tipus=0;
 		}
-		$kosaras=$adatok->kosarasAzon($randPont);
-		$csapatAzon=$adatok->getCsapatAzon();
+		else
+		{
+			$kosaras=$adatok->kosarasAzon($randPont);
+			$csapatAzon=$adatok->getCsapatAzon();	
+		}
 	}
 	if($_SESSION["csomagAzon"]==3)
 	{
@@ -60,8 +66,11 @@ $adatok->connect();
 		{
 			$tipus=0;
 		}
-		$kosaras=$adatok->kosarasAzon($randPont);
-		$csapatAzon=$adatok->getCsapatAzon();
+		else
+		{
+			$kosaras=$adatok->kosarasAzon($randPont);
+			$csapatAzon=$adatok->getCsapatAzon();	
+		}
 	}
 
 	if( $tipus == 0 && $adatok->fizetesLehetE($ar)==1)

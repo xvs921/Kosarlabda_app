@@ -7,6 +7,14 @@ if(isset($_GET["action"]) && $_GET["action"] == "cmd_logout")
 	$logout = new Session();
 	$logout->logout();
 }
+if(isset($_GET["action"]) && $_GET["action"] == "ujEllenfel")
+{
+	$meccsAdat = new Session();
+	$meccsAdat->connect();
+	$_SESSION["ellenfelId"]=$meccsAdat->ellenfelAzon();
+	$_SESSION["sajatId"]=$meccsAdat->sajatAzon();
+	?><meta http-equiv="refresh" content="1; url = merkozes.php"><?php
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -22,7 +30,7 @@ if(isset($_GET["action"]) && $_GET["action"] == "cmd_logout")
 		<?php 
 		$felhAdat = new Session();
 		$felhAdat->connect();?>
-		<td class=tdPenz><?php $felhAdat->felhasznalopenz(); ?> coin</td><?php
+		<td class=tdPenz><?php $felhAdat->felhasznalopenz(); ?> zseton</td><?php
 		$felhAdat->disconnect();?>
 		<td><button><a href="menu.php?action=cmd_logout">Kijelentkezés</a></button></td>
 	</tr>
@@ -60,7 +68,7 @@ if(isset($_GET["action"]) && $_GET["action"] == "cmd_logout")
 			</div>
 		</div>
 		</a>
-		<a href="xd.html">
+		<a href="menu.php?action=ujEllenfel">
 		<div class="card">
 			<div class="content">
 				<div class="details">

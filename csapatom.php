@@ -26,7 +26,7 @@ $session->sessionStart();
 		$csapatAzon=$jatekosokListazas->getCsapat();
 		for($i=1;$i<=$jatekosokListazas->osszesCsapattag();$i++)
 		{
-			if($jatekosokListazas->getCsapata($i)==$csapatAzon)
+			if($jatekosokListazas->getCsapata($i)==$csapatAzon && $jatekosokListazas->getCsapata($i)!=null)
 			{
 				$kosaras=$jatekosokListazas->getJatekosok($i);
 				if($jatekosokListazas->getKezdo($kosaras,$csapatAzon)==1){?>

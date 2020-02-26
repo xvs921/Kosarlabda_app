@@ -44,7 +44,7 @@ $session->sessionStart();
 		<div class="card">
 			<div class="content">
 				<div class="details">
-					<h2>Kezdők szerencséje<br><span></span></h2>
+					<h2>Kezdők szerencséje<br><span>5000 zseton</span></h2>
 				</div>
 				<div class="image">
 					<i class="fa fa-eur fa-5x" aria-hidden="true"></i>
@@ -59,7 +59,7 @@ $session->sessionStart();
 		<div class="card">
 			<div class="content">
 				<div class="details">
-					<h2>Arany középút<br><span></span></h2>
+					<h2>Arany középút<br><span>50 000 zseton</span></h2>
 				</div>
 				<div class="image">
 					<i class="fa fa-lightbulb-o fa-5x" aria-hidden="true"></i>
@@ -74,7 +74,7 @@ $session->sessionStart();
 		<div class="card">
 			<div class="content">
 				<div class="details">
-					<h2>Nagyok asztala<br><span></span></h2>
+					<h2>Nagyok asztala<br><span>150 000 zseton</span></h2>
 				</div>
 				<div class="image">
 					<i class="fa fa-bolt fa-5x" aria-hidden="true"></i>
