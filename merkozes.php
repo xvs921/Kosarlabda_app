@@ -6,6 +6,8 @@ $classes = new Session();
 $classes->connect();
 $sajatCsapat=array();
 $ellenfelCsapat=array();
+$_SESSION["eredmeny1"]=0;
+$_SESSION["eredmeny2"]=0;
 	for ($i = 1; $i <= $classes->csapattagokMaxId(); $i++) {
     	if($classes->getCsapata($i)==$_SESSION["sajatId"])
 		{
@@ -37,9 +39,9 @@ $ellenfelCsapat=array();
 		<td>
 			<table class="eredmenySor">
 				<tr>
-					<td><h2>2</h2></td>
+					<td><h2><?php echo $_SESSION["eredmeny1"]; ?></h2></td>
 					<td><h2>-</h2></td>
-					<td><h2>1</h2></td>
+					<td><h2><?php echo $_SESSION["eredmeny2"]; ?></h2></td>
 				</tr>
 			</table>
 		</td>
