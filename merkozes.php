@@ -9,11 +9,11 @@ $ellenfelCsapat=array();
 $_SESSION["eredmeny1"]=0;
 $_SESSION["eredmeny2"]=0;
 	for ($i = 1; $i <= $classes->csapattagokMaxId(); $i++) {
-    	if($classes->getCsapata($i)==$_SESSION["sajatId"])
+    	if($classes->getCsapata($i)==$_SESSION["sajatId"] and $classes->getKezdo($i)==1)
 		{
 			array_push($sajatCsapat, $classes->getJatekosAzon($i));
 		}
-		if($classes->getCsapata($i)==$_SESSION["ellenfelId"])
+		if($classes->getCsapata($i)==$_SESSION["ellenfelId"] and $classes->getKezdo($i)==1)
 		{
 			array_push($ellenfelCsapat, $classes->getJatekosAzon($i));
 		}
@@ -54,7 +54,7 @@ $_SESSION["eredmeny2"]=0;
 		for ($i = 0; $i < 5; $i++) {
     			?>
 			<?php 
-			$kosaras= $sajatCsapat[$i] ?>
+			$kosaras=$sajatCsapat[$i] ?>
 			<div class="card">
 					<div class="content">
 						<div class="image">
@@ -78,6 +78,17 @@ $_SESSION["eredmeny2"]=0;
 					</div>
 			</div>
 		<?php
+		}
+			if(isset($_POST["action"]) && $_POST["action"] == "btnParbaj")
+		{
+		$_SESSION["sajatJatekos"]=$_POST["kosarasId"];
+		$azon=array_search('$_POST["kosarasId"]', $sajatCsapat);
+		unset($sajatCsapat[$azon]);
+		?><meta http-equiv="refresh" content="1; url = parbaj.php"><?php
+  			/*$adatok = new Session();
+			$adatok->connect();
+			$adatok->csomagNyit1();
+			$adatok->disconnect();*/
 		}
 		?>
 	</div>

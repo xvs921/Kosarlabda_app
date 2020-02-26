@@ -33,16 +33,6 @@ class Session
 	{
 		$this->conn->close();
   }
-	public function sajatAzon()
-	{
-		$this->sql = "SELECT * FROM felhasznalok f 
-	LEFT JOIN csapatok cs on cs.id=f.`csapatok.id`
-	where f.id='".
-			."'";
-	$this->result = $this->conn->query($this->sql);
-	$this->row = $this->result->fetch_assoc();
-	return $this->row["id"];
-	}
 public function sajatCsapatnev()
   {
 	$this->sql = "SELECT * FROM felhasznalok f 
@@ -51,13 +41,6 @@ public function sajatCsapatnev()
 	$this->result = $this->conn->query($this->sql);
 	$this->row = $this->result->fetch_assoc();
 	return $this->row["nev"];
-  }
-	public function ellenfelAzon()
-  {
-	$this->sql = "SELECT id FROM csapatok ORDER BY RAND() LIMIT 1";
-	$this->result = $this->conn->query($this->sql);
-	$this->row = $this->result->fetch_assoc();
-	return $this->row["id"];
   }
 	public function ellenfelCsapatnev()
   {
@@ -84,10 +67,17 @@ public function sajatCsapatnev()
 	}
 	  public function getCsapata($azon)
   {
-	$this->sql = "SELECT `csapatok.id` FROM csapattagok WHERE id='".$azon."' AND kezdo=1";
+	$this->sql = "SELECT `csapatok.id` FROM csapattagok WHERE id='".$azon."'";
 	$this->result = $this->conn->query($this->sql);
 	$this->row = $this->result->fetch_assoc();
 	return $this->row["csapatok.id"];
+  }
+public function getKezdo($azon)
+  {
+	$this->sql = "SELECT kezdo FROM csapattagok WHERE id='".$azon."'";
+	$this->result = $this->conn->query($this->sql);
+	$this->row = $this->result->fetch_assoc();
+	return $this->row["kezdo"];
   }
 	
 public function getJatekosAzon($azon)
