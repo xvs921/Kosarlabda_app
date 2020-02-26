@@ -9,12 +9,7 @@ public $username = "kosarlabdaapp";
 public $password = "Kosarlabdaapp2020";
 public $dbname = "kosarlabdaapp";
 
-Jelenlegi állapot: 
-Bejelentkezés
-Regisztráció
-Menu ?
-
-
 További ötletek:
   játékos eladása csak ha van legalább 5, amugy nem lehet
+  felh.szerk oldal és jatekos szerk oldalon keresőbar és módfosítás full update segítségével modallal
   
