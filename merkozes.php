@@ -4,20 +4,8 @@ $session = new Session();
 $session->sessionStart();
 $classes = new Session();
 $classes->connect();
-$sajatCsapat=array();
-$ellenfelCsapat=array();
 $_SESSION["eredmeny1"]=0;
 $_SESSION["eredmeny2"]=0;
-	for ($i = 1; $i <= $classes->csapattagokMaxId(); $i++) {
-    	if($classes->getCsapata($i)==$_SESSION["sajatId"] and $classes->getKezdo($i)==1)
-		{
-			array_push($sajatCsapat, $classes->getJatekosAzon($i));
-		}
-		if($classes->getCsapata($i)==$_SESSION["ellenfelId"] and $classes->getKezdo($i)==1)
-		{
-			array_push($ellenfelCsapat, $classes->getJatekosAzon($i));
-		}
-	}
 ?>
 <!DOCTYPE html>
 <html>
@@ -50,11 +38,11 @@ $_SESSION["eredmeny2"]=0;
 </table>
 <body>
 	<div class="testimonials">
-		<?php 
-		for ($i = 0; $i < 5; $i++) {
-    			?>
-			<?php 
-			$kosaras=$sajatCsapat[$i] ?>
+		<?php
+		for ($i = 0; $i <count($_SESSION['sajatCsapat']); $i++) {
+			if(is_numeric($_SESSION['sajatCsapat'][$i]))
+			{
+			$kosaras=$_SESSION['sajatCsapat'][$i] ?>
 			<div class="card">
 					<div class="content">
 						<div class="image">
@@ -78,17 +66,22 @@ $_SESSION["eredmeny2"]=0;
 					</div>
 			</div>
 		<?php
+			}
+			else
+			{
+				echo null;
+			}
 		}
-			if(isset($_POST["action"]) && $_POST["action"] == "btnParbaj")
+		if(isset($_POST["action"]) && $_POST["action"] == "btnParbaj")
 		{
 		$_SESSION["sajatJatekos"]=$_POST["kosarasId"];
-		$azon=array_search('$_POST["kosarasId"]', $sajatCsapat);
-		unset($sajatCsapat[$azon]);
-		?><meta http-equiv="refresh" content="1; url = parbaj.php"><?php
-  			/*$adatok = new Session();
-			$adatok->connect();
-			$adatok->csomagNyit1();
-			$adatok->disconnect();*/
+		$azon=array_search($_POST["kosarasId"], $_SESSION['sajatCsapat']);
+		array_replace($_SESSION['sajatCsapat'],array([$azon] => 0
+													));	
+		$_SESSION['sajatCsapat'] = $_SESSION['sajatCsapat'];
+			echo '<pre>'; print_r($_SESSION['sajatCsapat']); echo '</pre>';
+			?><meta http-equiv="refresh" content="1; url = merkozes.php"><?php
+			echo count($_SESSION['sajatCsapat']);
 		}
 		?>
 	</div>

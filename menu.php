@@ -11,8 +11,22 @@ if(isset($_GET["action"]) && $_GET["action"] == "ujEllenfel")
 {
 	$meccsAdat = new Session();
 	$meccsAdat->connect();
+	$sajatCsapat=array();
+$ellenfelCsapat=array();
 	$_SESSION["ellenfelId"]=$meccsAdat->ellenfelAzon();
 	$_SESSION["sajatId"]=$meccsAdat->sajatAzon();
+		for ($i = 1; $i <= $meccsAdat->csapattagokMaxId(); $i++) {
+    	if($meccsAdat->getCsapata($i)==$_SESSION["sajatId"] and $meccsAdat->getKezdo($i)==1)
+		{
+			array_push($sajatCsapat, $meccsAdat->getJatekosAzon($i));
+		}
+		if($meccsAdat->getCsapata($i)==$_SESSION["ellenfelId"] and $meccsAdat->getKezdo($i)==1)
+		{
+			array_push($ellenfelCsapat, $meccsAdat->getJatekosAzon($i));
+		}
+	}
+$_SESSION['sajatCsapat'] = $sajatCsapat;
+$_SESSION['ellenfelCsapat'] = $ellenfelCsapat;
 	?><meta http-equiv="refresh" content="1; url = merkozes.php"><?php
 }
 ?>
