@@ -76,7 +76,7 @@ $_SESSION["eredmeny2"]=0;
 			$cserel=array_replace($_SESSION['sajatCsapat'],$csere);	
 			$_SESSION['sajatCsapat']=$cserel;
 			//echo '<pre>'; print_r($_SESSION['sajatCsapat']); echo '</pre>';
-			?><meta http-equiv="refresh" content="1; url = merkozes.php"><?php
+			?><meta http-equiv="refresh" content="1; url = parbaj.php"><?php
 		}
 		?>
 	</div>
