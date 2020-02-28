@@ -4,8 +4,23 @@ $session = new Session();
 $session->sessionStart();
 $classes = new Session();
 $classes->connect();
-$_SESSION["eredmeny1"]=0;
-$_SESSION["eredmeny2"]=0;
+
+if($_SESSION["parbaj"]==5)
+{
+	echo "vege";
+	if($_SESSION["eredmeny1"]>$_SESSION["eredmeny2"])
+	{
+		$classes->sajatGyozelem();
+	}
+	else if($_SESSION["eredmeny1"]<$_SESSION["eredmeny2"])
+	{
+		$classes->ellenfelGyozelem();
+	}
+	else
+	{
+		$classes->dontetlen();
+	}
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -69,12 +84,34 @@ $_SESSION["eredmeny2"]=0;
 			}
 		}
 		if(isset($_POST["action"]) && $_POST["action"] == "btnParbaj")
-		{		
+		{	
+			//saját csapat párbaj
 			$_SESSION["sajatJatekos"]=$_POST["kosarasId"];
 			$azon=array_search($_POST["kosarasId"], $_SESSION['sajatCsapat']);
 			$csere=array($azon => -1);
 			$cserel=array_replace($_SESSION['sajatCsapat'],$csere);	
 			$_SESSION['sajatCsapat']=$cserel;
+			//ellenfél csapat párbaj
+			$ellenfelJatekos;
+			do
+			{
+				$ellenfelJatekos=rand(0, 4);				
+			}
+			while($_SESSION['ellenfelCsapat'][$ellenfelJatekos] == -1);
+				
+				$_SESSION['ellenfelJatekos']=$_SESSION['ellenfelCsapat'][$ellenfelJatekos];
+				$azon2=array_search($_SESSION['ellenfelJatekos'], $_SESSION['ellenfelCsapat']);
+				$csere2=array($azon2 => -1);
+				$cserel2=array_replace($_SESSION['ellenfelCsapat'],$csere2);	
+				$_SESSION['ellenfelCsapat']=$cserel2;
+
+			//párbaj
+			$kosaras=$_SESSION["sajatJatekos"];
+			$osszpont=$classes->getOsszpontszam($kosaras)+$classes->get3pontos($kosaras)+$classes->getZsakolas($kosaras);
+			$kosaras2=$_SESSION['ellenfelJatekos'];
+			$osszpont2=$classes->getOsszpontszam($kosaras2)+$classes->get3pontos($kosaras2)+$classes->getZsakolas($kosaras2);
+			$classes->parbaj($osszpont,$osszpont2);
+			$_SESSION["parbaj"]++;
 			//echo '<pre>'; print_r($_SESSION['sajatCsapat']); echo '</pre>';
 			?><meta http-equiv="refresh" content="1; url = parbaj.php"><?php
 		}

@@ -103,4 +103,45 @@ public function getJatekosAzon($azon)
 	$this->row = $this->result->fetch_assoc();
 	return $this->row["kep"];
   }
+public function parbaj($osszpont,$osszpont2)
+  {
+	if($osszpont>$osszpont2)
+	{
+		$_SESSION['parbajEredmeny']="A te játékosod nyert!";
+		$_SESSION["eredmeny1"]++;
+	}
+		else if($osszpont==$osszpont2)
+		{
+			$_SESSION['parbajEredmeny']="Döntetlen!";
+			$_SESSION["eredmeny1"]++;
+			$_SESSION["eredmeny2"]++;
+		}
+		else
+		{
+			$_SESSION['parbajEredmeny']="A másik játékos nyert!";
+			$_SESSION["eredmeny2"]++;
+		}
+  }
+public function sajatGyozelem()
+  {
+	$this->sql = "UPDATE csapatok SET lejatszott=lejatszott+1, nyert=nyert+1 WHERE id='".$_SESSION['sajatId']."'";
+	$this->result = $this->conn->query($this->sql);
+	$this->sql = "UPDATE csapatok SET lejatszott=lejatszott+1, vesztett=vesztett+1 WHERE id='".$_SESSION['ellenfelId']."'";
+	$this->result = $this->conn->query($this->sql);
+	
+  }
+	public function ellenfelGyozelem()
+  {
+	$this->sql = "UPDATE csapatok SET lejatszott=lejatszott+1, nyert=nyert+1 WHERE id='".$_SESSION['ellenfelId']."'";
+	$this->result = $this->conn->query($this->sql);
+	$this->sql = "UPDATE csapatok SET lejatszott=lejatszott+1, vesztett=vesztett+1 WHERE id='".$_SESSION['sajatId']."'";
+	$this->result = $this->conn->query($this->sql);
+  }
+		public function dontetlen()
+  {
+	$this->sql = "UPDATE csapatok SET lejatszott=lejatszott+1 WHERE id='".$_SESSION['sajatId']."'";
+	$this->result = $this->conn->query($this->sql);
+	$this->sql = "UPDATE csapatok SET lejatszott=lejatszott+1 WHERE id='".$_SESSION['ellenfelId']."'";
+	$this->result = $this->conn->query($this->sql);
+  }
 } ?>
