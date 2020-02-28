@@ -4,22 +4,28 @@ $session = new Session();
 $session->sessionStart();
 $classes = new Session();
 $classes->connect();
-
+$vegeredmeny;
 if($_SESSION["parbaj"]==5)
 {
-	echo "vege";
 	if($_SESSION["eredmeny1"]>$_SESSION["eredmeny2"])
 	{
 		$classes->sajatGyozelem();
+		$vegeredmeny=1;
 	}
 	else if($_SESSION["eredmeny1"]<$_SESSION["eredmeny2"])
 	{
 		$classes->ellenfelGyozelem();
+		$vegeredmeny=2;
 	}
 	else if($_SESSION["eredmeny1"]==$_SESSION["eredmeny2"])
 	{
 		$classes->dontetlen();
+		$vegeredmeny=3;
 	}
+	?> <script>
+	var eredmeny1='<?php echo $_SESSION["eredmeny1"];?>';
+	var eredmeny2='<?php echo $_SESSION["eredmeny2"];?>';
+	alert("A végeredmény\n"+eredmeny1+"-"+eredmeny2)</script><?php
 }
 ?>
 <!DOCTYPE html>
@@ -35,7 +41,13 @@ if($_SESSION["parbaj"]==5)
 	<tr>
 		<td></td>
 		<td></td>
-		<td class="visszaTd"><button><a href="menu.php">Vissza</a></button></td>
+		<td class="visszaTd">
+			<?php if($_SESSION["parbaj"]==5)
+		{?>
+			<button><a href="menu.php">Vissza</a></button>
+						<?php 
+		}?>
+		</td>
 	</tr>
 	<tr>
 		<td><h2><?php echo $classes->sajatCsapatnev() ?></h2></td>
@@ -82,6 +94,19 @@ if($_SESSION["parbaj"]==5)
 			</div>
 		<?php
 			}
+		}
+		if($_SESSION["parbaj"]==5)
+		{
+						?>			<div class="card">
+				<div class="content">
+					<div class="image">
+						<i class="fa fa-trophy fa-5x" aria-hidden="true"></i>
+					</div>
+					<div class="details">
+						<h2><?php if($vegeredmeny==1){echo "Nyertél";} else if($vegeredmeny==2){echo "Vesztettél";}?><br><span></span></h2>
+					</div>
+				</div>
+			</div><?php
 		}
 		if(isset($_POST["action"]) && $_POST["action"] == "btnParbaj")
 		{	
