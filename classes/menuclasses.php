@@ -2,6 +2,11 @@
 include("classes/adatbazisclasses.php");
 class Session extends Adatbazis
 {
+		public function logout()
+	{
+		$_SESSION["login_state"] = "";
+		header("location: index.php");
+	}
 		public function csapattagokMaxId()
 	{
 	$this->sql = "SELECT MAX(id) FROM csapattagok";

@@ -3,36 +3,6 @@ body
 	width: 100%;
 	background: #2B3D6B;
 }
-.navbar
-{
-	width:99.9%;
-}
-td
-{
-	text-align: right;
-}
-.visszaGomb
-{
-	text-align: right;
-	  background-color: blue;
-  border: none;
-  color: white;
-  text-decoration: none;
-  font-size: 30px;
-  cursor: pointer;
-  border-radius: 5px;
-}
-button
-{
-
-}
-a:link {
-  text-decoration: none;
-}
-
-a:visited {
-  text-decoration: none;
-}
 .row
 {
 	margin:0 auto;
@@ -54,4 +24,26 @@ a:visited {
 	margin-bottom: 5px;
 	width: 90%;
 	text-align: center;
+}
+.navbar
+{
+	width:100%;
+}
+.visszaGomb
+{
+	text-align: right;
+}
+button
+{
+  background-color: #4CAF50 !important;
+  border: none !important;
+  color: white !important;
+  text-decoration: none !important;
+  font-size: 30px !important;
+  cursor: pointer !important;
+  border-radius: 5px !important;
+}
+a, a:link, a:visited{
+	color: white;
+  text-decoration: none;
 }

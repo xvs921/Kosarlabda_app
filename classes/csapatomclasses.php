@@ -74,8 +74,11 @@ public function getNev($kosaras)
   }
   public function setElad()
   {
-	$this->sql = "UPDATE csapattagok SET `csapatok.id`= 0 WHERE `jatekosok.id`='".$_POST["kosarasId"]."' AND `csapatok.id`='".$_POST["csapatId"]."'";
+	$this->sql = "UPDATE csapattagok SET `csapatok.id`= 2 WHERE `jatekosok.id`='".$_POST["kosarasId"]."' AND `csapatok.id`='".$_POST["csapatId"]."'";
 	$this->result = $this->conn->query($this->sql);
+	  	  ?>
+					<meta http-equiv="refresh" content="0; url = csapatom.php">
+				<?php
   }
   public function getKezdokSzama($csapatAzon)
   {

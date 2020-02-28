@@ -11,9 +11,9 @@
 	  <script src="https://code.jquery.com/jquery.min.js"></script>
 	  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-	  <link rel="stylesheet" type="text/css" href="design/felhasznalokszerkstyle.css">
+	  <link rel="stylesheet" type="text/css" href="design/felhasznalokszerkstyle.css">	  
   </head>
-	  <table class="navbar">
+	<table class="navbar">
 	<tr>
 		<td></td>
 		<td class="visszaGomb"><button><a href="menu.php">Vissza</a></button></td>
