@@ -141,7 +141,7 @@ $this->sql = "UPDATE csapatok SET lejatszott=lejatszott+1, vesztett=vesztett+1 W
   {
 	$this->sql = "UPDATE csapatok SET lejatszott=lejatszott+1 WHERE id='".$_SESSION['sajatId']."'";
 	$this->result = $this->conn->query($this->sql);
-			$this->sql = "UPDATE csapatok SET lejatszott=lejatszott+1 WHERE id='".$_SESSION['ellenfelId']."'";
+	$this->sql = "UPDATE csapatok SET lejatszott=lejatszott+1 WHERE id='".$_SESSION['ellenfelId']."'";
 	$this->result = $this->conn->query($this->sql);
   }
 } ?>

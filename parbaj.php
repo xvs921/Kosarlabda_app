@@ -24,7 +24,7 @@ $kosaras2=$_SESSION['ellenfelJatekos'];
 	</tr>
 </table>
 <body>
-		<h2><?php echo $_SESSION['parbajEredmeny'] ?></h2>
+	<center><h2><?php echo $_SESSION['parbajEredmeny'] ?></h2></center>
 	<div class="testimonials">
 			<div class="card">
 					<div class="content">

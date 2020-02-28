@@ -14,11 +14,15 @@ if(isset($_GET["action"]) && $_GET["action"] == "ujEllenfel")
 	$sajatCsapat=array();
 	$ellenfelCsapat=array();
 		$_SESSION["eredmeny1"]=0;
-$_SESSION["eredmeny2"]=0;
+	$_SESSION["eredmeny2"]=0;
 	$_SESSION["parbaj"]=0;
 	$_SESSION['parbajEredmeny']="";
-	$_SESSION["ellenfelId"]=$meccsAdat->ellenfelAzon();
 	$_SESSION["sajatId"]=$meccsAdat->sajatAzon();
+	do
+	{
+		$_SESSION["ellenfelId"]=$meccsAdat->ellenfelAzon();
+	}
+	while($_SESSION["sajatId"]==$_SESSION["ellenfelId"]);
 		for ($i = 1; $i <= $meccsAdat->csapattagokMaxId(); $i++) {
     	if($meccsAdat->getCsapata($i)==$_SESSION["sajatId"] and $meccsAdat->getKezdo($i)==1)
 		{

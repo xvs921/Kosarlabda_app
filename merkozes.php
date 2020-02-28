@@ -4,24 +4,25 @@ $session = new Session();
 $session->sessionStart();
 $classes = new Session();
 $classes->connect();
-$vegeredmeny;
+$_SESSION["vegeredmeny"]=0;
 if($_SESSION["parbaj"]==5)
 {
 	if($_SESSION["eredmeny1"]>$_SESSION["eredmeny2"])
 	{
 		$classes->sajatGyozelem();
-		$vegeredmeny=1;
+		$_SESSION["vegeredmeny"]=1;
 	}
 	else if($_SESSION["eredmeny1"]<$_SESSION["eredmeny2"])
 	{
 		$classes->ellenfelGyozelem();
-		$vegeredmeny=2;
+		$_SESSION["vegeredmeny"]=2;
 	}
 	else if($_SESSION["eredmeny1"]==$_SESSION["eredmeny2"])
 	{
 		$classes->dontetlen();
-		$vegeredmeny=3;
+		$_SESSION["vegeredmeny"]=3;
 	}
+	$_SESSION["parbaj"]=6;
 	?> <script>
 	var eredmeny1='<?php echo $_SESSION["eredmeny1"];?>';
 	var eredmeny2='<?php echo $_SESSION["eredmeny2"];?>';
@@ -42,9 +43,9 @@ if($_SESSION["parbaj"]==5)
 		<td></td>
 		<td></td>
 		<td class="visszaTd">
-			<?php if($_SESSION["parbaj"]==5)
+			<?php if($_SESSION["parbaj"]==6)
 		{?>
-			<button><a href="menu.php">Vissza</a></button>
+			<button><a href="menu.php">Tovább</a></button>
 						<?php 
 		}?>
 		</td>
@@ -95,18 +96,24 @@ if($_SESSION["parbaj"]==5)
 		<?php
 			}
 		}
-		if($_SESSION["parbaj"]==5)
+		if($_SESSION["parbaj"]==6 && $_SESSION["vegeredmeny"]!=0)
 		{
-						?>			<div class="card">
+			?><div class="card">
 				<div class="content">
 					<div class="image">
-						<i class="fa fa-trophy fa-5x" aria-hidden="true"></i>
+						<?php if($_SESSION["vegeredmeny"]==1){?> <i class="fa fa-trophy fa-5x" aria-hidden="true"></i> <?php } else if($_SESSION["vegeredmeny"]==2){?> <i class="fa fa-times fa-5x" aria-hidden="true"></i> <?php } else if($_SESSION["vegeredmeny"]==3){?> <i class="fa fa-trophy fa" aria-hidden="true"></i> <?php }?>
 					</div>
 					<div class="details">
-						<h2><?php if($vegeredmeny==1){echo "Nyertél";} else if($vegeredmeny==2){echo "Vesztettél";}?><br><span></span></h2>
+						<h2><?php if($_SESSION["vegeredmeny"]==1){echo "Nyertél";} else if($_SESSION["vegeredmeny"]==2){echo "Vesztettél";} else if($_SESSION["vegeredmeny"]==3){echo "Döntetlen";}?><br><span></span></h2>
 					</div>
 				</div>
 			</div><?php
+			$_SESSION["vegeredmeny"]=0;
+		}
+		else if($_SESSION["parbaj"]==6 && $_SESSION["vegeredmeny"]==0)
+		{
+				?> <script>alert("A mérkőzés véget ért!)</script> 
+				<meta http-equiv="refresh" content="1; url = menu.php"><?php
 		}
 		if(isset($_POST["action"]) && $_POST["action"] == "btnParbaj")
 		{	
