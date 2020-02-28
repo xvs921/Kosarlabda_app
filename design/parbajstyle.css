@@ -71,7 +71,7 @@ a, a:link, a:visited{
 .testimonials
 {
 	width: 80%;
-	margin: 150px auto;
+	margin: 150px auto 100px;
 	display: grid;
 	grid-template-columns: repeat( auto-fit, minmax(350px, 1fr));
 	grid-gap: 20px;

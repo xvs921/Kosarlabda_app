@@ -16,7 +16,7 @@ if($_SESSION["parbaj"]==5)
 	{
 		$classes->ellenfelGyozelem();
 	}
-	else
+	else if($_SESSION["eredmeny1"]==$_SESSION["eredmeny2"])
 	{
 		$classes->dontetlen();
 	}
