@@ -1,5 +1,5 @@
 <?php
-class Session
+class Adatbazis
 {
 	public $servername = "localhost:3306";
   	public $username = "root";
@@ -10,7 +10,6 @@ class Session
 	public $result = NULL;
 	public $row = NULL;
     
-  // GLOBAL
 	public function sessionStart()
 	{
 		session_start();

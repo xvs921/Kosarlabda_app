@@ -1,5 +1,6 @@
 <?php
-class SajatFiok
+include("classes/adatbazisclasses.php");
+class SajatFiok extends Adatbazis
 {
   public $servername = "localhost:3306";
   public $username = "root";
