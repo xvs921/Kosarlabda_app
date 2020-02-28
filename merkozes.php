@@ -40,7 +40,7 @@ $_SESSION["eredmeny2"]=0;
 	<div class="testimonials">
 		<?php
 		for ($i = 0; $i <count($_SESSION['sajatCsapat']); $i++) {
-			if(is_numeric($_SESSION['sajatCsapat'][$i]))
+			if($_SESSION['sajatCsapat'][$i]!=-1)
 			{
 			$kosaras=$_SESSION['sajatCsapat'][$i] ?>
 			<div class="card">
@@ -67,21 +67,16 @@ $_SESSION["eredmeny2"]=0;
 			</div>
 		<?php
 			}
-			else
-			{
-				echo null;
-			}
 		}
 		if(isset($_POST["action"]) && $_POST["action"] == "btnParbaj")
-		{
-		$_SESSION["sajatJatekos"]=$_POST["kosarasId"];
-		$azon=array_search($_POST["kosarasId"], $_SESSION['sajatCsapat']);
-		array_replace($_SESSION['sajatCsapat'],array([$azon] => 0
-													));	
-		$_SESSION['sajatCsapat'] = $_SESSION['sajatCsapat'];
-			echo '<pre>'; print_r($_SESSION['sajatCsapat']); echo '</pre>';
+		{		
+			$_SESSION["sajatJatekos"]=$_POST["kosarasId"];
+			$azon=array_search($_POST["kosarasId"], $_SESSION['sajatCsapat']);
+			$csere=array($azon => -1);
+			$cserel=array_replace($_SESSION['sajatCsapat'],$csere);	
+			$_SESSION['sajatCsapat']=$cserel;
+			//echo '<pre>'; print_r($_SESSION['sajatCsapat']); echo '</pre>';
 			?><meta http-equiv="refresh" content="1; url = merkozes.php"><?php
-			echo count($_SESSION['sajatCsapat']);
 		}
 		?>
 	</div>
