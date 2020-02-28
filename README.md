@@ -11,5 +11,6 @@ public $dbname = "kosarlabdaapp";
 
 További ötletek:
   játékos eladása csak ha van legalább 5, amugy nem lehet
-  felh.szerk oldal és jatekos szerk oldalon keresőbar és módfosítás full update segítségével modallal
+  felh.szerk oldal és jatekos szerk oldalon keresőbar és módosítás full update segítségével modallal
+  zseton kiírása ezres csoportban
   
