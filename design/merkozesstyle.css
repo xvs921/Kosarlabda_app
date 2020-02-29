@@ -28,8 +28,9 @@ td
 }
 .pontszamTable
 {
-	width:100%;
+	width:80%;
 	text-align: center;
+	margin: auto;
 }
 button
 {
@@ -44,6 +45,14 @@ button
 a, a:link, a:visited{
   color: white;
   text-decoration: none;
+}
+table
+{
+	width: 80%;
+	text-align: center;
+	margin: auto;
+	font-size: 20px;
+	color: black;
 }
 #hpontTD
 {

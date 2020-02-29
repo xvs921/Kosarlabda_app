@@ -108,8 +108,8 @@ $adatok->connect();
 						<img src="kepek/jatekosok/<?php echo $adatok->getKep($kosaras);?>">
 					</div>
 					<div class="details">
-						<h2><?php echo $adatok->getNev($kosaras); echo $randPont;?></h2>
-						<table>
+						<h2><?php echo $adatok->getNev($kosaras); ?></h2>
+						<table class="adatTable">
 							<tr>
 								<td id="hpontTD"><?php echo $adatok->get3pontos($kosaras);?></td>
 								<td id="osszpontTD"><?php echo $adatok->getOsszpontszam($kosaras);?></td>

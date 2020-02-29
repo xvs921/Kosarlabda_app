@@ -54,7 +54,7 @@ if(isset($_GET["action"]) && $_GET["action"] == "ujEllenfel")
 		$felhAdat->connect();?>
 		<td class=tdPenz><?php number_format($felhAdat->felhasznalopenz(),0, '.', ' '); ?> zseton</td><?php
 		$felhAdat->disconnect();?>
-		<td><button><a href="menu.php?action=cmd_logout">Kijelentkezés</a></button></td>
+		<td><button><a href="menu.php?action=cmd_logout"><font color="white">Kijelentkezés</font></a></button></td>
 	</tr>
 	<tr>
 		<?php 

@@ -36,6 +36,35 @@ a, a:link, a:visited{
   color: white;
   text-decoration: none;
 }
+table
+{
+	width: 80%;
+	text-align: center;
+	margin: auto;
+	font-size: 20px;
+	color: black;
+}
+#adatTable
+{
+	width:33%;
+	text-align: center;
+	color: white;
+}
+#hpontTD
+{
+	background: red;
+	border-radius: 30px;
+}
+#osszpontTD
+{
+	background: lightblue;
+	border-radius: 30px;
+}
+#zsakolasTD
+{
+	background: green;
+	border-radius: 30px;
+}
 .testimonials
 {
 	width: 80%;
