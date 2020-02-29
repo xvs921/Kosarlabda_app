@@ -26,12 +26,6 @@ td
 	width:100%;
 	text-align: center;
 }
-.pontszamTable
-{
-	width:80%;
-	text-align: center;
-	margin: auto;
-}
 button
 {
   background-color: #4CAF50;
@@ -45,38 +39,6 @@ button
 a, a:link, a:visited{
   color: white;
   text-decoration: none;
-}
-table
-{
-	width: 80%;
-	text-align: center;
-	margin: auto;
-	font-size: 20px;
-	color: black;
-}
-#hpontTD
-{
-	 background: red;
-	border-radius: 30px;
-}
-#osszpontTD
-{
-	 background: lightblue;
-	border-radius: 30px;
-}
-#zsakolasTD
-{
-	background: green;
-	border-radius: 30px;
-}
-#pozicioGomb
-{
-  background-color: mediumpurple;
-  color: black;
-  text-decoration: none;
-  font-size: 20px;
-  cursor: pointer;
-  border-radius: 20px; 
 }
 .testimonials
 {

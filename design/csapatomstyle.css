@@ -81,55 +81,6 @@ h1
 {
 	color: #fff;
 }
-table
-{
-	width: 80%;
-	text-align: center;
-	margin: auto;
-	font-size: 20px;
-	color: black;
-}
-#modositoTable
-{
-	width: 100%;
-	text-align: right;
-	margin: auto;
-	font-size: 20px;
-	color: #fff;
-}
-#eladGomb
-{
-  background-color: red;
-  color: black;
-  text-decoration: none;
-  font-size: 20px;
-  cursor: pointer;
-  border-radius: 20px;
-}
-#hpontTD
-{
-	 background: red;
-	border-radius: 30px;
-}
-#osszpontTD
-{
-	 background: lightblue;
-	border-radius: 30px;
-}
-#zsakolasTD
-{
-	background: green;
-	border-radius: 30px;
-}
-#pozicioGomb
-{
-  background-color: mediumpurple;
-  color: black;
-  text-decoration: none;
-  font-size: 20px;
-  cursor: pointer;
-  border-radius: 20px; 
-}
 .navbar
 {
 	width:100%;

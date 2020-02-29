@@ -13,6 +13,7 @@ $ar=0;
 		<title>Csomagok</title>
 		<link href="assets/css/font-awesome.min.css" rel="stylesheet">
 		<link rel="stylesheet" href="design/csomagokstyle.css">
+		<link rel="stylesheet" href="design/jatekoskartyastyle.css">
 	</head>
 	<table class="navbar">
 		<tr>
@@ -109,11 +110,11 @@ $adatok->connect();
 					</div>
 					<div class="details">
 						<h2><?php echo $adatok->getNev($kosaras); ?></h2>
-						<table class="adatTable">
+						<table class="pontszamTable">
 							<tr>
-								<td id="hpontTD"><?php echo $adatok->get3pontos($kosaras);?></td>
-								<td id="osszpontTD"><?php echo $adatok->getOsszpontszam($kosaras);?></td>
-								<td id="zsakolasTD"><?php echo $adatok->getZsakolas($kosaras);?></td>
+								<td class="hpontTD"><?php echo $adatok->get3pontos($kosaras);?></td>
+								<td class="osszpontTD"><?php echo $adatok->getOsszpontszam($kosaras);?></td>
+								<td class="zsakolasTD"><?php echo $adatok->getZsakolas($kosaras);?></td>
 							</tr>
 						</table>
 					</div>

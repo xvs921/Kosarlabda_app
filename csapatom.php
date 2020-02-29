@@ -10,6 +10,7 @@ $session->sessionStart();
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Menü</title>
 	<link rel="stylesheet" href="design/csapatomstyle.css">
+	<link rel="stylesheet" href="design/jatekoskartyastyle.css">
 </head>
 		  <table class="navbar">
 	<tr>
@@ -32,14 +33,14 @@ $session->sessionStart();
 				if($jatekosokListazas->getKezdo($kosaras,$csapatAzon)==1){?>
 				<div class="card">
 					<div class="content">
-						<table id="modositoTable">
+						<table class="modositoTable">
 							<tr>
 								<td>
 								<form method="post">
 									<input type="hidden" name="kosarasId" value="<?php echo $kosaras; ?>">
 									<input type="hidden" name="csapatId" value="<?php echo $csapatAzon; ?>">
 				  					<input type="hidden" name="action" value="btnElad">
-				  					<input type="submit" class="btn btn-default" id="eladGomb" value="elad" id="loginbtn">
+				  					<input type="submit" class="eladGomb" value="elad" id="loginbtn">
 								</form>
 								</td>
 							</tr>
@@ -49,11 +50,11 @@ $session->sessionStart();
 						</div>
 						<div class="details">
 							<h2><?php echo $jatekosokListazas->getNev($kosaras);?></h2>
-						<table>
+						<table class="pontszamTable">
 							<tr>
-								<td id="hpontTD"><?php echo $jatekosokListazas->get3pontos($kosaras);?></td>
-								<td id="osszpontTD"><?php echo $jatekosokListazas->getOsszpontszam($kosaras);?></td>
-								<td id="zsakolasTD"><?php echo $jatekosokListazas->getZsakolas($kosaras);?></td>
+								<td class="hpontTD"><?php echo $jatekosokListazas->get3pontos($kosaras);?></td>
+								<td class="osszpontTD"><?php echo $jatekosokListazas->getOsszpontszam($kosaras);?></td>
+								<td class="zsakolasTD"><?php echo $jatekosokListazas->getZsakolas($kosaras);?></td>
 							</tr>
 						</table>
 						</div>
@@ -61,7 +62,7 @@ $session->sessionStart();
 								<form method="post">
 									<input type="hidden" name="kosarasId" value="<?php echo $kosaras; ?>">
 									<input type="hidden" name="csapatId" value="<?php echo $csapatAzon; ?>">
-									<button id="pozicioGomb" name="action" value="btnCsere">csere</button>
+									<button class="kezdocsereButton" name="action" value="btnCsere">csere</button>
 								</form>
 							</td>
 					</div>
@@ -83,14 +84,14 @@ $session->sessionStart();
 				if($jatekosokListazas->getKezdo($kosaras,$csapatAzon)==0){?>
 				<div class="card">
 					<div class="content">
-						<table id="modositoTable">
+						<table class="modositoTable">
 							<tr>
 								<td>
 									<form method="post">
 										<input type="hidden" name="kosarasId" value="<?php echo $kosaras; ?>">
 										<input type="hidden" name="csapatId" value="<?php echo $csapatAzon; ?>">
 										<input type="hidden" name="action" value="btnElad">
-										<input type="submit" class="btn btn-default" id="eladGomb" value="elad" id="loginbtn">
+										<input type="submit" class="eladGomb" value="elad" id="loginbtn">
 									</form>
 								</td>
 							</tr>
@@ -100,11 +101,11 @@ $session->sessionStart();
 						</div>
 						<div class="details">
 							<h2><?php echo $jatekosokListazas->getNev($kosaras);?></h2>
-						<table>
+						<table class="pontszamTable">
 							<tr>
-								<td id="hpontTD"><?php echo $jatekosokListazas->get3pontos($kosaras);?></td>
-								<td id="osszpontTD"><?php echo $jatekosokListazas->getOsszpontszam($kosaras);?></td>
-								<td id="zsakolasTD"><?php echo $jatekosokListazas->getZsakolas($kosaras);?></td>
+								<td class="hpontTD"><?php echo $jatekosokListazas->get3pontos($kosaras);?></td>
+								<td class="osszpontTD"><?php echo $jatekosokListazas->getOsszpontszam($kosaras);?></td>
+								<td class="zsakolasTD"><?php echo $jatekosokListazas->getZsakolas($kosaras);?></td>
 							</tr>
 						</table>
 						</div>
@@ -112,7 +113,7 @@ $session->sessionStart();
 							<form method="post">
 									<input type="hidden" name="kosarasId" value="<?php echo $kosaras; ?>">
 									<input type="hidden" name="csapatId" value="<?php echo $csapatAzon; ?>">
-									<button id="pozicioGomb" name="action" value="btnKezdo">kezdő</button>
+									<button class="kezdocsereButton" name="action" value="btnKezdo">kezdő</button>
 								</form>
 						</td>
 					</div>

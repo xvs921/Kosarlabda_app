@@ -37,6 +37,7 @@ if($_SESSION["parbaj"]==5)
 	<title>Mérkőzés</title>
 	<link href="assets/css/font-awesome.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="design/merkozesstyle.css">
+	<link rel="stylesheet" href="design/jatekoskartyastyle.css">
 </head>
 <table class="navbar">
 	<tr>
@@ -80,16 +81,16 @@ if($_SESSION["parbaj"]==5)
 							<h2><?php echo $classes->getNev($kosaras);?></h2>
 						<table class="pontszamTable">
 							<tr>
-								<td id="hpontTD"><?php echo $classes->get3pontos($kosaras);?></td>
-								<td id="osszpontTD"><?php echo $classes->getOsszpontszam($kosaras);?></td>
-								<td id="zsakolasTD"><?php echo $classes->getZsakolas($kosaras);?></td>
+								<td class="hpontTD"><?php echo $classes->get3pontos($kosaras);?></td>
+								<td class="osszpontTD"><?php echo $classes->getOsszpontszam($kosaras);?></td>
+								<td class="zsakolasTD"><?php echo $classes->getZsakolas($kosaras);?></td>
 							</tr>
 						</table>
 						</div>
 						<br />
 						<form method="post">
 							<input type="hidden" name="kosarasId" value="<?php echo $kosaras; ?>">
-							<button id="pozicioGomb" name="action" value="btnParbaj">párbaj</button>
+							<button class="parbajButton" name="action" value="btnParbaj">párbaj</button>
 						</form>
 					</div>
 			</div>
