@@ -64,7 +64,7 @@ class CsapatLista extends Jatekos
 	public function setKezdo()
 	{
 		$this->sql = "UPDATE csapattagok SET kezdo=1 WHERE `jatekosok.id`='".$_POST["kosarasId"]."' AND `csapatok.id`='".$_POST["csapatId"]."'";
-			$this->result = $this->conn->query($this->sql);
+		$this->result = $this->conn->query($this->sql);
 		?> <meta http-equiv="refresh" content="0; url = csapatom.php"> <?php
 	}
 	

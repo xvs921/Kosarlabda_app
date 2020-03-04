@@ -31,6 +31,7 @@
 		<meta name="viewport" tartalom="width=device-width, initial-scale=1.0">
 		<title>Csomagok</title>
 		<link href="assets/css/font-awesome.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="design/kartyastyle.css">
 		<link rel="stylesheet" href="design/csomagokstyle.css">
 	</head>
 	<table class="navbar">
@@ -47,7 +48,7 @@
 						<h2>Kezdők szerencséje<br><span>5000 zseton</span></h2>
 					</div>
 					<div class="kep">
-						<i class="fa fa-eur fa-5x" aria-hidden="true"></i>
+						<i class="fa fa-eur fa-5x" style="color:#2B3D6B;" aria-hidden="true"></i>
 					</div>
 				</div>
 				<form method="post">
@@ -62,7 +63,7 @@
 						<h2>Arany középút<br><span>50 000 zseton</span></h2>
 					</div>
 					<div class="kep">
-						<i class="fa fa-lightbulb-o fa-5x" aria-hidden="true"></i>
+						<i class="fa fa-lightbulb-o fa-5x" style="color:#2B3D6B;" aria-hidden="true"></i>
 					</div>
 				</div>
 				<form method="post">
@@ -77,7 +78,7 @@
 						<h2>Nagyok asztala<br><span>150 000 zseton</span></h2>
 					</div>
 					<div class="kep">
-						<i class="fa fa-bolt fa-5x" aria-hidden="true"></i>
+						<i class="fa fa-bolt fa-5x" style="color:#2B3D6B;" aria-hidden="true"></i>
 					</div>
 				</div>
 				<form method="post">
