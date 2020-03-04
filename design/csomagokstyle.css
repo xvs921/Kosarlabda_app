@@ -7,21 +7,25 @@ body
 	font-family: sans-serif;
 	background: #2B3D6B;
 }
+
 .navbar
 {
 	width:100%;
 }
+
 .trNev
 {
 	text-align: center;
 	font-size: 30px;
 	color:white;
 }
+
 td
 {
 	width:50%;
 	text-align: right;
 }
+
 button
 {
   background-color: #4CAF50;
@@ -32,11 +36,24 @@ button
   cursor: pointer;
   border-radius: 5px;
 }
+
+.nyitBtn
+{
+background-color: #6EBA00;
+  border: none;
+  color: white;
+  text-decoration: none;
+  font-size: 30px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
 a, a:link, a:visited{
   color: white;
   text-decoration: none;
 }
-.testimonials
+
+.felulet
 {
 	width: 80%;
 	margin: 150px auto 100px;
@@ -44,12 +61,13 @@ a, a:link, a:visited{
 	grid-template-columns: repeat( auto-fit, minmax(350px, 1fr));
 	grid-gap: 20px;
 }
-.testimonials .card
+
+.felulet .kartya
 {
 	position: relative;
 	width: 350px;
 	margin: 0 auto;
-	background: #2B3D6B;
+	background: #FFFF4F;
 	padding: 20px;
 	box-sizing: border-box;
 	text-align: center;
@@ -57,27 +75,13 @@ a, a:link, a:visited{
 	overflow: hidden;
 	border-radius: 20px;
 }
-.testimonials .card .layer
-{
-	position: absolute;
-	top: calc(100%);
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background: linear-gradient(#03a9f4, #e91ee3);
-	z-index: 1;
-	transition: 0.5s;
-}
-.testimonials .card:hover .layer
-{
-	top: 0;
-}
-.testimonials .card .content
+.felulet .kartya .tartalom
 {
 	position: relative;
 	z-index: 2;
 }
-.testimonials .card .content .image
+
+.felulet .kartya .tartalom .kep
 {
   border-radius: 40px;
   width: 100%;
@@ -87,11 +91,14 @@ a, a:link, a:visited{
   font-size: 50px;
   color: white;
 }
-.testimonials .card .content .details h2
+
+.felulet .kartya .tartalom .adatok h2
 {
+	color: #2B3D6B;
 	font-size: 18px;
 }
-.testimonials .card .content .details h2 span
+
+.felulet .kartya .tartalom .adatok h2 span
 {
 	font-size: 14px;
 	transition: 0.5s;

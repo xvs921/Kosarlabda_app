@@ -13,7 +13,7 @@ if(isset($_GET["action"]) && $_GET["action"] == "ujEllenfel")
 	$meccsAdat->connect();
 	$sajatCsapat=array();
 	$ellenfelCsapat=array();
-		$_SESSION["eredmeny1"]=0;
+	$_SESSION["eredmeny1"]=0;
 	$_SESSION["eredmeny2"]=0;
 	$_SESSION["parbaj"]=0;
 	$_SESSION['parbajEredmeny']="";
@@ -22,7 +22,7 @@ if(isset($_GET["action"]) && $_GET["action"] == "ujEllenfel")
 	{
 		$_SESSION["ellenfelId"]=$meccsAdat->ellenfelAzon();
 	}
-	while($_SESSION["sajatId"]==$_SESSION["ellenfelId"] || $_SESSION["ellenfelId"]==0);
+	while($_SESSION["sajatId"]==$_SESSION["ellenfelId"] || $_SESSION["ellenfelId"]==7);
 		for ($i = 1; $i <= $meccsAdat->csapattagokMaxId(); $i++) {
     	if($meccsAdat->getCsapata($i)==$_SESSION["sajatId"] and $meccsAdat->getKezdo($i)==1)
 		{
@@ -51,7 +51,8 @@ if(isset($_GET["action"]) && $_GET["action"] == "ujEllenfel")
 	<tr>
 		<?php 
 		$felhAdat = new Session();
-		$felhAdat->connect();?>
+		$felhAdat->connect();
+		//$felhAdat->jatekoshozzaad();?>
 		<td class=tdPenz><?php number_format($felhAdat->felhasznalopenz(),0, '.', ' '); ?> zseton</td><?php
 		$felhAdat->disconnect();?>
 		<td><button><a href="menu.php?action=cmd_logout"><font color="white">Kijelentkezés</font></a></button></td>

@@ -1,6 +1,6 @@
 .card
 {
-	background-color: #FFFF4F !important;
+	background-color: #FFFF4F;
 }
 .details
 {
@@ -64,11 +64,15 @@
 }
 .parbajButton
 {
-	  background-color: mediumpurple;
+background-color: mediumpurple;
   color: black;
   text-decoration: none;
   font-size: 20px;
   cursor: pointer;
   border-radius: 20px;
   color: white;
+}
+image i
+{
+	color:#2B3D6B;
 }

@@ -1,7 +1,48 @@
 <?php
 include("classes/csapatomclasses.php");
-$session = new Session();
-$session->sessionStart();
+$session = new CsapatLista();
+$session->SessionStart();
+$jatekosokListazas = new CsapatLista();
+$jatekosokListazas->connect();
+$csapatAzon=$jatekosokListazas->getCsapat();
+
+if(isset($_POST["action"]) && $_POST["action"] == "btnElad")
+{
+	$adatok = new CsapatLista();
+	$adatok->connect();
+	if($adatok->getCsapattagokSzama($csapatAzon)<=5)
+	{?>
+		<script>alert("Legalább 5 játékos kell maradjon a csapatában!")</script>
+	<?php
+	}
+	else{
+		$adatok->setElad();
+	}
+	$adatok->disconnect();
+}
+if(isset($_POST["action"]) && $_POST["action"] == "btnCsere")
+{
+	$adatok = new CsapatLista();
+	$adatok->connect();
+	$adatok->setCsere();
+	$adatok->disconnect();
+}
+
+if(isset($_POST["action"]) && $_POST["action"] == "btnKezdo")
+{
+	$adatok = new CsapatLista();
+	$adatok->connect();
+	$csapatAzon=$adatok->getCsapat();
+	if($adatok->getKezdokSzama($csapatAzon)==5)
+	{?>
+		<script>alert("Előbb cserének kell beállítania egy játékost!")</script>
+	<?php
+	}
+	else{
+		$adatok->setKezdo();
+	}
+	$adatok->disconnect();
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -22,12 +63,9 @@ $session->sessionStart();
 	<h1><center>Kezdőjátékosok</center></h1>
 	<div class="testimonials">
 		<?php
-		$jatekosokListazas = new Session();
-		$jatekosokListazas->connect();
-		$csapatAzon=$jatekosokListazas->getCsapat();
 		for($i=1;$i<=$jatekosokListazas->osszesCsapattag();$i++)
 		{
-			if($jatekosokListazas->getCsapata($i)==$csapatAzon && $jatekosokListazas->getCsapata($i)!=null)
+			if($jatekosokListazas->getCsapata($i)==$csapatAzon)
 			{
 				$kosaras=$jatekosokListazas->getJatekosok($i);
 				if($jatekosokListazas->getKezdo($kosaras,$csapatAzon)==1){?>
@@ -123,35 +161,6 @@ $session->sessionStart();
 }
 }
 $jatekosokListazas->disconnect();
-if(isset($_POST["action"]) && $_POST["action"] == "btnElad")
-{
-	$adatok = new Session();
-	$adatok->connect();
-	$adatok->setElad();
-	$adatok->disconnect();
-}
-if(isset($_POST["action"]) && $_POST["action"] == "btnCsere")
-{
-	$adatok = new Session();
-	$adatok->connect();
-	$adatok->setCsere();
-	$adatok->disconnect();
-}
-if(isset($_POST["action"]) && $_POST["action"] == "btnKezdo")
-{
-	$adatok = new Session();
-	$adatok->connect();
-	$csapatAzon=$adatok->getCsapat();
-	if($adatok->getKezdokSzama($csapatAzon)==5)
-	{?>
-		<script>alert("Előbb cserének kell beállítania egy játékost!")</script>
-	<?php
-	}
-	else{
-		$adatok->setKezdo();
-	}
-	$adatok->disconnect();
-}
 ?>
 	</div>
 </body>

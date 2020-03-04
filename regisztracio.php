@@ -59,15 +59,14 @@
         if(isset($_POST["action"]) && $_POST["action"] == "cmd_registration")
         {
           if(empty($_POST["input_felhasznalonev"]) || empty($_POST["input_email"]) || empty($_POST["input_jelszo"]) || empty($_POST["input_jelszo_ujra"]))
-          {?>
-			  <script>alert("Nem adott meg egy szükséges adatot!")</script>
-	  		<?php
+          {
+	  		?> <script>alert("Nem adott meg egy szükséges adatot!")</script><?php
           }
           else
           {     
-            $data = new Session();
+            $data = new Regisztracio();
             $data->connect();
-            $data->registration($_POST["input_felhasznalonev"], $_POST["input_email"], $_POST["input_jelszo"], $_POST["input_jelszo_ujra"]);
+            $data->regisztracio($_POST["input_felhasznalonev"], $_POST["input_email"], $_POST["input_jelszo"], $_POST["input_jelszo_ujra"]);
             $data->disconnect();
           }
         }?>

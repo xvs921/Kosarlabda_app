@@ -4,29 +4,10 @@ $session = new Session();
 $session->sessionStart();
 $tipus=$session->csomagTipus();
 $ar=0;
-?>
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Csomagok</title>
-		<link href="assets/css/font-awesome.min.css" rel="stylesheet">
-		<link rel="stylesheet" href="design/csomagokstyle.css">
-		<link rel="stylesheet" href="design/jatekoskartyastyle.css">
-	</head>
-	<table class="navbar">
-		<tr>
-			<td></td>
-			<td><button><a href="csomagok.php">Tovább</a></button></td>
-		</tr>
-	</table>
-	<body>
-<?php
 $adatok = new Session();
 $adatok->connect();
-	if($_SESSION["csomagAzon"]==1)
-	{
+if($_SESSION["csomagAzon"]==1)
+{
 		$ar=5000;
 		$minPenz=1;
 		$maxPenz=20000;
@@ -73,17 +54,35 @@ $adatok->connect();
 			$csapatAzon=$adatok->getCsapatAzon();	
 		}
 	}
-
+?>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Csomagok</title>
+		<link href="assets/css/font-awesome.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="design/jatekoskartyastyle.css">
+		<link rel="stylesheet" href="design/csomagokstyle.css">
+	</head>
+	<table class="navbar">
+		<tr>
+			<td></td>
+			<td><button><a href="csomagok.php">Tovább</a></button></td>
+		</tr>
+	</table>
+	<body>
+<?php
 	if( $tipus == 0 && $adatok->fizetesLehetE($ar)==1)
 	{
 		$adatok->fizetes($ar) ?>
-		<div class="testimonials">
-			<div class="card">
-				<div class="content">
-					<div class="image">
+		<div class="felulet">
+			<div class="kartya">
+				<div class="tartalom">
+					<div class="kep">
 						<i class="fa fa-money fa-5x" aria-hidden="true"></i>
 					</div>
-					<div class="details">
+					<div class="adatok">
 						<h2><?php echo $adatok->penzNyeremeny($minPenz,$maxPenz);?><br><span></span></h2>
 					</div>
 				</div>
@@ -102,13 +101,13 @@ $adatok->connect();
 		{
 			$adatok->csomagElad($kosaras);
 		} ?>
-		<div class="testimonials">
-			<div class="card">
-				<div class="content">
-					<div class="image">
+		<div class="felulet">
+			<div class="kartya">
+				<div class="tartalom">
+					<div class="kep">
 						<img src="kepek/jatekosok/<?php echo $adatok->getKep($kosaras);?>">
 					</div>
-					<div class="details">
+					<div class="adatok">
 						<h2><?php echo $adatok->getNev($kosaras); ?></h2>
 						<table class="pontszamTable">
 							<tr>

@@ -1,8 +1,8 @@
 <?php
 include("classes/adatbazisclasses.php");
-class Session extends Adatbazis
+class Regisztracio extends Adatbazis
 {
-public function registration($felhasznalonev, $email, $jelszo, $jelszoujra)
+public function regisztracio($felhasznalonev, $email, $jelszo, $jelszoujra)
 {	
 	$this->meglevoFelhasznalonevek = "SELECT * FROM felhasznalok WHERE felhasznalonev = '".$_POST["input_felhasznalonev"]."'";
     $this->meglevoEmailek = "SELECT * FROM felhasznalok WHERE email = '".$_POST["input_email"]."'";
@@ -73,39 +73,29 @@ public function registration($felhasznalonev, $email, $jelszo, $jelszoujra)
 		<?php
       }
     }
-    else
-    {
+	else
+	{
 		if ($jelszo != $jelszoujra)
-        {?>
-        	<script>alert("Nem egyezik a két jelszó!")</script>
-		<?php	
-        }
-        if (strlen($jelszo) < 8)
-        {?>
-        	<script>alert("A jelszó nem lehet 8 karakternél rövidebb!")</script>
-		<?php	
-        }
-        if (!$this->uppercase || !$this->lowercase || !$this->number)
-        {?>
-        	<script>alert("A jelszónak tartalmaznia kell számot, kis- és nagybetűt!")</script>
-		<?php	
-        }
-        if ($this->felhasznalonevekLekeres->num_rows != 0)
-        {?>
-        	<script>alert("Ez a felhasználónév foglalt!")</script>
-		<?php	
-        }
-        if ($this->emailekLekeres->num_rows != 0)
-        {
-        ?>
-        	<script>alert("Ez az email cím foglalt!")</script>
-		<?php	
-        }
-    }
-  }
-}/*
-biztonsági mentés
-$this->sql = "SELECT MAX(id)+1 FROM csapatok"; $this->result = $this->conn->query($this->sql); $this->row = $this->result->fetch_assoc(); $ujCsapatId=$this->row["MAX(id)+1"]; $this->sql = "INSERT INTO csapatok(nev, lejatszott, nyert, vesztett) VALUES ('".$felhasznalonev."',0,0,0)"; $this->conn->query($this->sql); $this->sql = "INSERT INTO felhasznalok(felhasznalonev, jelszo, email, `csapatok.id`, penz, aktiv) VALUES ('".$felhasznalonev."', '".password_hash($jelszo, PASSWORD_DEFAULT)."', '".$email."','".$ujCsapatId."',15000,1)"; if ($this->conn->query($this->sql)) { $this->sql = "INSERT INTO jogok(`felhasznalok.id`, `jogosultsagok.id`) VALUES ((SELECT MAX(id) FROM felhasznalok),3)"; $this->conn->query($this->sql); for($i=0;$i<5;$i++) { $this->sql = "SELECT id FROM jatekosok ORDER BY RAND() LIMIT 1"; $this->result = $this->conn->query($this->sql); $this->row = $this->result->fetch_assoc(); $ujJatekosAzon=$this->row["id"]; $this->sql = "INSERT INTO csapattagok(`csapatok.id`, `jatekosok.id`, `sorszam`, `kezdo`) VALUES ('".$ujCsapatId."'.$ujJatekosAzon."',(SELECT MAX(sorszam) FROM csapattagok WHERE `csapatok.id`='".$ujCsapatId."'),0)"; $this->conn->query($this->sql); } ?> <?php
-
-*/
+		{
+			?> <script>alert("Nem egyezik a két jelszó!")</script> <?php	
+		}
+		else if (strlen($jelszo) < 8)
+		{
+			?> <script>alert("A jelszó nem lehet 8 karakternél rövidebb!")</script> <?php	
+		}
+		else if (!$this->uppercase || !$this->lowercase || !$this->number)
+		{
+			?> <script>alert("A jelszónak tartalmaznia kell számot, kis- és nagybetűt!")</script> <?php	
+		}
+		else if ($this->felhasznalonevekLekeres->num_rows != 0)
+		{
+			?> <script>alert("Ez a felhasználónév foglalt!")</script> <?php	
+		}
+		else if ($this->emailekLekeres->num_rows != 0)
+		{
+			?> <script>alert("Ez az email cím foglalt!")</script> <?php	
+		}
+	}
+}
+}
 ?>

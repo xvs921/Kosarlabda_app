@@ -4,6 +4,28 @@
   $session->sessionStart();
   $adatok = new SajatFiok();
   $adatok->connect();
+	  	if(isset($_POST["action"]) && $_POST["action"] == "Inaktivalas")
+		{
+  			$adatok = new SajatFiok();
+			$adatok->connect();
+			$adatok->setInaktiv();
+			$adatok->disconnect();
+		}
+	  	if(isset($_POST["action"]) && $_POST["action"] == "jelszoValtoztatas")
+		{
+  			$adatok = new SajatFiok();
+			$adatok->connect();
+			$adatok->setJelszo();
+			$adatok->disconnect();
+		}
+	  	if(isset($_POST["action"]) && $_POST["action"] == "Modositas")
+		{
+  			$adatok = new SajatFiok();
+			$adatok->connect();
+			$adatok->adatModositas();
+			$adatok->disconnect();
+		}
+
 ?>
 <!DOCTYPE html>
 <html lang="hu">
@@ -113,28 +135,5 @@
         </div>
       </div>
 	  </div>
-	  <?php
-	  	if(isset($_POST["action"]) && $_POST["action"] == "Inaktivalas")
-		{
-  			$adatok = new SajatFiok();
-			$adatok->connect();
-			$adatok->setInaktiv();
-			$adatok->disconnect();
-		}
-	  	if(isset($_POST["action"]) && $_POST["action"] == "jelszoValtoztatas")
-		{
-  			$adatok = new SajatFiok();
-			$adatok->connect();
-			$adatok->setJelszo();
-			$adatok->disconnect();
-		}
-	  	if(isset($_POST["action"]) && $_POST["action"] == "Modositas")
-		{
-  			$adatok = new SajatFiok();
-			$adatok->connect();
-			$adatok->adatModositas();
-			$adatok->disconnect();
-		}
-	  ?>
   </body>
 </html>

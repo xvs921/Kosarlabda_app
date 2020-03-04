@@ -29,11 +29,15 @@ class IndexClass extends Adatbazis
 		if ($this->result->num_rows == 1)
 		{
 			$this->row = $this->result->fetch_assoc();
-			if (password_verify($jelszo, $this->row["jelszo"]))
+			if (password_verify($jelszo, $this->row["jelszo"]) && $this->row["aktiv"]==1)
 			{
 				$_SESSION["login_state"] = $this->row["id"];
 				header("location:menu.php");
 				die();
+			}
+			else if($this->row["aktiv"]==0)
+			{
+				?><script>alert("A fiókja inaktív!")</script><?php
 			}
 			else
 			{
