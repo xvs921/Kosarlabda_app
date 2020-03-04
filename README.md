@@ -13,3 +13,10 @@ További ötletek:
   felh.szerk oldal és jatekos szerk oldalon keresőbar és módosítás full update segítségével modallal
   zseton kiírása ezres csoportban
   
+kód ellenőrizve:
+csapatom
+csapatomstyle
+csapatomclasses
+
+
+  
