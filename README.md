@@ -10,7 +10,7 @@ public $password = "Kosarlabdaapp2020";
 public $dbname = "kosarlabdaapp";
 
 További ötletek:
-  felh.szerk oldal és jatekos szerk oldalon keresőbar és módosítás full update segítségével modallal
+  felh.szerk oldal és jatekos szerk oldalon keresőbar
   zseton kiírása ezres csoportban
   
 kód ellenőrizve:
