@@ -10,8 +10,8 @@ public $password = "Kosarlabdaapp2020";
 public $dbname = "kosarlabdaapp";
 
 További ötletek:
-  felh.szerk oldal és jatekos szerk oldalon keresőbar és módosítás full update segítségével modallal
-  zseton kiírása ezres csoportban
+  csomagok oldal reszponzív???
+  felh.szerk oldal és jatekos szerk oldalon keresőbar
   
 kód ellenőrizve:
 csapatom
