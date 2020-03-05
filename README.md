@@ -11,7 +11,6 @@ public $dbname = "kosarlabdaapp";
 
 További ötletek:
   felh.szerk oldal és jatekos szerk oldalon keresőbar
-  zseton kiírása ezres csoportban
   
 kód ellenőrizve:
 csapatom
