@@ -36,6 +36,7 @@ if($_SESSION["parbaj"]==5)
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Mérkőzés</title>
 	<link href="assets/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="design/kartyastyle.css">
 	<link rel="stylesheet" href="design/merkozesstyle.css">
 	<link rel="stylesheet" href="design/jatekoskartyastyle.css">
 </head>
@@ -66,18 +67,18 @@ if($_SESSION["parbaj"]==5)
 	</tr>
 </table>
 <body>
-	<div class="testimonials">
+	<div class="felulet">
 		<?php
 		for ($i = 0; $i <count($_SESSION['sajatCsapat']); $i++) {
 			if($_SESSION['sajatCsapat'][$i]!=-1)
 			{
 			$kosaras=$_SESSION['sajatCsapat'][$i] ?>
-			<div class="card">
-					<div class="content">
-						<div class="image">
+			<div class="kartya">
+					<div class="tartalom">
+						<div class="kep">
 							<img src="kepek/jatekosok/<?php echo $classes->getKep($kosaras);?>">
 						</div>
-						<div class="details">
+						<div class="adatok">
 							<h2><?php echo $classes->getNev($kosaras);?></h2>
 						<table class="pontszamTable">
 							<tr>
@@ -99,12 +100,12 @@ if($_SESSION["parbaj"]==5)
 		}
 		if($_SESSION["parbaj"]==6 && $_SESSION["vegeredmeny"]!=0)
 		{
-			?><div class="card">
-				<div class="content">
-					<div class="image">
+			?><div class="kartya">
+				<div class="tartalom">
+					<div class="kep">
 						<?php if($_SESSION["vegeredmeny"]==1){?> <i class="fa fa-trophy fa-5x" aria-hidden="true"></i> <?php } else if($_SESSION["vegeredmeny"]==2){?> <i class="fa fa-times fa-5x" aria-hidden="true"></i> <?php } else if($_SESSION["vegeredmeny"]==3){?> <i class="fa fa-trophy fa" aria-hidden="true"></i> <?php }?>
 					</div>
-					<div class="details">
+					<div class="adatok">
 						<h2><?php if($_SESSION["vegeredmeny"]==1){echo "Nyertél";} else if($_SESSION["vegeredmeny"]==2){echo "Vesztettél";} else if($_SESSION["vegeredmeny"]==3){echo "Döntetlen";}?><br><span></span></h2>
 					</div>
 				</div>

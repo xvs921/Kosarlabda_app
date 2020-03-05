@@ -45,7 +45,8 @@ if(isset($_GET["action"]) && $_GET["action"] == "ujEllenfel")
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Menü</title>
 	<link href="assets/css/font-awesome.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="design/menust.css">
+	<link rel="stylesheet" href="design/kartyastyle.css">
+	<link rel="stylesheet" href="design/menustyle.css">
 </head>
 <table class="navbar">
 	<tr>
@@ -53,7 +54,7 @@ if(isset($_GET["action"]) && $_GET["action"] == "ujEllenfel")
 		$felhAdat = new Session();
 		$felhAdat->connect();
 		//$felhAdat->jatekoshozzaad();?>
-		<td class=tdPenz><?php number_format($felhAdat->felhasznalopenz(),0, '.', ' '); ?> zseton</td><?php
+		<td class=tdPenz><?php echo number_format($felhAdat->felhasznalopenz(),0,",","."); ?> zseton</td><?php
 		$felhAdat->disconnect();?>
 		<td><button><a href="menu.php?action=cmd_logout"><font color="white">Kijelentkezés</font></a></button></td>
 	</tr>
@@ -66,50 +67,50 @@ if(isset($_GET["action"]) && $_GET["action"] == "ujEllenfel")
 	</tr>
 </table>
 <body>	
-	<div class="testimonials">
+	<div class="felulet">
 		<a href="csapatom.php">
-		<div class="card">
-			<div class="content">
-				<div class="details">
+		<div class="kartya">
+			<div class="tartalom">
+				<div class="adatok">
 					<h2>Csapatom<br><span></span></h2>
 				</div>
-				<div class="image">
+				<div class="kep">
 					<i class="fa fa-users fa-5x" aria-hidden="true"></i>
 				</div>
 			</div>
 		</div>
 		</a>
 		<a href="csomagok.php">
-		<div class="card">
-			<div class="content">
-				<div class="details">
+		<div class="kartya">
+			<div class="tartalom">
+				<div class="adatok">
 					<h2>Csomagok<br><span></span></h2>
 				</div>
-				<div class="image">
+				<div class="kep">
 					<i class="fa fa-shopping-basket fa-5x" aria-hidden="true"></i>
 				</div>
 			</div>
 		</div>
 		</a>
 		<a href="menu.php?action=ujEllenfel">
-		<div class="card">
-			<div class="content">
-				<div class="details">
+		<div class="kartya">
+			<div class="tartalom">
+				<div class="adatok">
 					<h2>Mérkőzés<br><span></span></h2>
 				</div>
-				<div class="image">
+				<div class="kep">
 					<i class="fa fa-futbol-o fa-5x" aria-hidden="true"></i>
 				</div>
 			</div>
 		</div>
 		</a>
 		<a href="fiokom.php">
-		<div class="card">
-			<div class="content">
-				<div class="details">
+		<div class="kartya">
+			<div class="tartalom">
+				<div class="adatok">
 					<h2>Fiókom beállítása<br><span></span></h2>
 				</div>
-				<div class="image">
+				<div class="kep">
 					<i class="fa fa-cog fa-5x" aria-hidden="true"></i>
 				</div>
 			</div>
@@ -121,24 +122,24 @@ if(isset($_GET["action"]) && $_GET["action"] == "ujEllenfel")
 		if($data->jogosultsagAzonositas()==3)
 		{?>
 			<a href="jatekosokszerk.php">
-				<div class="card">
-					<div class="content">
-						<div class="details">
+				<div class="kartya">
+					<div class="tartalom">
+						<div class="adatok">
 							<h2>Játékosok szerkesztése<br><span></span></h2>
 						</div>
-						<div class="image">
+						<div class="kep">
 							<i class="fa fa-pencil fa-5x" aria-hidden="true"></i>
 						</div>
 					</div>
 				</div>
 			</a>
 			<a href="felhasznalokszerk.php">
-				<div class="card">
-					<div class="content">
-						<div class="details">
+				<div class="kartya">
+					<div class="tartalom">
+						<div class="adatok">
 							<h2>Felhasználók szerkesztése<br><span></span></h2>
 						</div>
-						<div class="image">
+						<div class="kep">
 							<i class="fa fa-user fa-5x" aria-hidden="true"></i>
 						</div>
 					</div>
@@ -149,12 +150,12 @@ if(isset($_GET["action"]) && $_GET["action"] == "ujEllenfel")
 		else if($data->jogosultsagAzonositas()==2)
 		{?>
 			<a href="jatekosokszerk.php">
-				<div class="card">
-					<div class="content">
-						<div class="details">
+				<div class="kartya">
+					<div class="tartalom">
+						<div class="adatok">
 							<h2>Játékosok szerkesztése<br><span></span></h2>
 						</div>
-						<div class="image">
+						<div class="kep">
 							<i class="fa fa-pencil fa-5x" aria-hidden="true"></i>
 						</div>
 					</div>

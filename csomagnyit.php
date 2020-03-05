@@ -81,7 +81,7 @@ if($_SESSION["csomagAzon"]==1)
 			<div class="kartya">
 				<div class="tartalom">
 					<div class="kep">
-						<i class="fa fa-money fa-5x" aria-hidden="true"></i>
+						<i class="fa fa-money fa-5x" style="color:#2B3D6B;" aria-hidden="true"></i>
 					</div>
 					<div class="adatok">
 						<h2><?php echo $adatok->penzNyeremeny($minPenz,$maxPenz);?><br><span></span></h2>

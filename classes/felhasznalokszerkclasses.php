@@ -52,8 +52,15 @@ class Session extends Adatbazis
 		$this->result = $this->conn->query($this->sql);
 		return $this->result->num_rows;
 	}
-	public function setFelhnev()
+	public function setAktivitas($aktivitas)
 	{
+		$this->sql = "UPDATE felhasznalok SET aktiv='".$aktivitas."' WHERE id='".$_POST["input_id"]."'";
+		$this->result = $this->conn->query($this->sql);
+		?> <meta http-equiv="refresh" content="0; url = felhasznalokszerk.php"> <?php
+	}
+	public function felhasznaloModositas()
+	{
+		//FELHASZNÁLÓNÉV
 		$this->sql = "SELECT * FROM felhasznalok WHERE id='".$_POST["input_id"]."'";
 		$this->result = $this->conn->query($this->sql);
 		$this->row = $this->result->fetch_assoc();
@@ -65,22 +72,14 @@ class Session extends Adatbazis
 			{
 			$this->sql = "UPDATE felhasznalok SET felhasznalonev = '".$_POST["input_felhasznalonev"]."' WHERE id = '".$_POST["input_id"]."'";
 			$this->result = $this->conn->query($this->sql);
-				?> <meta http-equiv="refresh" content="0; url = felhasznalokszerk.php"> <?php
 			}
-						else
+			else
 			{?>
 				<script>alert("Sikertelen adatmódosítás!")</script>
 			<?php	
 			}	  
 	  	}
-	  else
-	  {?>
-		<script>alert("Nem változtak az adatai!")</script>
-	  <?php	
-	  } 
-	}
-	public function setEmail()
-	{
+	//EMAIL
 		$this->sql = "SELECT * FROM felhasznalok WHERE id='".$_POST["input_id"]."'";
 		$this->result = $this->conn->query($this->sql);
 		$this->row = $this->result->fetch_assoc();
@@ -92,24 +91,14 @@ class Session extends Adatbazis
 			{
 			$this->sql = "UPDATE felhasznalok SET email = '".$_POST["input_email"]."' WHERE id = '".$_POST["input_id"]."'";
 			$this->result = $this->conn->query($this->sql);
-				?>
-					<meta http-equiv="refresh" content="0; url = felhasznalokszerk.php">
-				<?php
 			}
-						else
+			else
 			{?>
 				<script>alert("Sikertelen adatmódosítás!")</script>
 			<?php	
 			}	  
 	  	}
-	  else
-	  {?>
-		<script>alert("Nem változtak az adatai!")</script>
-	  <?php	
-	  } 
-	}
-	public function setCsapatnev()
-	{		
+		//CSAPATNÉV
 		$this->sql = "SELECT nev FROM felhasznalok f LEFT JOIN csapatok cs ON cs.id=f.`csapatok.id` WHERE f.id='".$_POST["input_id"]."'";
 		$this->result = $this->conn->query($this->sql);
 		$this->row = $this->result->fetch_assoc();
@@ -121,24 +110,14 @@ class Session extends Adatbazis
 			{
 			$this->sql = "UPDATE felhasznalok f LEFT JOIN csapatok cs ON cs.id=f.`csapatok.id` SET nev= '".$_POST["input_csapatnev"]."' WHERE f.id = '".$_POST["input_id"]."'";
 			$this->result = $this->conn->query($this->sql);
-				?>
-					<meta http-equiv="refresh" content="0; url = felhasznalokszerk.php">
-				<?php
 			}
-						else
+			else
 			{?>
 				<script>alert("Sikertelen adatmódosítás!")</script>
 			<?php	
 			}	  
 	  	}
-	  else
-	  {?>
-		<script>alert("Nem változtak az adatai!")</script>
-	  <?php	
-	  } 
-	}
-	public function setJogosultsag()
-	{
+		//JOGOSULTSÁG
 		$this->sql = "DELETE FROM jogok WHERE `felhasznalok.id`='".$_POST["input_id"]."'";
 		$this->result = $this->conn->query($this->sql);
 		
@@ -157,19 +136,16 @@ class Session extends Adatbazis
 			$this->sql = "INSERT INTO jogok(`felhasznalok.id`, `jogosultsagok.id`) VALUES ('".$_POST["input_id"]."',3)";
 			$this->result = $this->conn->query($this->sql);
 		}
-		?> <meta http-equiv="refresh" content="0; url = felhasznalokszerk.php"> <?php
-	}
-	public function setAktivitas($aktivitas)
-	{
-		$this->sql = "UPDATE felhasznalok SET aktiv='".$aktivitas."' WHERE id='".$_POST["input_id"]."'";
-		$this->result = $this->conn->query($this->sql);
-		?> <meta http-equiv="refresh" content="0; url = felhasznalokszerk.php"> <?php
-	}
-	
-	public function setPenz()
-	{
+		
+		//PÉNZ
 		$this->sql = "UPDATE felhasznalok SET penz='".$_POST["input_penz"]."' WHERE id='".$_POST["input_id"]."'";
 		$this->result = $this->conn->query($this->sql);
+		
+		//NEM VÁLTOZTAK AZ ADATOK
+		if($this->row["felhasznalonev"]==$_POST["input_felhasznalonev"] and $this->row["email"]==$_POST["input_email"] and $this->row["nev"]==$_POST["input_csapatnev"] and $this->row["jogosultsag"]==$_POST["input_jogosultsag"])
+		{
+			?> <script>alert("Nem változtak az adatai!")</script> <?php	
+		}
 		?> <meta http-equiv="refresh" content="0; url = felhasznalokszerk.php"> <?php
 	}
 }

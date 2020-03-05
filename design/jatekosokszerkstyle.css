@@ -33,6 +33,10 @@ body
 {
 	text-align: right;
 }
+.felvetelGomb
+{
+	text-align: left;
+}
 button
 {
   background-color: #4CAF50 !important;
@@ -46,4 +50,14 @@ button
 a, a:link, a:visited{
 	color: white;
   text-decoration: none;
+}
+p
+{
+	color:white;
+	margin-top: 2px;
+	margin-bottom:2px;
+}
+.modalSzoveg
+{
+	color: black
 }

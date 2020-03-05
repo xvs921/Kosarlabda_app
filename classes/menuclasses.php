@@ -21,7 +21,7 @@ class Session extends Adatbazis
 		$this->sql = "SELECT penz FROM felhasznalok WHERE id = '".$_SESSION["login_state"]."'";
 		$this->result = $this->conn->query($this->sql);
 		$this->row = $this->result->fetch_assoc();
-		echo $this->row["penz"];  
+		return $this->row["penz"];  
 	}
 	
 	public function csapatnev()

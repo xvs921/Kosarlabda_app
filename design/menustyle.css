@@ -7,7 +7,7 @@ body
 	font-family: sans-serif;
 	background: #2B3D6B;
 }
-.testimonials
+.felulet
 {
 	width: 80%;
 	margin: 50px auto 100px;
@@ -16,7 +16,7 @@ body
 	grid-template-columns: repeat( auto-fit, minmax(350px, 1fr));
 	grid-gap: 20px;
 }
-.testimonials .card
+.felulet .kartya
 {
 	position: relative;
 	width: 270px;
@@ -30,33 +30,13 @@ body
 	overflow: hidden;
 	border-radius: 20px;
 }
-.testimonials .card .layer
-{
-	position: absolute;
-	top: calc(100%);
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background: linear-gradient(#03a9f4, #e91ee3);
-	z-index: 1;
-	transition: 0.5s;
-}
-.testimonials .card:hover .layer
-{
-	top: 0;
-}
-.testimonials .card .content
-{
-	position: relative;
-	z-index: 2;
-}
-.testimonials .card .content p
+.felulet .kartya .tartalom p
 {
 	font-size: 18px;
 	line-height: 24px;
 	color: #fff;
 }
-.testimonials .card .content .image
+.felulet .kartya .tartalom .kep
 {
   border-radius: 40px;
   width: 100%;
@@ -66,18 +46,18 @@ body
   font-size: 30px;
   color: white;
 }
-.testimonials .card .content .details h2
+.felulet .kartya .tartalom .adatok h2
 {
 	font-size: 18px;
 	color: #fff;
 }
-.testimonials .card .content .details h2 span
+.felulet .kartya .tartalom .adatok h2 span
 {
 	color: #03a9f4;
 	font-size: 14px;
 	transition: 0.5s;
 }
-.testimonials .card:hover .content .details h2 span
+.felulet .kartya:hover .tartalom .adatok h2 span
 {
 	color: #fff;
 }

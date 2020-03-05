@@ -29,38 +29,23 @@
 		<div class="row">
 			<form method="post">
 			  <div class="col-lg-2 col-md-6">
+				  <p>Név</p>
 				  <input class="form-control" type="text" name="input_felhasznalonev" value="<?php echo $felhszerk->getFelhasznalonev($i);?>">
-				  <input type="hidden" name="input_id" value="<?php echo $i; ?>">
-				  <input type="hidden" name="action" value="btnFelhnev">
-				  <input type="submit" class="btn btn-default" value="Módosítás" id="loginbtn">
 				</div>
-			</form>
-			<form method="post">
 			  <div class="col-lg-2 col-md-6">
+				  <p>Email</p>
 				  <input class="form-control" type="text" name="input_email" value="<?php echo $felhszerk->getEmail($i);?>">
-				  <input type="hidden" name="input_id" value="<?php echo $i; ?>">
-				  <input type="hidden" name="action" value="btnEmail">
-				  <input type="submit" class="btn btn-default" value="Módosítás" id="loginbtn">
 				</div>
-			</form>
-			<form method="post">
 			  <div class="col-lg-2 col-md-6">
+				  <p>Csapatnév</p>
 				  <input class="form-control" type="text" name="input_csapatnev" value="<?php echo $felhszerk->getCsapatnev($i);?>">
-				  <input type="hidden" name="input_id" value="<?php echo $i; ?>">
-				  <input type="hidden" name="action" value="btnCsapatnev">
-				  <input type="submit" class="btn btn-default" value="Módosítás" id="loginbtn">
 				</div>
-			</form>
-			<form method="post">
 			  <div class="col-lg-2 col-md-6">
+				  <p>Pénz</p>
 				  <input class="form-control" type="text" name="input_penz" value="<?php echo $felhszerk->getPenz($i);?>">
-				  <input type="hidden" name="input_id" value="<?php echo $i; ?>">
-				  <input type="hidden" name="action" value="btnPenz">
-				  <input type="submit" class="btn btn-default" value="Módosítás" id="loginbtn">
 				</div>
-			</form>
-			<form method="post">
 			  <div class="col-lg-2 col-md-6">
+				  <p>Jogosultság</p>
 				  <select name="input_jogosultsag" class="form-control">
 					 <?php
 					 if($felhszerk->getJogosultsag($i)==3)
@@ -82,52 +67,46 @@
                   	 	<option value="3" selected>felhasználó</option><?php 
 					 }?>
                   </select>
-				  <input type="hidden" name="input_id" value="<?php echo $i; ?>">
-				  <input type="hidden" name="action" value="btnJogosultsag">
-				  <input type="submit" class="btn btn-default" value="Módosítás" id="loginbtn">
 				</div>
-			</form>
 			<form method="post">
 			  <div class="col-lg-2 col-md-6">
-				  <?php
-					if($felhszerk->getAktiv($i)==1)
-					{
-						?><p class="form-control">Aktív</p><?php
-					}
-					else
-					{
-						?><p class="form-control">Inaktív</p><?php
-					}
-					?>
+				  <p>Aktivitás</p>
 				  <input type="hidden" name="input_id" value="<?php echo $i; ?>">
 				  <?php
 				  if($felhszerk->getAktiv($i)==0)
 				  {
 				  ?>
 				  	 <input type="hidden" name="action" value="btnAktiv">
-					 <input type="submit" class="btn btn-default" value="Aktív" id="loginbtn">
+					 <input type="submit" class="form-control" value="Aktivál">
 				  <?php
 				  }
 				  else
 				  {
 				  ?>
 				  	 <input type="hidden" name="action" value="btnInaktiv">
-					 <input type="submit" class="btn btn-default" value="Inaktív" id="loginbtn">
+					 <input type="submit" class="form-control" value="Inaktivál">
 				  <?php
 				  }
 				  ?>
 				</div>
 			</form>
+				<div class="col-sm-12" style="text-align:center">
+				  <input type="hidden" name="input_id" value="<?php echo $i; ?>">
+				  <input type="hidden" name="action" value="btnModositas">
+				  <input type="submit" class="btn btn-default" value="Módosítás" id="loginbtn">
+				</div>
+			</form>
 		</div>
+	  
 	  	<br />
 		<?php
 		}
 	}
-	  	if(isset($_POST["action"]) && $_POST["action"] == "btnFelhnev")
+	  	if(isset($_POST["action"]) && $_POST["action"] == "btnModositas")
 		{
   			$adatok = new Session();
 			$adatok->connect();
-			$adatok->setFelhnev();
+			$adatok->felhasznaloModositas();
 			$adatok->disconnect();
 		}
 	  	  	if(isset($_POST["action"]) && $_POST["action"] == "btnEmail")

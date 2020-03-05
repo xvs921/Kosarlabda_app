@@ -14,6 +14,8 @@ $kosaras2=$_SESSION['ellenfelJatekos'];
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Csomagok</title>
 	<link href="assets/css/font-awesome.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="design/kartyastyle.css">
+		<link rel="stylesheet" href="design/jatekoskartyastyle.css">
 		<link rel="stylesheet" href="design/parbajstyle.css">
 </head>
 <table class="navbar">
@@ -25,36 +27,36 @@ $kosaras2=$_SESSION['ellenfelJatekos'];
 </table>
 <body>
 	<center><h2><?php echo $_SESSION['parbajEredmeny'] ?></h2></center>
-	<div class="testimonials">
-			<div class="card">
-					<div class="content">
-						<div class="image">
+	<div class="felulet">
+			<div class="kartya">
+					<div class="tartalom">
+						<div class="kep">
 							<img src="kepek/jatekosok/<?php echo $parbaj->getKep($kosaras);?>">
 						</div>
-						<div class="details">
+						<div class="adatok">
 							<h2><?php echo $parbaj->getNev($kosaras);?></h2>
 						<table class="pontszamTable">
 							<tr>
-								<td id="hpontTD"><?php echo $parbaj->get3pontos($kosaras);?></td>
-								<td id="osszpontTD"><?php echo $parbaj->getOsszpontszam($kosaras);?></td>
-								<td id="zsakolasTD"><?php echo $parbaj->getZsakolas($kosaras);?></td>
+								<td class="hpontTD"><?php echo $parbaj->get3pontos($kosaras);?></td>
+								<td class="osszpontTD"><?php echo $parbaj->getOsszpontszam($kosaras);?></td>
+								<td class="zsakolasTD"><?php echo $parbaj->getZsakolas($kosaras);?></td>
 							</tr>
 						</table>
 						</div>
 					</div>
 			</div>
-			<div class="card">
-					<div class="content">
-						<div class="image">
+			<div class="kartya">
+					<div class="tartalom">
+						<div class="kep">
 							<img src="kepek/jatekosok/<?php echo $parbaj->getKep($kosaras2);?>">
 						</div>
-						<div class="details">
+						<div class="adatok">
 							<h2><?php echo $parbaj->getNev($kosaras2);?></h2>
 						<table class="pontszamTable">
 							<tr>
-								<td id="hpontTD"><?php echo $parbaj->get3pontos($kosaras2);?></td>
-								<td id="osszpontTD"><?php echo $parbaj->getOsszpontszam($kosaras2);?></td>
-								<td id="zsakolasTD"><?php echo $parbaj->getZsakolas($kosaras2);?></td>
+								<td class="hpontTD"><?php echo $parbaj->get3pontos($kosaras2);?></td>
+								<td class="osszpontTD"><?php echo $parbaj->getOsszpontszam($kosaras2);?></td>
+								<td class="zsakolasTD"><?php echo $parbaj->getZsakolas($kosaras2);?></td>
 							</tr>
 						</table>
 						</div>

@@ -11,7 +11,7 @@
 	  <script src="https://code.jquery.com/jquery.min.js"></script>
 	  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-	  <link rel="stylesheet" type="text/css" href="design/jatekosokszerkstyle.css">	  
+	  <link rel="stylesheet" type="text/css" href="design/felhasznalokszerkstyle.css">	  
   </head>
 	<table class="navbar">
 	<tr>
@@ -31,46 +31,104 @@
 			  <div class="col-lg-2 col-md-6">
 				  <p>Név</p>
 				  <input class="form-control" type="text" name="input_nev" value="<?php echo $felhszerk->getNev($i);?>">
+				  <input type="hidden" name="input_id" value="<?php echo $i; ?>">
+				  <input type="hidden" name="action" value="btnNev">
+				  <input type="submit" class="btn btn-default" value="Módosítás" id="loginbtn">
 				</div>
+			</form>
+			<form method="post">
 			  <div class="col-lg-2 col-md-6">
 				  <p>Összpontszám</p>
 				  <input class="form-control" type="text" name="input_osszPontszam" value="<?php echo $felhszerk->getOsszPontszam($i);?>">
+				  <input type="hidden" name="input_id" value="<?php echo $i; ?>">
+				  <input type="hidden" name="action" value="btnOsszPontszam">
+				  <input type="submit" class="btn btn-default" value="Módosítás" id="loginbtn">
 				</div>
+			</form>
+			<form method="post">
 			  <div class="col-lg-2 col-md-6">
 				  <p>Hárompontos</p>
 				  <input class="form-control" type="text" name="input_3pontos" value="<?php echo $felhszerk->get3pontos($i);?>">
+				  <input type="hidden" name="input_id" value="<?php echo $i; ?>">
+				  <input type="hidden" name="action" value="btn3pontos">
+				  <input type="submit" class="btn btn-default" value="Módosítás" id="loginbtn">
 				</div>
+			</form>
+			<form method="post">
 			  <div class="col-lg-2 col-md-6">
 				  <p>Zsákolás</p>
 				  <input class="form-control" type="text" name="input_zsakolas" value="<?php echo $felhszerk->getZsakolas($i);?>">
+				  <input type="hidden" name="input_id" value="<?php echo $i; ?>">
+				  <input type="hidden" name="action" value="btnZsakolas">
+				  <input type="submit" class="btn btn-default" value="Módosítás" id="loginbtn">
 				</div>
+			</form>
+			<form method="post">
 			  <div class="col-lg-2 col-md-6">
 				  <p>Ár</p>
-				  <input class="form-control" type="text" name="input_ar" value="<?php echo $felhszerk->getAr($i) ?>">
+				  <input class="form-control" type="text" name="input_ar" value="<?php echo $felhszerk->getAr($i);?>">
+				  <input type="hidden" name="input_id" value="<?php echo $i; ?>">
+				  <input type="hidden" name="action" value="btnAr">
+				  <input type="submit" class="btn btn-default" value="Módosítás" id="loginbtn">
 				</div>
+			</form>
+			<form method="post">
 			  <div class="col-lg-2 col-md-6">
 				  <p>Kép</p>
 				  <input class="form-control" type="text" name="input_kep" value="<?php echo $felhszerk->getKep($i);?>">
-				</div>
-			  <div class="col-sm-12" style="text-align:center">
 				  <input type="hidden" name="input_id" value="<?php echo $i; ?>">
-				  <input type="hidden" name="action" value="btnModositas">
+				  <input type="hidden" name="action" value="btnKep">
 				  <input type="submit" class="btn btn-default" value="Módosítás" id="loginbtn">
-			</div>
+				</div>
 			</form>
 		</div>
 	  	<br />
 		<?php
 		}
 	}
-	   if(isset($_POST["action"]) && $_POST["action"] == "btnModositas")
+	  	if(isset($_POST["action"]) && $_POST["action"] == "btnNev")
 		{
   			$adatok = new Session();
 			$adatok->connect();
-			$adatok->jatekosModositas();
+			$adatok->setNev();
 			$adatok->disconnect();
 		}
-	  	if(isset($_POST["action"]) && $_POST["action"] == "btnFelvetel")
+	  	  	if(isset($_POST["action"]) && $_POST["action"] == "btnOsszPontszam")
+		{
+  			$adatok = new Session();
+			$adatok->connect();
+			$adatok->setOsszPontszam();
+			$adatok->disconnect();
+		}
+	  	  	  	if(isset($_POST["action"]) && $_POST["action"] == "btn3pontos")
+		{
+  			$adatok = new Session();
+			$adatok->connect();
+			$adatok->set3pontos();
+			$adatok->disconnect();
+		}
+	    	  	if(isset($_POST["action"]) && $_POST["action"] == "btnZsakolas")
+		{
+  			$adatok = new Session();
+			$adatok->connect();
+			$adatok->setZsakolas();
+			$adatok->disconnect();
+		}
+	  	    	  	if(isset($_POST["action"]) && $_POST["action"] == "btnAr")
+		{
+  			$adatok = new Session();
+			$adatok->connect();
+			$adatok->setAr();
+			$adatok->disconnect();
+		}
+	  	  	    	  	if(isset($_POST["action"]) && $_POST["action"] == "btnKep")
+		{
+  			$adatok = new Session();
+			$adatok->connect();
+			$adatok->setKep();
+			$adatok->disconnect();
+		}
+	  	  	  	    	  	if(isset($_POST["action"]) && $_POST["action"] == "btnFelvetel")
 		{
   			$adatok = new Session();
 			$adatok->connect();
@@ -87,27 +145,27 @@
         <form method="post">
 		  <div class="row">
 			  <div class="col-md-6">
-				  <center><p class="modalSzoveg">Név</p></center>
+				  <center><p>Név</p></center>
 				  <input class="form-control" type="text" name="input_nev" value="">
 				</div>
 			  <div class="col-md-6">
-				  <center><p class="modalSzoveg">Összpontszám</p></center>
+				  <center><p>Összpontszám</p></center>
 				  <input class="form-control" type="text" name="input_osszPontszam" value="">
 				</div>
 			  <div class="col-md-6">
-				  <center><p class="modalSzoveg">Hárompontos</p></center>
+				  <center><p>Hárompontos</p></center>
 				  <input class="form-control" type="text" name="input_3pontos" value="">
 				</div>
 			  <div class="col-md-6">
-				  <center><p class="modalSzoveg">Zsákolás</p></center>
+				  <center><p>Zsákolás</p></center>
 				  <input class="form-control" type="text" name="input_zsakolas" value="">
 				</div>
 			  <div class="col-md-6">
-				  <center><p class="modalSzoveg">Ár</p></center>
+				  <center><p>Ár</p></center>
 				  <input class="form-control" type="text" name="input_ar" value="">
 				</div>
 			  <div class="col-md-6">
-				  <center><p class="modalSzoveg">Kép</p></center>
+				  <center><p>Kép</p></center>
 				  <input class="form-control" type="text" name="input_kep" value="">
 				</div>
 			</div>
