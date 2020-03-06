@@ -10,7 +10,6 @@ public $password = "Kosarlabdaapp2020";
 public $dbname = "kosarlabdaapp";
 
 További ötletek:
-  csomagok oldal reszponzív???
   felh.szerk oldal és jatekos szerk oldalon keresőbar
   
 kód ellenőrizve:
