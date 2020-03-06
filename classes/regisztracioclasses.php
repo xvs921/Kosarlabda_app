@@ -1,27 +1,28 @@
 <?php
 include("classes/adatbazisclasses.php");
-class Regisztracio extends Adatbazis
+class Regiszt extends Adatbazis
 {
-public function regisztracio($felhasznalonev, $email, $jelszo, $jelszoujra)
+public function regisztracio()
 {	
 	$this->meglevoFelhasznalonevek = "SELECT * FROM felhasznalok WHERE felhasznalonev = '".$_POST["input_felhasznalonev"]."'";
     $this->meglevoEmailek = "SELECT * FROM felhasznalok WHERE email = '".$_POST["input_email"]."'";
     $this->felhasznalonevekLekeres = $this->conn->query($this->meglevoFelhasznalonevek);
     $this->emailekLekeres = $this->conn->query($this->meglevoEmailek);
-    $this->uppercase = preg_match('@[A-Z]@', $jelszo);
-    $this->lowercase = preg_match('@[a-z]@', $jelszo);
-    $this->number = preg_match('@[0-9]@', $jelszo);
-	if ($this->felhasznalonevekLekeres->num_rows == 0 && $this->emailekLekeres->num_rows == 0 && $jelszo == $jelszoujra && $this->uppercase && $this->lowercase && $this->number)
+    $this->uppercase = preg_match('@[A-Z]@', $_POST["input_jelszo"]);
+    $this->lowercase = preg_match('@[a-z]@', $_POST["input_jelszo"]);
+    $this->number = preg_match('@[0-9]@', $_POST["input_jelszo"]);
+
+	if ($this->felhasznalonevekLekeres->num_rows == 0 && $this->emailekLekeres->num_rows == 0 && $_POST["input_jelszo"] == $_POST["input_jelszo_ujra"] && $this->uppercase && $this->lowercase && $this->number && filter_var($_POST["input_email"], FILTER_VALIDATE_EMAIL))
     {
 		$this->sql = "SELECT MAX(id)+1 FROM csapatok";
-			 $this->result = $this->conn->query($this->sql);
-			$this->row = $this->result->fetch_assoc();
-			$ujCsapatId=$this->row["MAX(id)+1"];
+		$this->result = $this->conn->query($this->sql);
+		$this->row = $this->result->fetch_assoc();
+		$ujCsapatId=$this->row["MAX(id)+1"];
 			
-		$this->sql = "INSERT INTO csapatok(nev, lejatszott, nyert, vesztett) VALUES ('".$felhasznalonev."',0,0,0)";
+		$this->sql = "INSERT INTO csapatok(nev, lejatszott, nyert, vesztett) VALUES ('".$_POST["input_felhasznalonev"]."',0,0,0)";
 		$this->conn->query($this->sql);
 		
-      	$this->sql = "INSERT INTO felhasznalok(felhasznalonev, jelszo, email, `csapatok.id`, penz, aktiv) VALUES ('".$felhasznalonev."', '".password_hash($jelszo, PASSWORD_DEFAULT)."', '".$email."','".$ujCsapatId."',15000,1)";
+      	$this->sql = "INSERT INTO felhasznalok(felhasznalonev, jelszo, email, `csapatok.id`, penz, aktiv) VALUES ('".$_POST["input_felhasznalonev"]."', '".password_hash($_POST["input_jelszo"], PASSWORD_DEFAULT)."', '".$_POST["input_email"]."','".$ujCsapatId."',15000,1)";
 		
       if ($this->conn->query($this->sql))
       { 
@@ -75,11 +76,11 @@ public function regisztracio($felhasznalonev, $email, $jelszo, $jelszoujra)
     }
 	else
 	{
-		if ($jelszo != $jelszoujra)
+		if ($_POST["input_jelszo"] != $_POST["input_jelszo_ujra"])
 		{
 			?> <script>alert("Nem egyezik a két jelszó!")</script> <?php	
 		}
-		else if (strlen($jelszo) < 8)
+		else if (strlen($_POST["input_jelszo"]) < 8)
 		{
 			?> <script>alert("A jelszó nem lehet 8 karakternél rövidebb!")</script> <?php	
 		}
@@ -94,6 +95,10 @@ public function regisztracio($felhasznalonev, $email, $jelszo, $jelszoujra)
 		else if ($this->emailekLekeres->num_rows != 0)
 		{
 			?> <script>alert("Ez az email cím foglalt!")</script> <?php	
+		}
+		else if (!filter_var($_POST["input_email"], FILTER_VALIDATE_EMAIL)) 
+		{
+  			?> <script>alert("Nem jó email címet adott meg!")</script> <?php	
 		}
 	}
 }

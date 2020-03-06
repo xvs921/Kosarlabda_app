@@ -46,7 +46,7 @@
                     </div>
                     </div>
                 <div class="login-panel-section">
-					<input type="hidden" name="action" value="cmd_registration">
+					<input type="hidden" name="action" value="cmd_regisztracio">
 					<input type="submit" class="btn btn-default" value="Regisztráció" id="loginbtn"> | 
 					<a href="index.php">Bejelentkezés</a>
                 </div>
@@ -56,7 +56,7 @@
 	  </form>
 	  </div>
 <?php
-        if(isset($_POST["action"]) && $_POST["action"] == "cmd_registration")
+        if(isset($_POST["action"]) && $_POST["action"] == "cmd_regisztracio")
         {
           if(empty($_POST["input_felhasznalonev"]) || empty($_POST["input_email"]) || empty($_POST["input_jelszo"]) || empty($_POST["input_jelszo_ujra"]))
           {
@@ -64,11 +64,11 @@
           }
           else
           {     
-            $data = new Regisztracio();
+            $data = new Regiszt();
             $data->connect();
-            $data->regisztracio($_POST["input_felhasznalonev"], $_POST["input_email"], $_POST["input_jelszo"], $_POST["input_jelszo_ujra"]);
+            $data->regisztracio();
             $data->disconnect();
           }
-        }?>
+        } ?>
   </body>
 </html>
