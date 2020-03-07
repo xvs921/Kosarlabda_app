@@ -61,11 +61,12 @@ class Session extends Adatbazis
 	public function felhasznaloModositas()
 	{
 		//FELHASZNÁLÓNÉV
-		$this->sql = "SELECT * FROM felhasznalok WHERE id='".$_POST["input_id"]."'";
+		$this->sql = "SELECT f.felhasznalonev,f.email,cs.nev,f.penz,COUNT(j.`felhasznalok.id`) AS szerepkor FROM felhasznalok f LEFT JOIN csapatok cs ON cs.id=f.`csapatok.id` LEFT JOIN jogok j ON j.`felhasznalok.id`=f.id WHERE f.id='".$_POST["input_id"]."'";
 		$this->result = $this->conn->query($this->sql);
 		$this->row = $this->result->fetch_assoc();
-		if($this->row["felhasznalonev"]!=$_POST["input_felhasznalonev"])
+		if($this->row["felhasznalonev"] != $_POST["input_felhasznalonev"] || $this->row["email"] != $_POST["input_email"] || $this->row["penz"] != $_POST["input_penz"] || $this->row["nev"] != $_POST["input_csapatnev"] || $this->row["szerepkor"] != $_POST["input_jogosultsag"])
 		{
+			//FELHASZNÁLÓNÉV
 			$this->meglevoFelhasznalonevek = "SELECT * FROM felhasznalok WHERE felhasznalonev = '".$_POST["input_felhasznalonev"]."'";
 			$this->felhasznalonevekLekeres = $this->conn->query($this->meglevoFelhasznalonevek);
 			if ($this->felhasznalonevekLekeres->num_rows == 0)
@@ -73,18 +74,7 @@ class Session extends Adatbazis
 			$this->sql = "UPDATE felhasznalok SET felhasznalonev = '".$_POST["input_felhasznalonev"]."' WHERE id = '".$_POST["input_id"]."'";
 			$this->result = $this->conn->query($this->sql);
 			}
-			else
-			{?>
-				<script>alert("Sikertelen adatmódosítás!")</script>
-			<?php	
-			}	  
-	  	}
-	//EMAIL
-		$this->sql = "SELECT * FROM felhasznalok WHERE id='".$_POST["input_id"]."'";
-		$this->result = $this->conn->query($this->sql);
-		$this->row = $this->result->fetch_assoc();
-		if($this->row["email"]!=$_POST["input_email"])
-		{
+			//EMAIL
 			$this->meglevoEmailek = "SELECT * FROM felhasznalok WHERE email = '".$_POST["input_email"]."'";
 			$this->emailekLekeres = $this->conn->query($this->meglevoEmailek);
 			if ($this->emailekLekeres->num_rows == 0)
@@ -92,57 +82,51 @@ class Session extends Adatbazis
 			$this->sql = "UPDATE felhasznalok SET email = '".$_POST["input_email"]."' WHERE id = '".$_POST["input_id"]."'";
 			$this->result = $this->conn->query($this->sql);
 			}
-			else
-			{?>
-				<script>alert("Sikertelen adatmódosítás!")</script>
-			<?php	
-			}	  
-	  	}
-		//CSAPATNÉV
-		$this->sql = "SELECT nev FROM felhasznalok f LEFT JOIN csapatok cs ON cs.id=f.`csapatok.id` WHERE f.id='".$_POST["input_id"]."'";
-		$this->result = $this->conn->query($this->sql);
-		$this->row = $this->result->fetch_assoc();
-		if($this->row["nev"]!=$_POST["input_csapatnev"])
-		{
+			//CSAPATNÉV
 			$this->meglevoCsapatnevek = "SELECT * FROM csapatok WHERE nev = '".$_POST["input_csapatnev"]."'";
 			$this->csapatnevekLekeres = $this->conn->query($this->meglevoCsapatnevek);
 			if ($this->csapatnevekLekeres->num_rows == 0)
 			{
 			$this->sql = "UPDATE felhasznalok f LEFT JOIN csapatok cs ON cs.id=f.`csapatok.id` SET nev= '".$_POST["input_csapatnev"]."' WHERE f.id = '".$_POST["input_id"]."'";
 			$this->result = $this->conn->query($this->sql);
+			}	  
+			//JOGOSULTSÁG
+			$this->meglevoSzerepkor = "SELECT id FROM jogok WHERE `felhasznalok.id` = '".$_POST["input_id"]."'";
+			$this->szerepkorlekeres = $this->conn->query($this->meglevoCsapatnevek);
+			if ($this->szerepkorlekeres->num_rows != 0)
+			{
+				$this->sql = "DELETE FROM jogok WHERE `felhasznalok.id`='".$_POST["input_id"]."'";
+				$this->result = $this->conn->query($this->sql);
+		
+				if($_POST["input_jogosultsag"]==3)
+				{
+					$this->sql = "INSERT INTO jogok(`felhasznalok.id`, `jogosultsagok.id`) VALUES ('".$_POST["input_id"]."',1),('".$_POST["input_id"]."',2),('".$_POST["input_id"]."',3)";
+					$this->result = $this->conn->query($this->sql);
+				}
+				else if($_POST["input_jogosultsag"]==2)
+				{
+					$this->sql = "INSERT INTO jogok(`felhasznalok.id`, `jogosultsagok.id`) VALUES ('".$_POST["input_id"]."',2),('".$_POST["input_id"]."',3)";
+					$this->result = $this->conn->query($this->sql);
+				}
+				else if($_POST["input_jogosultsag"]==1)
+				{
+					$this->sql = "INSERT INTO jogok(`felhasznalok.id`, `jogosultsagok.id`) VALUES ('".$_POST["input_id"]."',3)";
+					$this->result = $this->conn->query($this->sql);
+				}
 			}
-			else
-			{?>
-				<script>alert("Sikertelen adatmódosítás!")</script>
-			<?php	
+			//PÉNZ
+			$this->felhasznaloPenze = "SELECT penz FROM felhasznalok WHERE id = '".$_POST["input_id"]."'";
+			$this->penzLekeres = $this->conn->query($this->meglevoEmailek);
+			if ($this->penzLekeres->num_rows != $_POST["input_penz"])
+			{
+				$this->sql = "UPDATE felhasznalok SET penz='".$_POST["input_penz"]."' WHERE id='".$_POST["input_id"]."'";
+				$this->result = $this->conn->query($this->sql);
 			}	  
 	  	}
-		//JOGOSULTSÁG
-		$this->sql = "DELETE FROM jogok WHERE `felhasznalok.id`='".$_POST["input_id"]."'";
-		$this->result = $this->conn->query($this->sql);
-		
-		if($_POST["input_jogosultsag"]==1)
-		{
-			$this->sql = "INSERT INTO jogok(`felhasznalok.id`, `jogosultsagok.id`) VALUES ('".$_POST["input_id"]."',1),('".$_POST["input_id"]."',2),('".$_POST["input_id"]."',3)";
-			$this->result = $this->conn->query($this->sql);
-		}
-		else if($_POST["input_jogosultsag"]==2)
-		{
-			$this->sql = "INSERT INTO jogok(`felhasznalok.id`, `jogosultsagok.id`) VALUES ('".$_POST["input_id"]."',2),('".$_POST["input_id"]."',3)";
-			$this->result = $this->conn->query($this->sql);
-		}
-		else if($_POST["input_jogosultsag"]==3)
-		{
-			$this->sql = "INSERT INTO jogok(`felhasznalok.id`, `jogosultsagok.id`) VALUES ('".$_POST["input_id"]."',3)";
-			$this->result = $this->conn->query($this->sql);
-		}
-		
-		//PÉNZ
-		$this->sql = "UPDATE felhasznalok SET penz='".$_POST["input_penz"]."' WHERE id='".$_POST["input_id"]."'";
-		$this->result = $this->conn->query($this->sql);
+
 		
 		//NEM VÁLTOZTAK AZ ADATOK
-		if($this->row["felhasznalonev"]==$_POST["input_felhasznalonev"] and $this->row["email"]==$_POST["input_email"] and $this->row["nev"]==$_POST["input_csapatnev"] and $this->row["jogosultsag"]==$_POST["input_jogosultsag"])
+		else
 		{
 			?> <script>alert("Nem változtak az adatai!")</script> <?php	
 		}

@@ -103,7 +103,7 @@ if($_SESSION["parbaj"]==5)
 			?><div class="kartya">
 				<div class="tartalom">
 					<div class="kep">
-						<?php if($_SESSION["vegeredmeny"]==1){?> <i class="fa fa-trophy fa-5x" aria-hidden="true"></i> <?php } else if($_SESSION["vegeredmeny"]==2){?> <i class="fa fa-times fa-5x" aria-hidden="true"></i> <?php } else if($_SESSION["vegeredmeny"]==3){?> <i class="fa fa-trophy fa" aria-hidden="true"></i> <?php }?>
+						<?php if($_SESSION["vegeredmeny"]==1){?> <i class="fa fa-trophy fa-5x" style="color:#2B3D6B;" aria-hidden="true"></i> <?php } else if($_SESSION["vegeredmeny"]==2){?> <i class="fa fa-times fa-5x" style="color:#2B3D6B;" aria-hidden="true"></i> <?php } else if($_SESSION["vegeredmeny"]==3){?> <i class="fa fa-balance-scale fa-5x" style="color:#2B3D6B;" aria-hidden="true"></i> <?php }?>
 					</div>
 					<div class="adatok">
 						<h2><?php if($_SESSION["vegeredmeny"]==1){echo "Nyertél";} else if($_SESSION["vegeredmeny"]==2){echo "Vesztettél";} else if($_SESSION["vegeredmeny"]==3){echo "Döntetlen";}?><br><span></span></h2>
@@ -146,7 +146,6 @@ if($_SESSION["parbaj"]==5)
 			$osszpont2=$classes->getOsszpontszam($kosaras2)+$classes->get3pontos($kosaras2)+$classes->getZsakolas($kosaras2);
 			$classes->parbaj($osszpont,$osszpont2);
 			$_SESSION["parbaj"]++;
-			//echo '<pre>'; print_r($_SESSION['sajatCsapat']); echo '</pre>';
 			?><meta http-equiv="refresh" content="1; url = parbaj.php"><?php
 		}
 		?>

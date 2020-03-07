@@ -1,6 +1,6 @@
 <?php
 include("classes/adatbazisclasses.php");
-class IndexClass extends Adatbazis 
+class Bejelent extends Adatbazis 
 {
    // INDEX
 	public function indexSessionStart()

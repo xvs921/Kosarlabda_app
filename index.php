@@ -1,6 +1,6 @@
 <?php
 	include("classes/indexclasses.php");
-	$session = new IndexClass();
+	$session = new Bejelent();
 	$session->signinSessionStart();
 	if(isset($_POST["action"]) && $_POST["action"] == "cmd_signin")
 	{
@@ -10,7 +10,7 @@
 		}
 		else
 		{     
-			$data = new IndexClass();
+			$data = new Bejelent();
 			$data->connect();
 			$data->signin($_POST["input_felhasznalonev"], $_POST["input_jelszo"]);
 			$data->disconnect();
@@ -48,7 +48,7 @@
 											<input class="form-control" type="password" placeholder="Jelszó" name="input_jelszo">
 										</div>
 									</div>
-									<a href="#" class="pull-right">Elfelejtett jelszó</a>
+									<a href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to=fejleszt@gmail.com&su=Elfelejtett jelszó&body=A fiókhoz tartozó felhasználónév és email cím megadása szükséges!&tf=1" class="pull-right">Elfelejtett jelszó</a>
 								</div>
 								<div class="login-panel-section">
 									<input type="hidden" name="action" value="cmd_signin">

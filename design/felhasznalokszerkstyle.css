@@ -25,6 +25,12 @@ body
 	width: 90%;
 	text-align: center;
 }
+#modositBtn
+{
+	background: darkgray;
+	border-style: none;
+	color: white;
+}
 .navbar
 {
 	width:99.9%;
