@@ -3,16 +3,13 @@ include("classes/adatbazisclasses.php");
 class Regiszt extends Adatbazis
 {
 public function regisztracio()
-{	
+{
 	$this->meglevoFelhasznalonevek = "SELECT * FROM felhasznalok WHERE felhasznalonev = '".$_POST["input_felhasznalonev"]."'";
     $this->meglevoEmailek = "SELECT * FROM felhasznalok WHERE email = '".$_POST["input_email"]."'";
     $this->felhasznalonevekLekeres = $this->conn->query($this->meglevoFelhasznalonevek);
     $this->emailekLekeres = $this->conn->query($this->meglevoEmailek);
-    $this->uppercase = preg_match('@[A-Z]@', $_POST["input_jelszo"]);
-    $this->lowercase = preg_match('@[a-z]@', $_POST["input_jelszo"]);
-    $this->number = preg_match('@[0-9]@', $_POST["input_jelszo"]);
 
-	if ($this->felhasznalonevekLekeres->num_rows == 0 && $this->emailekLekeres->num_rows == 0 && $_POST["input_jelszo"] == $_POST["input_jelszo_ujra"] && $this->uppercase && $this->lowercase && $this->number && filter_var($_POST["input_email"], FILTER_VALIDATE_EMAIL))
+	if ($this->felhasznalonevekLekeres->num_rows == 0 && $this->emailekLekeres->num_rows == 0 && $_POST["input_jelszo"] == $_POST["input_jelszo_ujra"] && filter_var($_POST["input_email"], FILTER_VALIDATE_EMAIL))
     {
 		$this->sql = "SELECT MAX(id)+1 FROM csapatok";
 		$this->result = $this->conn->query($this->sql);
@@ -80,13 +77,9 @@ public function regisztracio()
 		{
 			?> <script>alert("Nem egyezik a két jelszó!")</script> <?php	
 		}
-		else if (strlen($_POST["input_jelszo"]) < 8)
+		else if (strlen($_POST["input_jelszo"]) < 10)
 		{
-			?> <script>alert("A jelszó nem lehet 8 karakternél rövidebb!")</script> <?php	
-		}
-		else if (!$this->uppercase || !$this->lowercase || !$this->number)
-		{
-			?> <script>alert("A jelszónak tartalmaznia kell számot, kis- és nagybetűt!")</script> <?php	
+			?> <script>alert("A jelszó nem lehet 10 karakternél rövidebb!")</script> <?php	
 		}
 		else if ($this->felhasznalonevekLekeres->num_rows != 0)
 		{

@@ -2,6 +2,7 @@
 	include("classes/indexclasses.php");
 	$session = new Bejelent();
 	$session->signinSessionStart();
+	$_SESSION["reg_nev"] = 0;
 	if(isset($_POST["action"]) && $_POST["action"] == "cmd_signin")
 	{
 		if(empty($_POST["input_felhasznalonev"]) || empty($_POST["input_jelszo"]))

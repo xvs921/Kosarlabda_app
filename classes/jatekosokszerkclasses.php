@@ -17,46 +17,17 @@ class Session extends Jatekos
 		$this->row = $this->result->fetch_assoc();
 		return $this->row["ar"];
 	}
-	//JÁTÉKOSADATOK BEÁLLÍTÁSA
-	public function setNev()
-	{
 
-	}
-	
-	public function setOsszpontszam()
-	{
-
-	}
-	
-	public function set3pontos()
-	{
-
-	}
-	
-	public function setZsakolas()
-	{
-
-	}
-	
-	public function setAr()
-	{
-
-	}
-	
-	public function setKep()
-	{
-
-	}
 	public function ujJatekos()
 	{
-		if($_POST["input_nev"]!="" || $_POST["input_osszPontszam"]!="" || $_POST["input_3pontos"]!="" || $_POST["input_zsakolas"]!="" || $_POST["input_ar"]!="" || $_POST["input_kep"]!="")
+		if($_POST["input_nev"]!="" && $_POST["input_osszPontszam"]!="" && $_POST["input_3pontos"]!="" && $_POST["input_zsakolas"]!="" && $_POST["input_ar"]!="" && $_POST["input_kep"]!="")
 		{
 			$this->meglevoJatekosNevek = "SELECT * FROM jatekosok WHERE nev = '".$_POST["input_nev"]."'";
 			$this->jatekosnevekLekeres = $this->conn->query($this->meglevoJatekosNevek);
 			
 			if($_POST["input_osszPontszam"]>=100 || $_POST["input_osszPontszam"]<=0 || $_POST["input_3pontos"]>=100 || $_POST["input_3pontos"]<=0 || $_POST["input_zsakolas"]>=100 || $_POST["input_zsakolas"]<=0)
 			{
-				?> <script>alert("Hibás pontszámot adott meg!")</script> <?php
+				?> <script>alert("Hibás pontszámot adott meg! (1 és 99 közötti legyen!)")</script> <?php
 			}
 			else if($this->jatekosnevekLekeres->num_rows != 0)
 			{

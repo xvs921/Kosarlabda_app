@@ -1,5 +1,11 @@
 <?php
   include("classes/jatekosokszerkclasses.php");
+	$_SESSION["felv_nev"]="";
+	$_SESSION["felv_osszPontszam"]="";
+	$_SESSION["felv_3pontos"]="";
+	$_SESSION["felv_zsakolas"]="";
+	$_SESSION["felv_ar"]="";
+	$_SESSION["felv_kep"]="";
 ?>
 <!DOCTYPE html>
 <html lang="hu">
@@ -71,7 +77,13 @@
 			$adatok->disconnect();
 		}
 	  	if(isset($_POST["action"]) && $_POST["action"] == "btnFelvetel")
-		{
+		{	
+			$_SESSION["felv_nev"]=$_POST["input_nev"];
+			$_SESSION["felv_osszPontszam"]=$_POST["input_osszPontszam"];
+			$_SESSION["felv_3pontos"]=$_POST["input_3pontos"];
+			$_SESSION["felv_zsakolas"]=$_POST["input_zsakolas"];
+			$_SESSION["felv_ar"]=$_POST["input_ar"];
+			$_SESSION["felv_kep"]=$_POST["input_kep"];
   			$adatok = new Session();
 			$adatok->connect();
 			$adatok->ujJatekos();
@@ -88,30 +100,31 @@
 		  <div class="row">
 			  <div class="col-md-6">
 				  <center><p class="modalSzoveg">Név</p></center>
-				  <input class="form-control" type="text" name="input_nev" value="">
+				  <input class="form-control" type="text" name="input_nev" value="<?php echo $_SESSION["felv_nev"]; ?>">
 				</div>
 			  <div class="col-md-6">
 				  <center><p class="modalSzoveg">Összpontszám</p></center>
-				  <input class="form-control" type="text" name="input_osszPontszam" value="">
+				  <input class="form-control" type="text" name="input_osszPontszam" value="<?php echo $_SESSION["felv_osszPontszam"]; ?>">
 				</div>
 			  <div class="col-md-6">
 				  <center><p class="modalSzoveg">Hárompontos</p></center>
-				  <input class="form-control" type="text" name="input_3pontos" value="">
+				  <input class="form-control" type="text" name="input_3pontos" value="<?php echo $_SESSION["felv_3pontos"]; ?>">
 				</div>
 			  <div class="col-md-6">
 				  <center><p class="modalSzoveg">Zsákolás</p></center>
-				  <input class="form-control" type="text" name="input_zsakolas" value="">
+				  <input class="form-control" type="text" name="input_zsakolas" value="<?php echo $_SESSION["felv_zsakolas"]; ?>">
 				</div>
 			  <div class="col-md-6">
 				  <center><p class="modalSzoveg">Ár</p></center>
-				  <input class="form-control" type="text" name="input_ar" value="">
+				  <input class="form-control" type="text" name="input_ar" value="<?php echo $_SESSION["felv_ar"]; ?>">
 				</div>
 			  <div class="col-md-6">
 				  <center><p class="modalSzoveg">Kép</p></center>
-				  <input class="form-control" type="text" name="input_kep" value="">
+				  <input class="form-control" type="text" name="input_kep" value="<?php echo $_SESSION["felv_kep"]; ?>">
 				</div>
 			</div>
-			 <input type="hidden" name="action" value="btnFelvetel">
+			<center><p class="modalSzoveg">A pontszámok 1 és 99 között kell legyenek!</p></center>
+			<input type="hidden" name="action" value="btnFelvetel">
 			<div style="text-align:right"><input type="submit" class="btn btn-primary" value="Felvétel" id="loginbtn"></div>
 		  </form>
       </div>
