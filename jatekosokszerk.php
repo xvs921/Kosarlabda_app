@@ -95,34 +95,35 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-body">
-		  <center><h2 class="modal-title" id="exampleModalLongTitle">Felvétel űrlap</h2></center>
+		  <center><h2 class="modal-title" id="exampleModalLongTitle">Játékos hozzáadása</h2></center>
         <form method="post">
 		  <div class="row">
 			  <div class="col-md-6">
 				  <center><p class="modalSzoveg">Név</p></center>
-				  <input class="form-control" type="text" name="input_nev" value="<?php echo $_SESSION["felv_nev"]; ?>">
+				  <input class="form-control" type="text" name="input_nev" placeholder="név" value="<?php echo $_SESSION["felv_nev"]; ?>">
 				</div>
 			  <div class="col-md-6">
 				  <center><p class="modalSzoveg">Összpontszám</p></center>
-				  <input class="form-control" type="text" name="input_osszPontszam" value="<?php echo $_SESSION["felv_osszPontszam"]; ?>">
+				  <input class="form-control" type="text" name="input_osszPontszam" placeholder="1 - 99" value="<?php echo $_SESSION["felv_osszPontszam"]; ?>">
 				</div>
 			  <div class="col-md-6">
 				  <center><p class="modalSzoveg">Hárompontos</p></center>
-				  <input class="form-control" type="text" name="input_3pontos" value="<?php echo $_SESSION["felv_3pontos"]; ?>">
+				  <input class="form-control" type="text" name="input_3pontos" placeholder="1 - 99" value="<?php echo $_SESSION["felv_3pontos"]; ?>">
 				</div>
 			  <div class="col-md-6">
 				  <center><p class="modalSzoveg">Zsákolás</p></center>
-				  <input class="form-control" type="text" name="input_zsakolas" value="<?php echo $_SESSION["felv_zsakolas"]; ?>">
+				  <input class="form-control" type="text" name="input_zsakolas" placeholder="1 - 99" value="<?php echo $_SESSION["felv_zsakolas"]; ?>">
 				</div>
 			  <div class="col-md-6">
 				  <center><p class="modalSzoveg">Ár</p></center>
-				  <input class="form-control" type="text" name="input_ar" value="<?php echo $_SESSION["felv_ar"]; ?>">
+				  <input class="form-control" type="text" name="input_ar" placeholder="1 - 250 000" value="<?php echo $_SESSION["felv_ar"]; ?>">
 				</div>
 			  <div class="col-md-6">
 				  <center><p class="modalSzoveg">Kép</p></center>
-				  <input class="form-control" type="text" name="input_kep" value="<?php echo $_SESSION["felv_kep"]; ?>">
+				  <input class="form-control" type="text" name="input_kep" placeholder="*.png vagy *.jpg" value="<?php echo $_SESSION["felv_kep"]; ?>">
 				</div>
 			</div>
+			<center><p class="modalSzoveg">Minden adat kitöltése kötelező!</p></center>
 			<center><p class="modalSzoveg">A pontszámok 1 és 99 között kell legyenek!</p></center>
 			<input type="hidden" name="action" value="btnFelvetel">
 			<div style="text-align:right"><input type="submit" class="btn btn-primary" value="Felvétel" id="loginbtn"></div>
