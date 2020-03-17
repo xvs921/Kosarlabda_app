@@ -23,7 +23,8 @@ if(isset($_GET["action"]) && $_GET["action"] == "ujEllenfel")
 		$_SESSION["ellenfelId"]=$meccsAdat->ellenfelAzon();
 	}
 	while($_SESSION["sajatId"]==$_SESSION["ellenfelId"] || $_SESSION["ellenfelId"]==7);
-		for ($i = 1; $i <= $meccsAdat->csapattagokMaxId(); $i++) {
+		
+	for ($i = 1; $i <= $meccsAdat->csapattagokMaxId(); $i++) {
     	if($meccsAdat->getCsapata($i)==$_SESSION["sajatId"] and $meccsAdat->getKezdo($i)==1)
 		{
 			array_push($sajatCsapat, $meccsAdat->getJatekosAzon($i));

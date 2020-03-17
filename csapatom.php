@@ -5,6 +5,7 @@ $session->SessionStart();
 $jatekosokListazas = new CsapatLista();
 $jatekosokListazas->connect();
 $csapatAzon=$jatekosokListazas->getCsapat();
+
 if(isset($_POST["action"]) && $_POST["action"] == "btnElad")
 {
 	if($jatekosokListazas->getCsapattagokSzama($csapatAzon)<=5)
@@ -16,6 +17,7 @@ if(isset($_POST["action"]) && $_POST["action"] == "btnElad")
 		$jatekosokListazas->setElad();
 	}
 }
+
 if(isset($_POST["action"]) && $_POST["action"] == "btnCsere")
 {
 	$jatekosokListazas->setCsere();

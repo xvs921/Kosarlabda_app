@@ -41,13 +41,10 @@ class SajatFiok extends Adatbazis
 	}
 	public function setJelszo()
 	{
-		$this->uppercase = preg_match('@[A-Z]@', $_POST["input_ujJelszo"]);
-		$this->lowercase = preg_match('@[a-z]@', $_POST["input_ujJelszo"]);
-		$this->number = preg_match('@[0-9]@', $_POST["input_ujJelszo"]);
 		$this->sql = "SELECT jelszo FROM felhasznalok WHERE id ='".$_SESSION["login_state"]."'";
 		$this->result = $this->conn->query($this->sql);
 		$this->row = $this->result->fetch_assoc();
-		if (password_verify($_POST["input_jelszo"], $this->row["jelszo"]) && $this->uppercase && $this->lowercase && $this->number)
+		if (password_verify($_POST["input_jelszo"], $this->row["jelszo"]))
 		{
 			$this->sql = "UPDATE felhasznalok SET jelszo='".password_hash($_POST["input_ujJelszo"], PASSWORD_DEFAULT)."' WHERE id ='".$_SESSION["login_state"]."'";
 			if ($this->conn->query($this->sql))
@@ -69,13 +66,9 @@ class SajatFiok extends Adatbazis
 			{
 				?> <script>alert("Hibás jelszó!")</script> <?php	
 			}
-			else if (strlen($_POST["input_ujJelszo"]) < 8)
+			else if (strlen($_POST["input_ujJelszo"]) < 10)
 			{
-				?> <script>alert("A jelszó nem lehet 8 karakternél rövidebb!")</script> <?php	
-			}
-			else if (!$this->uppercase || !$this->lowercase || !$this->number)
-			{
-				?> <script>alert("A jelszónak tartalmaznia kell számot, kis- és nagybetűt!")</script> <?php	
+				?> <script>alert("A jelszó nem lehet 10 karakternél rövidebb!")</script> <?php	
 			}
 		}
 	}

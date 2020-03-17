@@ -13,7 +13,7 @@ class Session extends Jatekos
 		return $tipus;
 	}
 
-	public function KosarasAzon($randPont)
+	public function kosarasAzon($randPont)
 	{
 		$this->sql = "SELECT id FROM jatekosok WHERE osszPontszam='".$randPont."' ORDER BY RAND() LIMIT 1";
 		$this->result = $this->conn->query($this->sql);
