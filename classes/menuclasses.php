@@ -1,6 +1,6 @@
 <?php
 include("classes/adatbazisclasses.php");
-class Session extends Adatbazis
+class MenuCl extends Adatbazis
 {
 	public function logout()
 	{
@@ -37,9 +37,7 @@ class Session extends Adatbazis
 	//MÉRKŐZÉS KÉT CSAPATA
 	public function sajatAzon()
 	{
-		$this->sql = "SELECT * FROM felhasznalok f 
-		LEFT JOIN csapatok cs on cs.id=f.`csapatok.id`
-		where f.id='".$_SESSION["login_state"]."'";
+		$this->sql = "SELECT * FROM felhasznalok f LEFT JOIN csapatok cs on cs.id=f.`csapatok.id` WHERE f.id='".$_SESSION["login_state"]."'";
 		$this->result = $this->conn->query($this->sql);
 		$this->row = $this->result->fetch_assoc();
 		return $this->row["id"];

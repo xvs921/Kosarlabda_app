@@ -1,6 +1,6 @@
 <?php
 include("classes/jatekoskartyaclasses.php");
-class Session extends Jatekos
+class JatekosSzerkeszt extends Jatekos
 {
 	public function getJatekosokSzama()
 	{
