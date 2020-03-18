@@ -1,59 +1,59 @@
 <?php
 include("classes/csomagnyitclasses.php");
 $session = new Session();
-$session->sessionStart();
+$session->sessionIndit();
 $tipus=$session->csomagTipus();
 $ar=0;
 $adatok = new Session();
-$adatok->connect();
+$adatok->kapcsolodas();
 if($_SESSION["csomagAzon"]==1)
 {
-		$ar=5000;
-		$minPenz=1;
-		$maxPenz=20000;
-		$randPont=Rand($adatok->getMinOsszPontszam(),85);
-		if($adatok->randPontJatekosokSzama($randPont)==0)
-		{
-			$tipus=0;
-		}
-		else
-		{
-			$kosaras=$adatok->kosarasAzon($randPont);
-			$csapatAzon=$adatok->getCsapatAzon();	
-		}
-	}
-	if($_SESSION["csomagAzon"]==2)
+	$ar=5000;
+	$minPenz=1;
+	$maxPenz=20000;
+	$randPont=Rand($adatok->getMinOsszPontszam(),85);
+	if($adatok->randPontJatekosokSzama($randPont)==0)
 	{
-		$ar=50000;
-		$minPenz=1000;
-		$maxPenz=75000;
-		$randPont=Rand(75,90);
-		if($adatok->randPontJatekosokSzama($randPont)==0)
-		{
-			$tipus=0;
-		}
-		else
-		{
-			$kosaras=$adatok->kosarasAzon($randPont);
-			$csapatAzon=$adatok->getCsapatAzon();	
-		}
+		$tipus=0;
 	}
-	if($_SESSION["csomagAzon"]==3)
+	else
 	{
-		$ar=150000;
-		$minPenz=5000;
-		$maxPenz=200000;
-		$randPont=Rand(80,$adatok->getMaxOsszPontszam());
-		if($adatok->randPontJatekosokSzama($randPont)==0)
-		{
-			$tipus=0;
-		}
-		else
-		{
-			$kosaras=$adatok->kosarasAzon($randPont);
-			$csapatAzon=$adatok->getCsapatAzon();	
-		}
+		$kosaras=$adatok->kosarasAzon($randPont);
+		$csapatAzon=$adatok->getCsapatAzon();	
 	}
+}
+if($_SESSION["csomagAzon"]==2)
+{
+	$ar=50000;
+	$minPenz=1000;
+	$maxPenz=75000;
+	$randPont=Rand(75,90);
+	if($adatok->randPontJatekosokSzama($randPont)==0)
+	{
+		$tipus=0;
+	}
+	else
+	{
+		$kosaras=$adatok->kosarasAzon($randPont);
+		$csapatAzon=$adatok->getCsapatAzon();	
+	}
+}
+if($_SESSION["csomagAzon"]==3)
+{
+	$ar=150000;
+	$minPenz=5000;
+	$maxPenz=200000;
+	$randPont=Rand(80,$adatok->getMaxOsszPontszam());
+	if($adatok->randPontJatekosokSzama($randPont)==0)
+	{
+		$tipus=0;
+	}
+	else
+	{
+		$kosaras=$adatok->kosarasAzon($randPont);
+		$csapatAzon=$adatok->getCsapatAzon();	
+	}
+}
 ?>
 <!DOCTYPE html>
 <html>
