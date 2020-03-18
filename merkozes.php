@@ -1,9 +1,9 @@
 <?php
 include("classes/merkozesclasses.php");
 $session = new Session();
-$session->sessionStart();
+$session->sessionIndit();
 $classes = new Session();
-$classes->connect();
+$classes->kapcsolodas();
 $_SESSION["vegeredmeny"]=0;
 if($_SESSION["parbaj"]==5)
 {
@@ -46,10 +46,9 @@ if($_SESSION["parbaj"]==5)
 		<td></td>
 		<td class="visszaTd">
 			<?php if($_SESSION["parbaj"]==6)
-		{?>
-			<button><a href="menu.php">Tovább</a></button>
-						<?php 
-		}?>
+			{ ?>
+				<button><a href="menu.php">Tovább</a></button>
+			<?php } ?>
 		</td>
 	</tr>
 	<tr>
@@ -148,6 +147,7 @@ if($_SESSION["parbaj"]==5)
 			$_SESSION["parbaj"]++;
 			?><meta http-equiv="refresh" content="1; url = parbaj.php"><?php
 		}
+		$classes->kapcsolatbontas();
 		?>
 	</div>
 </body>

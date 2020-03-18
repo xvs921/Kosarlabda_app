@@ -1,7 +1,7 @@
 <?php
 	include("classes/indexclasses.php");
 	$session = new Bejelent();
-	$session->signinSessionStart();
+	$session->bejelentkezesSessionIndit();
 	$_SESSION["reg_nev"] = 0;
 	if(isset($_POST["action"]) && $_POST["action"] == "cmd_signin")
 	{
@@ -12,9 +12,9 @@
 		else
 		{     
 			$data = new Bejelent();
-			$data->connect();
+			$data->kapcsolodas();
 			$data->signin($_POST["input_felhasznalonev"], $_POST["input_jelszo"]);
-			$data->disconnect();
+			$data->kapcsolatbontas();
 		}
 	}
 ?>	

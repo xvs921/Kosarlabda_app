@@ -1,9 +1,9 @@
 <?php
 include("classes/parbajclasses.php");
 $session = new Session();
-$session->sessionStart();
+$session->sessionIndit();
 $parbaj = new Session();
-$parbaj->connect();
+$parbaj->kapcsolodas();
 $kosaras=$_SESSION["sajatJatekos"];
 $kosaras2=$_SESSION['ellenfelJatekos'];
 ?>
@@ -65,3 +65,4 @@ $kosaras2=$_SESSION['ellenfelJatekos'];
 		</div>
 	</body>
 </html>
+<?php $parbaj->kapcsolatbontas(); ?>

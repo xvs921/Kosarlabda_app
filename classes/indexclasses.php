@@ -8,7 +8,7 @@ class Bejelent extends Adatbazis
 		session_start();
 	}
   // SIGN IN
-	public function signinSessionStart()
+	public function bejelentkezesSessionIndit()
 	{
 		session_start();
 		if(!isset($_SESSION["login_state"]))

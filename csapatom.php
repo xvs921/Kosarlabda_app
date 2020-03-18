@@ -1,9 +1,9 @@
 <?php
 include("classes/csapatomclasses.php");
 $session = new CsapatLista();
-$session->SessionStart();
+$session->SessionIndit();
 $jatekosokListazas = new CsapatLista();
-$jatekosokListazas->connect();
+$jatekosokListazas->kapcsolodas();
 $csapatAzon=$jatekosokListazas->getCsapat();
 
 if(isset($_POST["action"]) && $_POST["action"] == "btnElad")
@@ -151,7 +151,7 @@ if(isset($_POST["action"]) && $_POST["action"] == "btnKezdo")
 					}
 				}
 			}
-			$jatekosokListazas->disconnect();
+			$jatekosokListazas->kapcsolatbontas();
 			?>
 		</div>
 	</body>

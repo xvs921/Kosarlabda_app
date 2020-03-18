@@ -1,7 +1,7 @@
 <?php
 include("classes/jatekosokszerkclasses.php");
 $jszerk = new JatekosSzerkeszt();
-$jszerk->connect();
+$jszerk->kapcsolodas();
 //JÁTÉKOSFELVÉTEL
 $_SESSION["felv_nev"]="";
 $_SESSION["felv_osszPontszam"]="";
@@ -29,10 +29,9 @@ if(isset($_POST["action"]) && $_POST["action"] == "btnModositas")
 <html lang="hu">
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Játékosok szerkesztése</title>
-		<script src="https://code.jquery.com/jquery.min.js"></script>
+		<script src="assets/js/jquery.min.js"></script>
 		<link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 		<script src="assets/js/bootstrap.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="design/jatekosokszerkstyle.css">	  
@@ -130,4 +129,4 @@ if(isset($_POST["action"]) && $_POST["action"] == "btnModositas")
 		</div>  
 	</body>
 </html>
-<?php $jszerk->disconnect(); ?>
+<?php $jszerk->kapcsolatbontas(); ?>

@@ -1,9 +1,9 @@
 <?php
 include("classes/fiokomclasses.php");
 $session = new SajatFiok();
-$session->sessionStart();
+$session->sessionIndit();
 $fiokmodosit = new SajatFiok();
-$fiokmodosit->connect();
+$fiokmodosit->kapcsolodas();
 if(isset($_POST["action"]) && $_POST["action"] == "Inaktivalas")
 {
 	$fiokmodosit->setInaktiv();
@@ -115,8 +115,7 @@ if(isset($_POST["action"]) && $_POST["action"] == "Modositas")
 								</div>
 							</form>
 						<?php
-						}
-						$fiokmodosit->disconnect(); ?>
+						} $fiokmodosit->kapcsolatbontas(); ?>
 					</div>
 				</div>
 			</div>
