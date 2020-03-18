@@ -33,8 +33,8 @@ if(isset($_POST["action"]) && $_POST["action"] == "btnModositas")
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Játékosok szerkesztése</title>
 		<script src="https://code.jquery.com/jquery.min.js"></script>
-		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+		<link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+		<script src="assets/js/bootstrap.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="design/jatekosokszerkstyle.css">	  
 	</head>
 	<table class="navbar">

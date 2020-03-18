@@ -3,7 +3,7 @@ include("classes/csomagokclasses.php");
 $session = new Csomag();
 $session->sessionIndit();
 $adatok = new Csomag();
-$adatok->connect();
+$adatok->kapcsolodas();
 if(isset($_POST["action"]) && $_POST["action"] == "csomag1")
 {
 	$adatok->csomagNyit1();

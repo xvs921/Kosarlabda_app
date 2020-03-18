@@ -3,3 +3,5 @@ https://bootsnipp.com/snippets/vl4R7
 https://github.com/truekasun/Simple-Responsive-Login-Page
 https://www.youtube.com/watch?v=4vvB-7rUQfA
 Codeberry tananyag
+https://fontawesome.com/v4.7.0/get-started/
+https://fontawesome.com/how-to-use/on-the-web/setup/hosting-font-awesome-yourself

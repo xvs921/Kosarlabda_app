@@ -1,9 +1,9 @@
 <?php
 include("classes/menuclasses.php");
 $session = new MenuCl();
-$session->sessionStart();
+$session->sessionIndit();
 $menuMuvelet = new MenuCl();
-$menuMuvelet->connect();
+$menuMuvelet->kapcsolodas();
 //KIJELENTKEZÉS
 if(isset($_GET["action"]) && $_GET["action"] == "cmd_logout")
 {
@@ -156,7 +156,7 @@ if(isset($_GET["action"]) && $_GET["action"] == "ujEllenfel")
 			</a>
 			<?php
 			}
-			$menuMuvelet->disconnect();
+			$menuMuvelet->kapcsolatbontas();
 			?>
 		</div>
 	</body>

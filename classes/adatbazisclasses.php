@@ -10,7 +10,7 @@ class Adatbazis
 	public $result = NULL;
 	public $row = NULL;
 
-	public function sessionStart()
+	public function sessionIndit()
 	{
 		session_start();
 		if ($_SESSION["login_state"] == "")
@@ -20,7 +20,7 @@ class Adatbazis
 		}
 	}
 	
-	public function connect()
+	public function kapcsolodas()
 	{
 		$this->conn = new mysqli($this->servername, $this->username, $this->password, $this->dbname);
 		if ($this->conn->connect_error)
@@ -30,7 +30,7 @@ class Adatbazis
 		$this->conn->query("SET NAMES 'UTF8';");
 	}
 
-	public function disconnect()
+	public function kapcsolatbontas()
 	{
 		$this->conn->close();
 	}
