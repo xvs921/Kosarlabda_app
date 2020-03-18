@@ -1,7 +1,7 @@
 <?php
 class Adatbazis
 {
-	public $servername = "localhost:3306";
+	public $servername = "localhost";
 	public $username = "root";
 	public $password = "";
 	public $dbname = "kosarlabdaapp";
