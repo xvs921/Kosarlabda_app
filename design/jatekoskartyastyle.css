@@ -1,11 +1,13 @@
-.card
+.kartya
 {
 	background-color: #FFFF4F;
 }
-.details
+
+.adatok
 {
 	color: #2B3D6B;
 }
+
 .pontszamTable
 {
 	width: 80%;
@@ -14,6 +16,7 @@
 	font-size: 20px;
 	color: black;
 }
+
 .modositoTable
 {
 	width: 100%;
@@ -22,56 +25,64 @@
 	font-size: 20px;
 	color: #fff;
 }
+
 .pontszamTable td
 {
 	width: 33%;
 	text-align: center;
 	color: white;
 }
+
 .eladGomb
 {
-  background-color: red;
-  text-decoration: none;
-  font-size: 20px;
-  cursor: pointer;
-  border-radius: 20px;
-  color: white;
+	background-color: red;
+	text-decoration: none;
+	font-size: 20px;
+	cursor: pointer;
+	border-radius: 20px;
+	color: white;
 }
+
 .hpontTD
 {
-	 background: red;
+	background: red;
 	border-radius: 30px;
 }
+
 .osszpontTD
 {
-	 background: #2B3D6B;
+	background: #2B3D6B;
 	border-radius: 30px;
 }
+
 .zsakolasTD
 {
 	background: green;
 	border-radius: 30px;
 }
+
 .kezdocsereButton
 {
-  background-color: mediumpurple;
-  color: black;
-  text-decoration: none;
-  font-size: 20px;
-  cursor: pointer;
-  border-radius: 20px;
-  color: white;
+	background-color: mediumpurple;
+	color: black;
+	text-decoration: none;
+	font-size: 20px;
+	cursor: pointer;
+	border-radius: 20px;
+	color: white;
 }
+
 .parbajButton
 {
-background-color: mediumpurple;
-  color: black;
-  text-decoration: none;
-  font-size: 20px;
-  cursor: pointer;
-  border-radius: 20px;
-  color: white;
+	background-color: mediumpurple;
+	color: black;
+	text-decoration: none;
+	font-size: 20px;
+	cursor: pointer;
+	border-radius: 20px;
+	color: white;
 }
+
 image i
 {
 	color:#2B3D6B;

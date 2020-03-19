@@ -33,27 +33,27 @@ td
 
 button
 {
-  background-color: #4CAF50;
-  border: none;
-  color: white;
-  text-decoration: none;
-  font-size: 30px;
-  cursor: pointer;
-  border-radius: 5px;
+	background-color: #4CAF50;
+	border: none;
+	color: white;
+	text-decoration: none;
+	font-size: 30px;
+	cursor: pointer;
+	border-radius: 5px;
 }
 
 .nyitBtn
 {
-background-color: gray;
-  border: none;
-  color: white;
-  text-decoration: none;
-  font-size: 30px;
-  cursor: pointer;
-  border-radius: 5px;
+	background-color: gray;
+	border: none;
+	color: white;
+	text-decoration: none;
+	font-size: 30px;
+	cursor: pointer;
+	border-radius: 5px;
 }
 
 a, a:link, a:visited{
-  color: white;
-  text-decoration: none;
+	color: white;
+	text-decoration: none;
 }

@@ -22,7 +22,7 @@ if(isset($_POST["action"]) && $_POST["action"] == "btnInaktiv")
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Felhasználók szerkesztése</title>
 		<script src="design/komponensek/js/jquery.min.js"></script>
-		<link href="design/komponensek/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+		<link href="design/komponensek/css/bootstrap.mini.css" rel="stylesheet" type="text/css" />
 		<script src="design/komponensek/js/bootstrap.min.js"></script>
 		<link href="design/felhasznalokszerkstyle.css" rel="stylesheet" type="text/css">
 	</head>

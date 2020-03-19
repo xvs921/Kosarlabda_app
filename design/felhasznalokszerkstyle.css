@@ -3,6 +3,7 @@ body
 	width: 100%;
 	background: #2B3D6B;
 }
+
 .row
 {
 	margin:0 auto;
@@ -11,12 +12,14 @@ body
 	border-style: solid;
 	border-color: white;
 }
+
 .col-lg-2
 {
 	text-align: center;
 	border-style: none;
 	padding: 5px;
 }
+
 .form-control
 {
 	margin:0 auto;
@@ -25,38 +28,45 @@ body
 	width: 90%;
 	text-align: center;
 }
+
 #modositBtn
 {
 	background: darkgray;
 	border-style: none;
 	color: white;
 }
+
 .navbar
 {
 	width:99.9%;
 }
+
 td
 {
 	text-align: right;
 }
+
 .visszaGomb
 {
 	text-align: right;
 }
+
 button
 {
-  background-color: #4CAF50;
-  border: none;
-  color: white;
-  text-decoration: none;
-  font-size: 30px;
-  cursor: pointer;
-  border-radius: 5px;
+	background-color: #4CAF50;
+	border: none;
+	color: white;
+	text-decoration: none;
+	font-size: 30px;
+	cursor: pointer;
+	border-radius: 5px;
 }
+
 a, a:link, a:visited{
-  color: white;
-  text-decoration: none;
+	color: white;
+	text-decoration: none;
 }
+
 p
 {
 	color:white;
