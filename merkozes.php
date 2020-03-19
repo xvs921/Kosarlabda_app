@@ -35,7 +35,7 @@ if($_SESSION["parbaj"]==5)
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Mérkőzés</title>
-	<link href="assets/css/font-awesome.min.css" rel="stylesheet">
+	<link href="design/komponensek/css/font-awesome.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="design/kartyastyle.css">
 	<link rel="stylesheet" href="design/merkozesstyle.css">
 	<link rel="stylesheet" href="design/jatekoskartyastyle.css">

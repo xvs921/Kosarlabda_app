@@ -61,7 +61,7 @@ if($_SESSION["csomagAzon"]==3)
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Csomagok</title>
-		<link href="assets/css/font-awesome.min.css" rel="stylesheet">
+		<link href="design/komponensek/css/font-awesome.min.css" rel="stylesheet">
 		<link rel="stylesheet" href="design/kartyastyle.css">
 		<link rel="stylesheet" href="design/jatekoskartyastyle.css">
 		<link rel="stylesheet" href="design/csomagokstyle.css">

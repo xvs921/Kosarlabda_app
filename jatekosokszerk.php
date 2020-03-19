@@ -31,9 +31,9 @@ if(isset($_POST["action"]) && $_POST["action"] == "btnModositas")
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Játékosok szerkesztése</title>
-	  <script src="assets/js/jquery.min.js"></script>
-	  <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-	  <script src="assets/js/bootstrap.min.js"></script>
+	  <script src="design/komponensek/js/jquery.min.js"></script>
+	  <link href="design/komponensek/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+	  <script src="design/komponensek/js/bootstrap.min.js"></script>
 		<link href="design/jatekosokszerkstyle.css" rel="stylesheet" type="text/css">	  
 	</head>
 	<table class="navbar">
