@@ -23,7 +23,7 @@ if(isset($_POST["action"]) && $_POST["action"] == "btnInaktiv")
 		<title>Felhasználók szerkesztése</title>
 		<script src="assets/js/jquery.min.js"></script>
 		<link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+		<script src="assets/js/bootstrap.min.js"></script>
 		<link href="design/felhasznalokszerkstyle.css" rel="stylesheet" type="text/css">
 	</head>
 	<table class="navbar">

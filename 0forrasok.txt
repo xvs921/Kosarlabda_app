@@ -6,3 +6,4 @@ Codeberry tananyag
 https://fontawesome.com/v4.7.0/get-started/
 https://fontawesome.com/how-to-use/on-the-web/setup/hosting-font-awesome-yourself
 https://code.jquery.com/jquery.min.js
+https://getbootstrap.com/docs/4.0/getting-started/download/
