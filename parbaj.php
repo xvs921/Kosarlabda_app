@@ -1,8 +1,8 @@
 <?php
 include("classes/parbajclasses.php");
-$session = new Session();
+$session = new Parbaj();
 $session->sessionIndit();
-$parbaj = new Session();
+$parbaj = new Parbaj();
 $parbaj->kapcsolodas();
 $kosaras=$_SESSION["sajatJatekos"];
 $kosaras2=$_SESSION['ellenfelJatekos'];

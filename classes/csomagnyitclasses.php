@@ -1,10 +1,10 @@
 <?php
 include("classes/jatekoskartyaclasses.php");
-class Session extends Jatekos
+class Csnyit extends Jatekos
 {
 	public function fizetes($osszeg)
 	{
-		$this->sql = "UPDATE felhasznalok SET penz = penz-'".$osszeg."' WHERE id = '".$_SESSION["login_state"]."'";
+		$this->sql = "UPDATE felhasznalok SET penz = penz-'".$osszeg."' WHERE id = '".$_SESSION["bejelentkezettAllapot"]."'";
 		$this->result = $this->conn->query($this->sql);
 	}
 	
@@ -45,7 +45,7 @@ class Session extends Jatekos
 	}
 	public function getCsapattagokSzama()
 	{
-		$this->sql = "SELECT COUNT(id) FROM csapattagok WHERE `csapatok.id`=(SELECT `csapatok.id` FROM felhasznalok WHERE id= '".$_SESSION["login_state"]."')";
+		$this->sql = "SELECT COUNT(id) FROM csapattagok WHERE `csapatok.id`=(SELECT `csapatok.id` FROM felhasznalok WHERE id= '".$_SESSION["bejelentkezettAllapot"]."')";
 		$this->result = $this->conn->query($this->sql);
 		$this->row = $this->result->fetch_assoc();
 		return $this->row["COUNT(id)"];
@@ -57,7 +57,7 @@ class Session extends Jatekos
 	}
 	public function fizetesLehetE($osszeg)
 	{
-		$this->sql = "SELECT penz FROM felhasznalok WHERE id='".$_SESSION["login_state"]."'";
+		$this->sql = "SELECT penz FROM felhasznalok WHERE id='".$_SESSION["bejelentkezettAllapot"]."'";
 		$this->result = $this->conn->query($this->sql);
 		$this->row = $this->result->fetch_assoc();
 		$penz=$this->row["penz"];
@@ -72,7 +72,7 @@ class Session extends Jatekos
 	}
 	public function getCsapatAzon()
 	{
-		$this->sql = "SELECT `csapatok.id` FROM felhasznalok WHERE id= '".$_SESSION["login_state"]."'";
+		$this->sql = "SELECT `csapatok.id` FROM felhasznalok WHERE id= '".$_SESSION["bejelentkezettAllapot"]."'";
 		$this->result = $this->conn->query($this->sql);
 		$this->row = $this->result->fetch_assoc();
 		return $this->row["csapatok.id"];
@@ -80,7 +80,7 @@ class Session extends Jatekos
 	public function penzNyeremeny($minPenz,$maxPenz)
 	{
 		$penz=rand($minPenz,$maxPenz);
-		$this->sql = "UPDATE felhasznalok SET penz=penz+'".$penz."' WHERE id='".$_SESSION["login_state"]."'";
+		$this->sql = "UPDATE felhasznalok SET penz=penz+'".$penz."' WHERE id='".$_SESSION["bejelentkezettAllapot"]."'";
 		$this->result = $this->conn->query($this->sql);
 		return $penz;
 	}
@@ -94,7 +94,7 @@ class Session extends Jatekos
 	
 	public function csomagElad($kosaras)
 	{
-		$this->sql = "UPDATE felhasznalok SET penz=penz+(SELECT ar FROM jatekosok WHERE id='".$kosaras."') WHERE id='".$_SESSION["login_state"]."'";
+		$this->sql = "UPDATE felhasznalok SET penz=penz+(SELECT ar FROM jatekosok WHERE id='".$kosaras."') WHERE id='".$_SESSION["bejelentkezettAllapot"]."'";
 		$this->result = $this->conn->query($this->sql);
 		?><script>alert("A csapatodban van, így az árát kapod!")</script> <?php
 	}

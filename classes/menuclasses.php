@@ -2,15 +2,15 @@
 include("classes/adatbazisclasses.php");
 class MenuCl extends Adatbazis
 {
-	public function logout()
+	public function kijelentkezes()
 	{
-		$_SESSION["login_state"] = "";
+		$_SESSION["bejelentkezettAllapot"] = "";
 		header("location: index.php");
 	}
 	//FELHASZNÁLÓ ADATAI
 	public function jogosultsagAzonositas()
 	{  
-		$this->sql = "SELECT COUNT(id) FROM jogok WHERE `felhasznalok.id` = '".$_SESSION["login_state"]."'";
+		$this->sql = "SELECT COUNT(id) FROM jogok WHERE `felhasznalok.id` = '".$_SESSION["bejelentkezettAllapot"]."'";
 		$this->result = $this->conn->query($this->sql);
 		$this->row = $this->result->fetch_assoc();
 		return $this->row["COUNT(id)"];
@@ -18,7 +18,7 @@ class MenuCl extends Adatbazis
 	
 	public function felhasznalopenz()
 	{
-		$this->sql = "SELECT penz FROM felhasznalok WHERE id = '".$_SESSION["login_state"]."'";
+		$this->sql = "SELECT penz FROM felhasznalok WHERE id = '".$_SESSION["bejelentkezettAllapot"]."'";
 		$this->result = $this->conn->query($this->sql);
 		$this->row = $this->result->fetch_assoc();
 		return $this->row["penz"];  
@@ -28,7 +28,7 @@ class MenuCl extends Adatbazis
 	{
 		$this->sql = "select * from felhasznalok f 
 		left join csapatok cs on cs.id=f.`csapatok.id`
-		where f.id='".$_SESSION["login_state"]."'";
+		where f.id='".$_SESSION["bejelentkezettAllapot"]."'";
 		$this->result = $this->conn->query($this->sql);
 		$this->row = $this->result->fetch_assoc();
 		echo $this->row["nev"];
@@ -37,7 +37,7 @@ class MenuCl extends Adatbazis
 	//MÉRKŐZÉS KÉT CSAPATA
 	public function sajatAzon()
 	{
-		$this->sql = "SELECT * FROM felhasznalok f LEFT JOIN csapatok cs on cs.id=f.`csapatok.id` WHERE f.id='".$_SESSION["login_state"]."'";
+		$this->sql = "SELECT * FROM felhasznalok f LEFT JOIN csapatok cs on cs.id=f.`csapatok.id` WHERE f.id='".$_SESSION["bejelentkezettAllapot"]."'";
 		$this->result = $this->conn->query($this->sql);
 		$this->row = $this->result->fetch_assoc();
 		return $this->row["id"];

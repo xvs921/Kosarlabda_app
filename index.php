@@ -1,22 +1,22 @@
 <?php
-	include("classes/indexclasses.php");
-	$session = new Bejelent();
-	$session->bejelentkezesSessionIndit();
-	$_SESSION["reg_nev"] = 0;
-	if(isset($_POST["action"]) && $_POST["action"] == "cmd_signin")
+include("classes/indexclasses.php");
+$session = new Bejelent();
+$session->bejelentkezesSessionIndit();
+$belepes = new Bejelent();
+$belepes->kapcsolodas();
+$_SESSION["reg_nev"] = 0;
+if(isset($_POST["action"]) && $_POST["action"] == "cmd_signin")
+{
+	if(empty($_POST["input_felhasznalonev"]) || empty($_POST["input_jelszo"]))
 	{
-		if(empty($_POST["input_felhasznalonev"]) || empty($_POST["input_jelszo"]))
-		{
-			?> <script>alert("Nem adta meg a felhasználónevet, vagy a jelszót!")</script> <?php
-		}
-		else
-		{     
-			$data = new Bejelent();
-			$data->kapcsolodas();
-			$data->signin($_POST["input_felhasznalonev"], $_POST["input_jelszo"]);
-			$data->kapcsolatbontas();
-		}
+		?> <script>alert("Nem adta meg a felhasználónevet, vagy a jelszót!")</script> <?php
 	}
+	else
+	{
+		$belepes->bejelentkezes($_POST["input_felhasznalonev"], $_POST["input_jelszo"]);
+	}
+}
+$belepes->kapcsolatbontas();
 ?>	
 <!DOCTYPE html>
 <html lang="hu">
@@ -25,7 +25,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Kosárlabda játék</title>
-		<link href="design/komponensek/css/bootstrap.min.css" rel="stylesheet">	 
+		<link href="design/komponensek/css/bootstrap.mini.css" rel="stylesheet">	 
 		<link href="design/komponensek/css/font-awesome.min.css" rel="stylesheet">
 		<link href="design/komponensek/css/style.css" rel="stylesheet">
 	</head>

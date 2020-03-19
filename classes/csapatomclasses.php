@@ -5,7 +5,7 @@ class CsapatLista extends Jatekos
 	//CSAPATADATOK
 	public function getCsapat()
 	{  
-		$this->sql = "SELECT `csapatok.id` FROM felhasznalok WHERE id='".$_SESSION["login_state"]."'";
+		$this->sql = "SELECT `csapatok.id` FROM felhasznalok WHERE id='".$_SESSION["bejelentkezettAllapot"]."'";
 		$this->result = $this->conn->query($this->sql);
 		$this->row = $this->result->fetch_assoc();
 		return $this->row["csapatok.id"];

@@ -7,7 +7,7 @@ $menuMuvelet->kapcsolodas();
 //KIJELENTKEZÉS
 if(isset($_GET["action"]) && $_GET["action"] == "cmd_logout")
 {
-	$menuMuvelet->logout();
+	$menuMuvelet->kijelentkezes();
 }
 //MÉRKŐZÉS
 if(isset($_GET["action"]) && $_GET["action"] == "ujEllenfel")
@@ -154,10 +154,8 @@ if(isset($_GET["action"]) && $_GET["action"] == "ujEllenfel")
 					</div>
 				</div>
 			</a>
-			<?php
-			}
-			$menuMuvelet->kapcsolatbontas();
-			?>
+			<?php }
+			$menuMuvelet->kapcsolatbontas(); ?>
 		</div>
 	</body>
 </html>

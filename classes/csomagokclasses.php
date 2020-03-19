@@ -5,7 +5,7 @@ class Csomag extends Adatbazis
 	public function csomagNyit1()
 	{
 		$ar=5000;
-		$this->sql = "SELECT penz FROM felhasznalok WHERE id='".$_SESSION["login_state"]."'";
+		$this->sql = "SELECT penz FROM felhasznalok WHERE id='".$_SESSION["bejelentkezettAllapot"]."'";
 		$this->result = $this->conn->query($this->sql);
 		$this->row = $this->result->fetch_assoc();
 		$penz=$this->row["penz"];
@@ -23,7 +23,7 @@ class Csomag extends Adatbazis
 	public function csomagNyit2()
 	{
 		$ar=50000;
-		$this->sql = "SELECT penz FROM felhasznalok WHERE id='".$_SESSION["login_state"]."'";
+		$this->sql = "SELECT penz FROM felhasznalok WHERE id='".$_SESSION["bejelentkezettAllapot"]."'";
 		$this->result = $this->conn->query($this->sql);
 		$this->row = $this->result->fetch_assoc();
 		$penz=$this->row["penz"];
@@ -41,7 +41,7 @@ class Csomag extends Adatbazis
 	public function csomagNyit3()
 	{
 		$ar=150000;
-		$this->sql = "SELECT penz FROM felhasznalok WHERE id='".$_SESSION["login_state"]."'";
+		$this->sql = "SELECT penz FROM felhasznalok WHERE id='".$_SESSION["bejelentkezettAllapot"]."'";
 		$this->result = $this->conn->query($this->sql);
 		$this->row = $this->result->fetch_assoc();
 		$penz=$this->row["penz"];

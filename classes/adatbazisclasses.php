@@ -13,7 +13,7 @@ class Adatbazis
 	public function sessionIndit()
 	{
 		session_start();
-		if ($_SESSION["login_state"] == "")
+		if ($_SESSION["bejelentkezettAllapot"] == "")
 		{
 			header("location: index.php");
 			die();

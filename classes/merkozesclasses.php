@@ -1,6 +1,6 @@
 <?php
 include("classes/jatekoskartyaclasses.php");
-class Session extends Jatekos
+class Merkozes extends Jatekos
 {
 	public function sajatJatekoslista()
 	{
@@ -14,7 +14,7 @@ class Session extends Jatekos
 	{
 		$this->sql = "SELECT * FROM felhasznalok f 
 		LEFT JOIN csapatok cs on cs.id=f.`csapatok.id`
-		where f.id='".$_SESSION["login_state"]."'";
+		where f.id='".$_SESSION["bejelentkezettAllapot"]."'";
 		$this->result = $this->conn->query($this->sql);
 		$this->row = $this->result->fetch_assoc();
 		return $this->row["nev"];

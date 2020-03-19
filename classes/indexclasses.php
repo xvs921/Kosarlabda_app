@@ -7,22 +7,22 @@ class Bejelent extends Adatbazis
 	{
 		session_start();
 	}
-  // SIGN IN
+  //Bejelentkezés
 	public function bejelentkezesSessionIndit()
 	{
 		session_start();
-		if(!isset($_SESSION["login_state"]))
+		if(!isset($_SESSION["bejelentkezettAllapot"]))
 		{
-			$_SESSION["login_state"] = "";
+			$_SESSION["bejelentkezettAllapot"] = "";
 		}
-		if($_SESSION["login_state"] != "")
+		if($_SESSION["bejelentkezettAllapot"] != "")
 		{
 			header("location:menu.php");
 			die();
 		}
 	}
 	
-	public function signin($felhasznalonev, $jelszo)
+	public function bejelentkezes($felhasznalonev, $jelszo)
 	{
 		$this->sql = "SELECT * FROM felhasznalok WHERE felhasznalonev = '".$felhasznalonev."'";
 		$this->result = $this->conn->query($this->sql);
@@ -31,7 +31,7 @@ class Bejelent extends Adatbazis
 			$this->row = $this->result->fetch_assoc();
 			if (password_verify($jelszo, $this->row["jelszo"]) && $this->row["aktiv"]==1)
 			{
-				$_SESSION["login_state"] = $this->row["id"];
+				$_SESSION["bejelentkezettAllapot"] = $this->row["id"];
 				header("location:menu.php");
 				die();
 			}

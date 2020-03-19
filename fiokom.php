@@ -24,7 +24,7 @@ if(isset($_POST["action"]) && $_POST["action"] == "Modositas")
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Felhasználói adatok</title>
-		<link href="design/komponensek/css/bootstrap.min.css" rel="stylesheet">	 
+		<link href="design/komponensek/css/bootstrap.mini.css" rel="stylesheet">	 
 		<link href="design/komponensek/css/font-awesome.min.css" rel="stylesheet">
 		<link href="design/komponensek/css/style.css" rel="stylesheet">
 		<link href="design/fiokomstyle.css" rel="stylesheet">

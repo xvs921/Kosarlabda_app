@@ -5,7 +5,7 @@ $session->SessionIndit();
 $jatekosokListazas = new CsapatLista();
 $jatekosokListazas->kapcsolodas();
 $csapatAzon=$jatekosokListazas->getCsapat();
-
+//GOMBOK
 if(isset($_POST["action"]) && $_POST["action"] == "btnElad")
 {
 	if($jatekosokListazas->getCsapattagokSzama($csapatAzon)<=5)

@@ -31,23 +31,22 @@ if(isset($_POST["action"]) && $_POST["action"] == "btnModositas")
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Játékosok szerkesztése</title>
-	  <script src="design/komponensek/js/jquery.min.js"></script>
-	  <link href="design/komponensek/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-	  <script src="design/komponensek/js/bootstrap.min.js"></script>
+		<script src="design/komponensek/js/jquery.min.js"></script>
+		<link href="design/komponensek/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+		<script src="design/komponensek/js/bootstrap.min.js"></script>
 		<link href="design/jatekosokszerkstyle.css" rel="stylesheet" type="text/css">	  
 	</head>
 	<table class="navbar">
-	<tr>
-	<td class="felvetelGomb"><button type="button" data-toggle="modal" data-target="#exampleModalCenter">Felvétel</button></td>
-	<td class="visszaGomb"><button><a href="menu.php">Vissza</a></button></td>
-	</tr>
+		<tr>
+			<td class="felvetelGomb"><button type="button" data-toggle="modal" data-target="#exampleModalCenter">Felvétel</button></td>
+			<td class="visszaGomb"><button><a href="menu.php">Vissza</a></button></td>
+		</tr>
 	</table>
 	<body>
 		<?php
 		for($i=1; $i<=$jszerk->getJatekosokSzama(); $i++)
 		{
-			if(!$jszerk->getNev($i)==""){
-			?>
+			if(!$jszerk->getNev($i)==""){ ?>
 				<div class="row">
 					<form method="post">
 						<div class="col-lg-2 col-md-6">
