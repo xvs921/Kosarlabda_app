@@ -1,6 +1,6 @@
 <?php
 include("classes/csomagnyitclasses.php");
-$session = new Session();
+$session = new Csnyit();
 $session->sessionIndit();
 $tipus=$session->csomagTipus();
 $ar=0;
