@@ -6,6 +6,8 @@ $parbaj = new Parbaj();
 $parbaj->kapcsolodas();
 $kosaras=$_SESSION["sajatJatekos"];
 $kosaras2=$_SESSION['ellenfelJatekos'];
+$k1pontok=$parbaj->get3pontos($kosaras)+$parbaj->getOsszpontszam($kosaras)+$parbaj->getZsakolas($kosaras);
+$k2pontok=$parbaj->get3pontos($kosaras2)+$parbaj->getOsszpontszam($kosaras2)+$parbaj->getZsakolas($kosaras2);
 ?>
 <!DOCTYPE html>
 <html>
@@ -27,6 +29,7 @@ $kosaras2=$_SESSION['ellenfelJatekos'];
 	</table>
 	<body>
 		<center><h2><?php echo $_SESSION['parbajEredmeny'] ?></h2></center>
+		<center><h2><?php echo $k1pontok." - " .$k2pontok;?></h2></center>
 		<div class="felulet">
 			<div class="kartya">
 				<div class="tartalom">
