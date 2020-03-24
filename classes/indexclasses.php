@@ -2,13 +2,11 @@
 include("classes/adatbazisclasses.php");
 class Bejelent extends Adatbazis 
 {
-   // INDEX
 	public function indexSessionStart()
 	{
 		session_start();
 	}
-  //Bejelentkezés
-	public function bejelentkezesSessionIndit()
+	public function bejelentkezesSession()
 	{
 		session_start();
 		if(!isset($_SESSION["bejelentkezettAllapot"]))

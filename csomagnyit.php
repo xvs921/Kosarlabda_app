@@ -2,10 +2,10 @@
 include("classes/csomagnyitclasses.php");
 $session = new Csnyit();
 $session->sessionIndit();
-$tipus=$session->csomagTipus();
-$ar=0;
 $csomagnyitas = new Csnyit();
 $csomagnyitas->kapcsolodas();
+$tipus=$csomagnyitas->csomagTipus();
+$ar=0;
 if($_SESSION["csomagAzon"]==1)
 {
 	$ar=5000;

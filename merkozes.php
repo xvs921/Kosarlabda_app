@@ -131,11 +131,11 @@ if($_SESSION["parbaj"]==5)
 				}
 				while($_SESSION['ellenfelCsapat'][$ellenfelJatekos] == -1);
 
-					$_SESSION['ellenfelJatekos']=$_SESSION['ellenfelCsapat'][$ellenfelJatekos];
-					$azon2=array_search($_SESSION['ellenfelJatekos'], $_SESSION['ellenfelCsapat']);
-					$csere2=array($azon2 => -1);
-					$cserel2=array_replace($_SESSION['ellenfelCsapat'],$csere2);	
-					$_SESSION['ellenfelCsapat']=$cserel2;
+				$_SESSION['ellenfelJatekos']=$_SESSION['ellenfelCsapat'][$ellenfelJatekos];
+				$azon2=array_search($_SESSION['ellenfelJatekos'], $_SESSION['ellenfelCsapat']);
+				$csere2=array($azon2 => -1);
+				$cserel2=array_replace($_SESSION['ellenfelCsapat'],$csere2);	
+				$_SESSION['ellenfelCsapat']=$cserel2;
 
 				//párbaj
 				$kosaras=$_SESSION["sajatJatekos"];

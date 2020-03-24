@@ -1,7 +1,7 @@
 <?php
 include("classes/indexclasses.php");
 $session = new Bejelent();
-$session->bejelentkezesSessionIndit();
+$session->bejelentkezesSession();
 $belepes = new Bejelent();
 $belepes->kapcsolodas();
 $_SESSION["reg_nev"] = 0;
