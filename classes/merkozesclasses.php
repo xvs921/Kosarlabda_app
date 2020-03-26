@@ -71,7 +71,7 @@ class Merkozes extends Jatekos
 		$this->result = $this->conn->query($this->sql);
 		$this->sql = "UPDATE csapatok SET lejatszott=lejatszott+1, vesztett=vesztett+1 WHERE id='".$_SESSION['sajatId']."'";
 		$this->result = $this->conn->query($this->sql);
-		$this->sql = "UPDATE felhasznalok SET penz=penz+2500 WHERE `csapatok.id`='".$_SESSION['ellenfelId']."'";
+		$this->sql = "UPDATE felhasznalok SET penz=penz+5000 WHERE `csapatok.id`='".$_SESSION['ellenfelId']."'";
 		$this->result = $this->conn->query($this->sql);
 		$this->sql = "INSERT INTO `meccsek`(`datum`, `csapat1.id`, `csapat2.id`, `eredmeny1`, `eredmeny2`) VALUES (CURRENT_TIMESTAMP(),'".$_SESSION['sajatId']."','".$_SESSION['ellenfelId']."','".$_SESSION['eredmeny1']."','".$_SESSION['eredmeny2']."')";
 		$this->result = $this->conn->query($this->sql);

@@ -9,7 +9,7 @@ class Adatbazis
 	public $sql = NULL;
 	public $result = NULL;
 	public $row = NULL;
-
+	
 	public function sessionIndit()
 	{
 		session_start();

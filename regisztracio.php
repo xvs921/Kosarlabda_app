@@ -2,8 +2,12 @@
 include("classes/regisztracioclasses.php");
 $regi = new Regiszt();
 $regi->kapcsolodas();
+$felv_nev="";
+$felv_email="";
 if(isset($_POST["action"]) && $_POST["action"] == "cmd_regisztracio")
 {
+	$felv_nev=$_POST["input_felhasznalonev"];
+	$felv_email=$_POST["input_email"];
 	if(empty($_POST["input_felhasznalonev"]) || empty($_POST["input_email"]) || empty($_POST["input_jelszo"]) || empty($_POST["input_jelszo_ujra"]))
 	{
 		?> <script>alert("Nem adott meg egy szükséges adatot!")</script><?php
@@ -36,13 +40,13 @@ $regi->kapcsolatbontas();
 								<div class="form-group">
 									<div class="input-group margin-bottom-sm">
 										<span class="input-group-addon"><i class="fa fa-user fa-fw" aria-hidden="true"></i></span>
-										<input class="form-control" type="text" placeholder="Felhasználónév" name="input_felhasznalonev">
+										<input class="form-control" type="text" placeholder="Felhasználónév" name="input_felhasznalonev" value="<?php echo $felv_nev ?>">
 									</div>
 								</div>
 								<div class="form-group">
 									<div class="input-group">
 										<span class="input-group-addon"><i class="fa fa-envelope fa-fw" aria-hidden="true"></i></span>
-										<input class="form-control" type="email" placeholder="Email cím" name="input_email">
+										<input class="form-control" type="email" placeholder="Email cím" name="input_email" value="<?php echo $felv_email ?>">
 									</div>
 								</div>
 								<div class="form-group">

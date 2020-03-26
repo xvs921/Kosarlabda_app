@@ -1,6 +1,6 @@
 <?php
 include("classes/felhasznalokszerkclasses.php");
-$felhszerk = new Session();
+$felhszerk = new FelhSzrk();
 $felhszerk->kapcsolodas();
 if(isset($_POST["action"]) && $_POST["action"] == "btnModositas")
 {

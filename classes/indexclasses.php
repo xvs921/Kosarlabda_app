@@ -2,7 +2,7 @@
 include("classes/adatbazisclasses.php");
 class Bejelent extends Adatbazis 
 {
-	public function indexSessionStart()
+	public function indexSessionIndit()
 	{
 		session_start();
 	}

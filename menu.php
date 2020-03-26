@@ -39,7 +39,14 @@ if(isset($_GET["action"]) && $_GET["action"] == "ujEllenfel")
 	
 	$_SESSION['sajatCsapat'] = $sajatCsapat;
 	$_SESSION['ellenfelCsapat'] = $ellenfelCsapat;
-	?><meta http-equiv="refresh" content="1; url = merkozes.php"><?php
+	if(count($_SESSION['sajatCsapat'])+count($_SESSION['ellenfelCsapat'])==10)
+	{
+		?><meta http-equiv="refresh" content="1; url = merkozes.php"><?php
+	}
+	else
+	{
+		?> <script>alert("Ellenőrizze megvan-e az 5 kezdőjátékos a csapatában!")</script> <?php
+	}
 }
 ?>
 <!DOCTYPE html>

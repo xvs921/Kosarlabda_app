@@ -1,7 +1,7 @@
 
 <?php
 include("classes/adatbazisclasses.php");
-class Session extends Adatbazis
+class FelhSzrk extends Adatbazis
 {
 	public function getFelhasznalokSzama()
 	{
@@ -10,6 +10,7 @@ class Session extends Adatbazis
 		$this->row = $this->result->fetch_assoc();
 		return $this->row["MAX(id)"];
 	}
+	
 	public function getFelhasznalonev($azon)
 	{
 		$this->sql = "SELECT * FROM felhasznalok WHERE id='".$azon."'";
@@ -17,6 +18,7 @@ class Session extends Adatbazis
 		$this->row = $this->result->fetch_assoc();
 		return $this->row["felhasznalonev"];
 	}
+	
 	public function getEmail($azon)
 	{
 		$this->sql = "SELECT * FROM felhasznalok WHERE id='".$azon."'";
@@ -24,6 +26,7 @@ class Session extends Adatbazis
 		$this->row = $this->result->fetch_assoc();
 		echo $this->row["email"];
 	}
+	
 	public function getCsapatnev($azon)
 	{
 		$this->sql = "SELECT * FROM felhasznalok f 
@@ -32,6 +35,7 @@ class Session extends Adatbazis
 		$this->row = $this->result->fetch_assoc();
 		echo $this->row["nev"];
 	}
+	
 	public function getPenz($azon)
 	{
 		$this->sql = "SELECT * FROM felhasznalok WHERE id='".$azon."'";
@@ -39,6 +43,7 @@ class Session extends Adatbazis
 		$this->row = $this->result->fetch_assoc();
 		echo $this->row["penz"];
 	}
+	
 	public function getAktiv($azon)
 	{
 		$this->sql = "SELECT * FROM felhasznalok WHERE id='".$azon."'";
@@ -46,24 +51,27 @@ class Session extends Adatbazis
 		$this->row = $this->result->fetch_assoc();
 		return $this->row["aktiv"];
 	}
+	
 	public function getJogosultsag($azon)
 	{
 		$this->sql = "SELECT * FROM jogok WHERE `felhasznalok.id`='".$azon."'";
 		$this->result = $this->conn->query($this->sql);
 		return $this->result->num_rows;
 	}
+	
 	public function setAktivitas($aktivitas)
 	{
 		$this->sql = "UPDATE felhasznalok SET aktiv='".$aktivitas."' WHERE id='".$_POST["input_id"]."'";
 		$this->result = $this->conn->query($this->sql);
 		?> <meta http-equiv="refresh" content="0; url = felhasznalokszerk.php"> <?php
 	}
+	
 	public function felhasznaloModositas()
 	{
-		//FELHASZNÁLÓNÉV
 		$this->sql = "SELECT f.felhasznalonev,f.email,cs.nev,f.penz,COUNT(j.`felhasznalok.id`) AS szerepkor FROM felhasznalok f LEFT JOIN csapatok cs ON cs.id=f.`csapatok.id` LEFT JOIN jogok j ON j.`felhasznalok.id`=f.id WHERE f.id='".$_POST["input_id"]."'";
 		$this->result = $this->conn->query($this->sql);
 		$this->row = $this->result->fetch_assoc();
+		
 		if($this->row["felhasznalonev"] != $_POST["input_felhasznalonev"] || $this->row["email"] != $_POST["input_email"] || $this->row["penz"] != $_POST["input_penz"] || $this->row["nev"] != $_POST["input_csapatnev"] || $this->row["szerepkor"] != $_POST["input_jogosultsag"])
 		{
 			//FELHASZNÁLÓNÉV

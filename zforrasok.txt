@@ -1,5 +1,0 @@
-index design bootstrap: https://github.com/truekasun/Simple-Responsive-Login-Page
-Codeberry tananyag
-https://fontawesome.com/v4.7.0/get-started/
-https://code.jquery.com/jquery.min.js
-https://getbootstrap.com/docs/4.0/getting-started/download/

@@ -33,6 +33,10 @@ class JatekosSzerkeszt extends Jatekos
 			{
 				?> <script>alert("Már létezik játékos ilyen névvel!")</script> <?php
 			}
+			else if(substr($_POST["input_kep"], -4) != ".jpg" && substr($_POST["input_kep"], -4) != ".png")
+			{
+				?> <script>alert("A képhez .png vagy .jpg kiterjesztést szükséges írni!")</script> <?php
+			}
 			else
 			{
 				$this->sql = "INSERT INTO jatekosok(nev, osszPontszam, 3pontos, zsakolas, ar, kep) VALUES ('".$_POST["input_nev"]."','".$_POST["input_osszPontszam"]."','".$_POST["input_3pontos"]."','".$_POST["input_zsakolas"]."','".$_POST["input_ar"]."','".$_POST["input_kep"]."')";
@@ -122,14 +126,20 @@ class JatekosSzerkeszt extends Jatekos
 		}
 		
 		//KÉP
-		$this->sql = "UPDATE jatekosok SET kep='".$_POST["input_kep"]."' WHERE id='".$_POST["input_id"]."'";
-		$this->result = $this->conn->query($this->sql);
-		
-		?> <meta http-equiv="refresh" content="0; url = jatekosokszerk.php"> <?php
+		if(substr($_POST["input_kep"], -4) == ".jpg" || substr($_POST["input_kep"], -4) == ".png")
+		{
+			$this->sql = "UPDATE jatekosok SET kep='".$_POST["input_kep"]."' WHERE id='".$_POST["input_id"]."'";
+			$this->result = $this->conn->query($this->sql);
+		}
+		else
+		{
+			?> <script>alert("A képhez .png vagy .jpg kiterjesztést szükséges írni!")</script> <?php	
+		}
 		//NEM VÁLTOZOTT
 		if($this->row["nev"]==$_POST["input_nev"] and $this->row["osszPontszam"]==$_POST["input_osszPontszam"] and $this->row["3pontos"]==$_POST["input_3pontos"] and $this->row["zsakolas"]==$_POST["input_zsakolas"] and $this->row["ar"]==$_POST["input_ar"] and $this->row["kep"]==$_POST["input_kep"])
 		{
 			?> <script>alert("Nem változtak az adatai!")</script> <?php	
 		}
+		?> <meta http-equiv="refresh" content="0; url = jatekosokszerk.php"> <?php		
 	}
 } ?>
