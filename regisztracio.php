@@ -35,7 +35,7 @@ $regi->kapcsolatbontas();
 				<div class="row">
 					<div class="col-md-4 col-md-offset-4 col-centered">
 						<div class="login-panel">
-							<center><h1 class="login-panel-title">Kosárlabda játék regisztráció</h1></center>
+							<center><h1 class="login-panel-title">Basket Card Manager regisztráció</h1></center>
 							<div class="login-panel-section">
 								<div class="form-group">
 									<div class="input-group margin-bottom-sm">

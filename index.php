@@ -35,7 +35,7 @@ $belepes->kapcsolatbontas();
 				<div class="row">
 					<div class="col-md-4 col-md-offset-4 col-centered">
 						<div class="login-panel">
-							<center><h1 class="login-panel-title">Kosárlabda játék</h1></center>
+							<center><h1 class="login-panel-title">Basket Card Manager</h1></center>
 								<div class="login-panel-section">
 									<div class="form-group">
 										<div class="input-group margin-bottom-sm">
@@ -49,7 +49,7 @@ $belepes->kapcsolatbontas();
 											<input class="form-control" type="password" placeholder="Jelszó" name="input_jelszo">
 										</div>
 									</div>
-									<a href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to=fejleszt@gmail.com&su=Elfelejtett jelszó&body=A fiókhoz tartozó felhasználónév és email cím megadása szükséges!&tf=1" class="pull-right">Elfelejtett jelszó</a>
+									<a href="" onClick='alert("Vegye fel a kapcsolatot az oldal tulajdonosával!\nElérhetőség: admin@gmail.com")' class="pull-right">Elfelejtett jelszó</a>
 								</div>
 								<div class="login-panel-section">
 									<input type="hidden" name="action" value="cmd_signin">
