@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2020. Már 25. 11:13
+-- Létrehozás ideje: 2020. Már 30. 17:18
 -- Kiszolgáló verziója: 10.4.11-MariaDB
 -- PHP verzió: 7.4.3
 
@@ -43,13 +43,16 @@ CREATE TABLE `csapatok` (
 --
 
 INSERT INTO `csapatok` (`id`, `nev`, `lejatszott`, `nyert`, `vesztett`) VALUES
-(1, 'Los Angeles Lakers', 4, 3, 0),
+(1, 'Los Angeles Lakers', 6, 3, 1),
 (2, 'Los Angeles Clippers', 10, 3, 5),
 (3, 'Milwaukee Bucks', 4, 3, 1),
 (4, 'Golden State Warriors', 1, 0, 1),
 (5, 'Toronto Raptors', 2, 0, 2),
-(6, 'Boston Celtics', 1, 0, 0),
-(7, 'eladott', 0, 0, 0);
+(6, 'Boston Celtics', 2, 1, 0),
+(7, 'eladott', 0, 0, 0),
+(8, 'admin', 3, 1, 2),
+(9, 'vorakgeri', 3, 2, 1),
+(10, 'simonjanos', 3, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -148,7 +151,44 @@ INSERT INTO `csapattagok` (`id`, `csapatok.id`, `jatekosok.id`, `sorszam`, `kezd
 (76, 6, 76, 10, 0),
 (77, 6, 77, 11, 0),
 (78, 6, 78, 12, 0),
-(79, 6, 79, 13, 0);
+(79, 6, 79, 13, 0),
+(80, 8, 58, 1, 1),
+(81, 8, 7, 2, 1),
+(82, 8, 21, 3, 1),
+(83, 8, 16, 4, 1),
+(84, 8, 63, 5, 1),
+(85, 9, 52, 1, 1),
+(86, 7, 7, 2, 0),
+(87, 9, 12, 3, 1),
+(88, 9, 33, 4, 0),
+(89, 9, 1, 5, 1),
+(90, 10, 78, 1, 0),
+(91, 10, 21, 2, 1),
+(92, 10, 77, 3, 0),
+(93, 10, 15, 4, 0),
+(94, 7, 57, 5, 1),
+(95, 10, 5, 6, 0),
+(96, 10, 54, 7, 0),
+(97, 10, 27, 8, 1),
+(98, 10, 18, 9, 1),
+(99, 10, 24, 10, 0),
+(100, 10, 50, 11, 0),
+(101, 10, 10, 12, 0),
+(102, 10, 45, 13, 0),
+(103, 10, 2, 14, 0),
+(104, 10, 69, 15, 1),
+(105, 10, 70, 16, 1),
+(106, 10, 65, 17, 0),
+(107, 7, 65, 6, 0),
+(108, 9, 27, 6, 0),
+(109, 7, 64, 7, 0),
+(110, 9, 17, 7, 1),
+(111, 9, 72, 8, 1),
+(112, 9, 2, 9, 0),
+(113, 7, 79, 10, 0),
+(114, 9, 70, 11, 0),
+(115, 7, 48, 12, 0),
+(116, 7, 51, 13, 0);
 
 -- --------------------------------------------------------
 
@@ -165,6 +205,15 @@ CREATE TABLE `felhasznalok` (
   `penz` int(11) NOT NULL,
   `aktiv` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `felhasznalok`
+--
+
+INSERT INTO `felhasznalok` (`id`, `felhasznalonev`, `jelszo`, `email`, `csapatok.id`, `penz`, `aktiv`) VALUES
+(1, 'admin', '$2y$10$eJqFcyRNYzbmR3TtnpjCIOfWje/CMOwNHt3aiQs6w9zpz49YkI/7W', 'admin@gmail.com', 8, 20000, 1),
+(2, 'vorakgeri', '$2y$10$2Z49vrRekqYcPohAUPw5rOCl7dHqOY6dz/eWPdtASMBHvSOMx4jbO', 'vorakg@gmail.com', 9, 269733, 1),
+(3, 'simonjanos', '$2y$10$mdAxU.HysQx2ZN2nAfRL1uWLlY9RvZj/SZnAs/NeWAVKjQ.i/kHii', 'simonj@gmail.com', 10, 79441, 1);
 
 -- --------------------------------------------------------
 
@@ -279,6 +328,18 @@ CREATE TABLE `jogok` (
   `jogosultsagok.id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
+--
+-- A tábla adatainak kiíratása `jogok`
+--
+
+INSERT INTO `jogok` (`id`, `felhasznalok.id`, `jogosultsagok.id`) VALUES
+(3, 1, 1),
+(2, 1, 2),
+(1, 1, 3),
+(6, 2, 2),
+(7, 2, 3),
+(5, 3, 3);
+
 -- --------------------------------------------------------
 
 --
@@ -313,6 +374,18 @@ CREATE TABLE `meccsek` (
   `eredmeny1` int(11) NOT NULL,
   `eredmeny2` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `meccsek`
+--
+
+INSERT INTO `meccsek` (`id`, `datum`, `csapat1.id`, `csapat2.id`, `eredmeny1`, `eredmeny2`) VALUES
+(1, '2020-03-30 15:05:12', 8, 6, 2, 3),
+(2, '2020-03-30 15:05:37', 8, 1, 3, 2),
+(3, '2020-03-30 15:06:27', 10, 1, 3, 3),
+(4, '2020-03-30 15:09:35', 10, 9, 3, 2),
+(5, '2020-03-30 15:15:48', 9, 8, 4, 1),
+(6, '2020-03-30 15:16:41', 9, 10, 5, 1);
 
 --
 -- Indexek a kiírt táblákhoz
@@ -375,19 +448,19 @@ ALTER TABLE `meccsek`
 -- AUTO_INCREMENT a táblához `csapatok`
 --
 ALTER TABLE `csapatok`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT a táblához `csapattagok`
 --
 ALTER TABLE `csapattagok`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=117;
 
 --
 -- AUTO_INCREMENT a táblához `felhasznalok`
 --
 ALTER TABLE `felhasznalok`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT a táblához `jatekosok`
@@ -399,7 +472,7 @@ ALTER TABLE `jatekosok`
 -- AUTO_INCREMENT a táblához `jogok`
 --
 ALTER TABLE `jogok`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT a táblához `jogosultsagok`
@@ -411,7 +484,7 @@ ALTER TABLE `jogosultsagok`
 -- AUTO_INCREMENT a táblához `meccsek`
 --
 ALTER TABLE `meccsek`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Megkötések a kiírt táblákhoz

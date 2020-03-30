@@ -54,13 +54,13 @@ if(isset($_POST["action"]) && $_POST["action"] == "Modositas")
 									<center><h5>Email</h5></center>
 									<div class="input-group">
 										<span class="input-group-addon"><i class="fa fa-envelope fa-fw" aria-hidden="true"></i></span>
-										<input class="form-control" type="text" name="input_email" value="<?php echo $fiokmodosit->getEmail();?>">
+										<input class="form-control" type="email" name="input_email" value="<?php echo $fiokmodosit->getEmail();?>">
 									</div>
 								</div>
 								<div class="form-group">
 									<center><h5>Csapatnév</h5></center>
 									<div class="input-group">
-										<span class="input-group-addon"><i class="fa fa-key fa-fw" aria-hidden="true"></i></span>
+										<span class="input-group-addon"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span>
 										<input class="form-control" type="text" name="input_csapatnev" value="<?php echo $fiokmodosit->getCsapatNev($fiokmodosit->getCsapatAzon());?>">
 									</div>
 								</div>

@@ -79,6 +79,8 @@ class CsapatLista extends Jatekos
 	{
 		$this->sql = "UPDATE csapattagok SET `csapatok.id`= 7 WHERE `jatekosok.id`='".$_POST["kosarasId"]."' AND `csapatok.id`='".$_POST["csapatId"]."'";
 		$this->result = $this->conn->query($this->sql);
+		$this->sql = "UPDATE felhasznalok SET penz = penz+(SELECT ar FROM jatekosok WHERE id='".$_POST["kosarasId"]."') WHERE id='".$_SESSION["bejelentkezettAllapot"]."'";
+		$this->result = $this->conn->query($this->sql);
 		?> <meta http-equiv="refresh" content="0; url = csapatom.php"> <?php
 	}
 } ?>

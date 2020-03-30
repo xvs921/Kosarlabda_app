@@ -9,7 +9,7 @@ class Regiszt extends Adatbazis
 		$this->felhasznalonevekLekeres = $this->conn->query($this->meglevoFelhasznalonevek);
 		$this->emailekLekeres = $this->conn->query($this->meglevoEmailek);
 
-		if ($this->felhasznalonevekLekeres->num_rows == 0 && $this->emailekLekeres->num_rows == 0 && $_POST["input_jelszo"] == $_POST["input_jelszo_ujra"] && filter_var($_POST["input_email"], FILTER_VALIDATE_EMAIL))
+		if ($this->felhasznalonevekLekeres->num_rows == 0 && $this->emailekLekeres->num_rows == 0 && strlen($_POST["input_jelszo"]) >= 10 && $_POST["input_jelszo"] == $_POST["input_jelszo_ujra"] && filter_var($_POST["input_email"], FILTER_VALIDATE_EMAIL))
 		{
 			$this->sql = "SELECT MAX(id)+1 FROM csapatok";
 			$this->result = $this->conn->query($this->sql);

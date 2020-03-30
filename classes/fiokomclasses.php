@@ -44,7 +44,7 @@ class SajatFiok extends Adatbazis
 		$this->sql = "SELECT jelszo FROM felhasznalok WHERE id ='".$_SESSION["bejelentkezettAllapot"]."'";
 		$this->result = $this->conn->query($this->sql);
 		$this->row = $this->result->fetch_assoc();
-		if (password_verify($_POST["input_jelszo"], $this->row["jelszo"]))
+		if (password_verify($_POST["input_jelszo"], $this->row["jelszo"]) && strlen($_POST["input_ujJelszo"]) >= 10 && $_POST["input_jelszo"] != $_POST["input_ujJelszo"])
 		{
 			$this->sql = "UPDATE felhasznalok SET jelszo='".password_hash($_POST["input_ujJelszo"], PASSWORD_DEFAULT)."' WHERE id ='".$_SESSION["bejelentkezettAllapot"]."'";
 			if ($this->conn->query($this->sql))
@@ -58,13 +58,13 @@ class SajatFiok extends Adatbazis
 		}
 		else
 		{
-			if($_POST["input_jelszo"]==(password_verify($_POST["input_jelszo"], $this->row["jelszo"])))
+			if($_POST["input_jelszo"]==$_POST["input_ujJelszo"])
 			{
 				?> <script>alert("Nem változott a jelszava!")</script> <?php	
 			}
 			else if(!password_verify($_POST["input_jelszo"], $this->row["jelszo"]))
 			{
-				?> <script>alert("Hibás jelszó!")</script> <?php	
+				?> <script>alert("Helytelenül adta meg a jelenlegi jelszavát!")</script> <?php	
 			}
 			else if (strlen($_POST["input_ujJelszo"]) < 10)
 			{
@@ -81,7 +81,7 @@ class SajatFiok extends Adatbazis
 		{
 			$this->meglevoFelhasznalonevek = "SELECT * FROM felhasznalok WHERE felhasznalonev = '".$_POST["input_felhasznalonev"]."'";
 			$this->meglevoEmailek = "SELECT * FROM felhasznalok WHERE email = '".$_POST["input_email"]."'";
-			$this->meglevoCsapatnevek = "SELECT * FROM csapatok WHERE email = '".$_POST["input_csapatnev"]."'";
+			$this->meglevoCsapatnevek = "SELECT * FROM csapatok WHERE nev = '".$_POST["input_csapatnev"]."'";
 			$this->felhasznalonevekLekeres = $this->conn->query($this->meglevoFelhasznalonevek);
 			$this->emailekLekeres = $this->conn->query($this->meglevoEmailek);
 			$this->csapatnevekLekeres = $this->conn->query($this->meglevoCsapatnevek);
@@ -89,8 +89,9 @@ class SajatFiok extends Adatbazis
 			{
 				$this->sql = "UPDATE felhasznalok SET felhasznalonev='".$_POST["input_felhasznalonev"]."', email='".$_POST["input_email"]."' WHERE id ='".$_SESSION["bejelentkezettAllapot"]."'";
 				$this->result = $this->conn->query($this->sql);
-				$this->sql = "UPDATE csapatok SET nev='".$_POST["input_csapatnev"]."' WHERE id ='".$_SESSION["bejelentkezettAllapot"]."'";
-				$this->result = $this->conn->query($this->sql);
+				
+				$this->sql2 = "UPDATE csapatok SET nev='".$_POST["input_csapatnev"]."' WHERE id = (SELECT `csapatok.id` FROM felhasznalok WHERE id='".$_SESSION["bejelentkezettAllapot"]."')";
+				$this->result = $this->conn->query($this->sql2);
 				?> <meta http-equiv="refresh" content="0; url = fiokom.php"> <?php	
 			}
 			else

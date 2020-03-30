@@ -43,9 +43,13 @@ if(isset($_GET["action"]) && $_GET["action"] == "ujEllenfel")
 	{
 		?><meta http-equiv="refresh" content="1; url = merkozes.php"><?php
 	}
-	else
+	else if(count($_SESSION['sajatCsapat'])!=5)
 	{
 		?> <script>alert("Ellenőrizze megvan-e az 5 kezdőjátékos a csapatában!")</script> <?php
+	}
+	else if(count($_SESSION['ellenfelCsapat'])!=5)
+	{
+		?> <script>alert("Az ellenfele nem rendelkezik 5 kezdőjátékossal, sorsoljon másikat!")</script> <?php
 	}
 }
 ?>
