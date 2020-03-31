@@ -33,7 +33,7 @@ class JatekosSzerkeszt extends Jatekos
 			{
 				?> <script>alert("Már létezik játékos ilyen névvel!")</script> <?php
 			}
-			else if((substr($_POST["input_kep"], -4) != ".jpg" || substr($_POST["input_kep"], -4) != ".png") && strlen($_POST["input_kep"]) < 4)
+			else if((substr($_POST["input_kep"], -4) != ".jpg" || substr($_POST["input_kep"], -4) != ".png") && strlen($_POST["input_kep"]) < 5)
 			{
 				?> <script>alert("A képhez .png vagy .jpg kiterjesztést szükséges írni a név után!")</script> <?php
 			}
