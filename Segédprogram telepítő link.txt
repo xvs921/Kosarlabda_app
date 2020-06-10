@@ -1,0 +1,5 @@
+XAMPP 7.4.3
+Általános letöltő oldal (2020.03.30):
+	https://www.apachefriends.org/hu/download.html
+Windows telepítő link (2020.03.30):
+	https://www.apachefriends.org/xampp-files/7.4.3/xampp-windows-x64-7.4.3-0-VC15-installer.exe
